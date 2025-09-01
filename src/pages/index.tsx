@@ -181,25 +181,38 @@ export default function Home() {
         <section
           id="home"
           data-scroll-section
-          className="mt-40 flex w-full flex-col items-center xl:mt-0 xl:min-h-screen xl:flex-row xl:justify-between"
+          className="relative mt-40 flex w-full min-h-screen items-center justify-center xl:mt-0"
         >
-          <div className={styles.intro}>
+          {/* 3D Background */}
+          <div className="absolute inset-0 z-0">
+            <iframe 
+              src="https://my.spline.design/claritystream-ubZKAYv0oW0rlm2w8dYHVPPo/" 
+              frameBorder="0" 
+              width="100%" 
+              height="100%"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          
+          {/* Content */}
+          <div className="relative z-10 flex flex-col items-center text-center max-w-4xl px-6">
             <div
               data-scroll
               data-scroll-direction="horizontal"
               data-scroll-speed=".09"
-              className="flex flex-row items-center space-x-1.5"
+              className="flex flex-row items-center justify-center space-x-1.5 mb-6"
             >
               <span className={styles.pill}>next.js</span>
               <span className={styles.pill}>tailwindcss</span>
               <span className={styles.pill}>typescript</span>
             </div>
-            <div>
+            <div className="mb-8">
               <h1
                 data-scroll
                 data-scroll-enable-touch-speed
                 data-scroll-speed=".06"
                 data-scroll-direction="horizontal"
+                className="mb-4"
               >
                 <span className="text-6xl tracking-tighter text-foreground 2xl:text-8xl">
                   Hello, I&apos;m
@@ -213,7 +226,7 @@ export default function Home() {
                 data-scroll
                 data-scroll-enable-touch-speed
                 data-scroll-speed=".06"
-                className="mt-1 max-w-lg tracking-tight text-muted-foreground 2xl:text-xl"
+                className="mt-4 max-w-lg mx-auto tracking-tight text-muted-foreground 2xl:text-xl"
               >
                 An experienced full-stack website developer with a passion for
                 crafting unique digital experiences.
@@ -223,7 +236,7 @@ export default function Home() {
               data-scroll
               data-scroll-enable-touch-speed
               data-scroll-speed=".06"
-              className="flex flex-row items-center space-x-1.5 pt-6"
+              className="flex flex-row items-center justify-center space-x-1.5"
             >
               <Link href="mailto:wendoj@proton.me" passHref>
                 <Button>
@@ -248,7 +261,6 @@ export default function Home() {
               <TriangleDownIcon className="mt-1 animate-bounce" />
             </div>
           </div>
-          
         </section>
 
         {/* About */}
