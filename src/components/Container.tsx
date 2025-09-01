@@ -249,22 +249,6 @@ export default function Container(props: ContainerProps) {
       {/* Main content */}
       <main className={cn("container", props.className)}>{children}</main>
       <Footer />
-
-      {/* Full-width 3D image adjustment */}
-      <style jsx global>{`
-        .container {
-          max-width: 100%;
-          padding-left: 0;
-          padding-right: 0;
-        }
-        .container > div:first-child {
-          width: 100vw;
-          position: relative;
-          left: 50%;
-          right: 50%;
-          margin-left: -50vw;
-        }
-      `}</style>
     </>
   );
 }

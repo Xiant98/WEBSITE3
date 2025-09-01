@@ -181,23 +181,20 @@ export default function Home() {
         <section
           id="home"
           data-scroll-section
-          className="relative mt-40 flex w-full min-h-screen items-center justify-center xl:mt-0"
+          className="relative mt-40 flex w-screen min-h-screen items-center justify-center xl:mt-0 -mx-6 md:-mx-8 lg:-mx-12"
         >
           {/* 3D Background */}
-          <div className="absolute inset-0 z-0 overflow-hidden">
+          <div className="absolute inset-0 z-0 w-screen h-full overflow-hidden">
             <iframe 
               src="https://my.spline.design/claritystream-ubZKAYv0oW0rlm2w8dYHVPPo/" 
               frameBorder="0" 
               width="100%" 
               height="100%"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover scale-150"
               style={{
-                transform: 'scale(1.5)',
-                marginLeft: '-25%',
-                marginTop: '-25%',
-                width: '150%',
-                height: '150%',
-                pointerEvents: 'none'
+                pointerEvents: 'none',
+                minWidth: '100vw',
+                minHeight: '100vh'
               }}
             />
           </div>
