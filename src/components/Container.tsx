@@ -166,7 +166,7 @@ export default function Container(props: ContainerProps) {
           </button>
         </div>
         <Link href="/">
-          <span className="text-lg font-semibold">SpacebaR</span>
+          <span className="text-lg font-semibold">SpacebarR</span>
         </Link>
 
         {/* Desktop menu */}
