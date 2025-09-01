@@ -190,13 +190,13 @@ export default function Home() {
               frameBorder="0" 
               width="100%" 
               height="100%"
-              className="w-full h-full object-cover scale-110"
+              className="w-full h-full object-cover"
               style={{
-                transform: 'scale(1.1)',
-                marginLeft: '-5%',
-                marginTop: '-5%',
-                width: '110%',
-                height: '110%',
+                transform: 'scale(1.5)',
+                marginLeft: '-25%',
+                marginTop: '-25%',
+                width: '150%',
+                height: '150%',
                 pointerEvents: 'none'
               }}
             />
@@ -227,7 +227,7 @@ export default function Home() {
                   <br />
                 </span>
                 <span className="clash-grotesk text-gradient text-6xl 2xl:text-8xl">
-                  WendoJ.
+                  Mukesh.
                 </span>
               </h1>
               <p
