@@ -181,7 +181,7 @@ export default function Home() {
         <section
           id="home"
           data-scroll-section
-          className="relative mt-40 flex w-screen min-h-screen items-center justify-center xl:mt-0 -mx-6 md:-mx-8 lg:-mx-12"
+          className="relative mt-40 flex w-screen min-h-screen items-center justify-center xl:mt-0 -mx-6 md:-mx-8 lg:-mx-12 bg-gradient-to-br from-slate-50 to-blue-50"
         >
           {/* 3D Background */}
           <div className="absolute inset-0 z-0 w-screen h-full overflow-hidden">
@@ -423,7 +423,7 @@ export default function Home() {
               {services.map((service) => (
                 <div
                   key={service.service}
-                  className="flex flex-col items-start rounded-md bg-white/5 p-14 shadow-md backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:bg-white/10 hover:shadow-md"
+                  className="flex flex-col items-start rounded-lg bg-white/80 p-8 shadow-lg backdrop-blur border border-gray-100 transition duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-xl"
                 >
                   <service.icon className="my-6 text-primary" size={20} />
                   <span className="text-lg tracking-tight text-foreground">
@@ -444,7 +444,7 @@ export default function Home() {
             data-scroll
             data-scroll-speed=".4"
             data-scroll-position="top"
-            className="flex flex-col items-center justify-center rounded-lg bg-gradient-to-br from-primary/[6.5%] to-white/5 px-8 py-16 text-center xl:py-24"
+            className="flex flex-col items-center justify-center rounded-lg bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 px-8 py-16 text-center xl:py-24"
           >
             <h2 className="text-4xl font-medium tracking-tighter xl:text-6xl">
               Let&apos;s work{" "}
