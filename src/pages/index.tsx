@@ -37,31 +37,31 @@ const projects = [
   {
     title: "Linkedin AI Sales Prospector",
     description: "Linkedin",
-    image: "/assets/unqueue.webm",
+    image: "/assets/404.gif",
     href: "https://www.spacebarr.agency",
   },
   {
     title: "Email",
     description: "test",
-    image: "/assets/infinitevps.webm",
+    image: "/assets/404.gif",
     href: "https://www.spacebarr.agency",
   },
   {
     title: "test",
     description: "test",
-    image: "/assets/translate_bot.webm",
+    image: "/assets/404.gif",
     href: "https://www.spacebarr.agency",
   },
   {
     title: "AI Email Campaign Prospector",
     description: "Email",
-    image: "/assets/wrona.jpeg",
+    image: "/assets/404.gif",
     href: "https://www.spacebarr.agency",
   },
   {
     title: "This website",
     description: "My personal website",
-    image: "/assets/portfolio.webm",
+    image: "/assets/404.gif",
     href: "https://www.spacebarr.agency",
   },
 ];
@@ -449,9 +449,9 @@ export default function Home() {
               <span className="text-gradient clash-grotesk">together.</span>
             </h2>
             <p className="mt-1.5 text-base tracking-tight text-muted-foreground xl:text-lg">
-              Let me know what you want and leave the planning to me.
+              Let me know what your goals are and leave the planning to me.
             </p>
-            <Link href="mailto:wendoj@proton.me" passHref>
+            <Link href="mailto:Mukesh@spacebarR.Agency" passHref>
               <Button className="mt-6">Get in touch</Button>
             </Link>
           </div>
