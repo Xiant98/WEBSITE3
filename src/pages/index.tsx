@@ -28,9 +28,9 @@ import VanillaTilt from "vanilla-tilt";
 import { motion } from "framer-motion";
 
 const aboutStats = [
-  { label: "Years of experience", value: "3+" },
+  { label: "Years of experience", value: "5+" },
   { label: "Technologies mastered", value: "5+" },
-  { label: "Companies worked with", value: "15+" },
+  { label: "Companies worked with", value: "5+" },
 ];
 
 const projects = [
@@ -190,11 +190,12 @@ export default function Home() {
               frameBorder="0" 
               width="100%" 
               height="100%"
-              className="w-full h-full object-cover scale-150"
+              className="w-full h-full object-cover scale-200"
               style={{
                 pointerEvents: 'none',
-                minWidth: '100vw',
-                minHeight: '100vh'
+                minWidth: '120vw',
+                minHeight: '120vh',
+                transform: 'scale(2.0) translate(-10%, -10%)'
               }}
             />
           </div>
