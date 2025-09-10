@@ -181,7 +181,7 @@ export default function Home() {
         <section
           id="home"
           data-scroll-section
-          className="relative mt-0 flex w-screen min-h-screen items-start justify-center pt-8 xl:pt-8 -mx-6 md:-mx-8 lg:-mx-12"
+          className="relative mt-0 flex w-screen min-h-screen items-start justify-center pt-24 xl:pt-24 -mx-6 md:-mx-8 lg:-mx-12"
         >
           {/* 3D Background */}
           <div className="absolute inset-0 z-0 w-screen h-full overflow-hidden">
