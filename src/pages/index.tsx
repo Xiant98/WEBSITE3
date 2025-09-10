@@ -37,32 +37,32 @@ const projects = [
   {
     title: "Unqueue",
     description: "E-commerce platform for selling digital products",
-    image: "/assets/unqueue.webm",
-    href: "https://unqueue.shop/",
+    image: "/assets/project-image.png",
+    href: "https://www.spacebarr.agency",
   },
   {
     title: "InfiniteVPS",
     description: "High performance VPS hosting solution",
-    image: "/assets/infinitevps.webm",
-    href: "#",
+    image: "/assets/project-image.png",
+    href: "https://www.spacebarr.agency",
   },
   {
     title: "TranslateBot",
     description: "Powerful Multilingual Translation Bot for Discord",
-    image: "/assets/translate_bot.webm",
-    href: "https://translatebot.app/",
+    image: "/assets/project-image.png",
+    href: "https://www.spacebarr.agency",
   },
   {
     title: "Wrona",
     description: "Robotics-focused technology company",
-    image: "/assets/wrona.jpeg",
-    href: "https://www.wrona.com/",
+    image: "/assets/project-image.png",
+    href: "https://www.spacebarr.agency",
   },
   {
     title: "This website",
     description: "My personal website",
-    image: "/assets/portfolio.webm",
-    href: "https://github.com/wendoj/portfolio",
+    image: "/assets/project-image.png",
+    href: "https://www.spacebarr.agency",
   },
 ];
 
