@@ -35,33 +35,33 @@ const aboutStats = [
 
 const projects = [
   {
-    title: "Unqueue",
-    description: "E-commerce platform for selling digital products",
-    image: "/assets/project-image.png",
+    title: "Linkedin AI Sales Prospector",
+    description: "Linkedin",
+    image: "/assets/unqueue.webm",
     href: "https://www.spacebarr.agency",
   },
   {
     title: "InfiniteVPS",
     description: "High performance VPS hosting solution",
-    image: "/assets/project-image.png",
+    image: "/assets/infinitevps.webm",
     href: "https://www.spacebarr.agency",
   },
   {
     title: "TranslateBot",
     description: "Powerful Multilingual Translation Bot for Discord",
-    image: "/assets/project-image.png",
+    image: "/assets/translate_bot.webm",
     href: "https://www.spacebarr.agency",
   },
   {
     title: "Wrona",
     description: "Robotics-focused technology company",
-    image: "/assets/project-image.png",
+    image: "/assets/wrona.jpeg",
     href: "https://www.spacebarr.agency",
   },
   {
     title: "This website",
     description: "My personal website",
-    image: "/assets/project-image.png",
+    image: "/assets/portfolio.webm",
     href: "https://www.spacebarr.agency",
   },
 ];
