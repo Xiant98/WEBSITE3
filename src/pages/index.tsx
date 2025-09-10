@@ -29,8 +29,8 @@ import { motion } from "framer-motion";
 
 const aboutStats = [
   { label: "Years of experience", value: "5+" },
-  { label: "Technologies mastered", value: "5+" },
-  { label: "Companies worked with", value: "5+" },
+  { label: "Teams Led", value: "5+" },
+  { label: "Companies Closed", value: "200+" },
 ];
 
 const projects = [
@@ -68,33 +68,33 @@ const projects = [
 
 const services = [
   {
-    service: "Frontend Development",
+    service: "Linkedin AI Sales Prospector",
     description:
-      "Creating stellar user interfaces and web experiences using the latest technologies.",
+      "Fully automated, hyper-personalised messaging & voice mail flows, based on the prospects last posts, comments and activites.",
     icon: Code2,
   },
   {
-    service: "UX Design",
+    service: "AI Email Campaign Prospector",
     description:
-      "Building intuitive, user-centric designs that drive engagement and conversion.",
+      "Run fully automated, personalised e-mails based on the prospect's or company's latest acheivements, posts or news.",
     icon: Frame,
   },
   {
-    service: "SEO Optimization",
+    service: "AI Research Prospector",
     description:
-      "Enhancing your website's visibility in search engines for increased organic traffic.",
+      "Acquire valuable data on what services your prospect is currently utilising through automated job listing scraping.",
     icon: SearchCheck,
   },
   {
-    service: "Responsive Design",
+    service: "Crypto Telegram AI messaging automation",
     description:
-      "Designing websites that look and perform equally well on all devices and screen sizes.",
+      "Run fully automated, personalised waterfall messaging based on the project's stock performance, funding or latest developments.",
     icon: MonitorSmartphone,
   },
   {
-    service: "Backend Development",
+    service: "Cold Call AI Tracker",
     description:
-      "Developing robust, scalable server-side logic for a wide range of web applications.",
+      "Track, transcibe and visualise performance data at scale to minimise fiction between copywrite sessions.",
     icon: Eye,
   },
 ];
@@ -208,9 +208,9 @@ export default function Home() {
               data-scroll-speed=".09"
               className="flex flex-row items-center justify-center space-x-1.5 mb-6"
             >
-              <span className={styles.pill}>next.js</span>
-              <span className={styles.pill}>tailwindcss</span>
-              <span className={styles.pill}>typescript</span>
+              <span className={styles.pill}>Simple</span>
+              <span className={styles.pill}>Scalable</span>
+              <span className={styles.pill}>Passive</span>
             </div>
             <div className="mb-8">
               <h1
@@ -221,11 +221,11 @@ export default function Home() {
                 className="mb-4"
               >
                 <span className="text-6xl tracking-tighter text-foreground 2xl:text-8xl">
-                  Hello, I&apos;m
+                  AI Sales Automation that
                   <br />
                 </span>
                 <span className="clash-grotesk text-gradient text-6xl 2xl:text-8xl">
-                  Mukesh.
+                  Just works.
                 </span>
               </h1>
               <p
@@ -234,8 +234,7 @@ export default function Home() {
                 data-scroll-speed=".06"
                 className="mt-4 max-w-lg mx-auto tracking-tight text-muted-foreground 2xl:text-xl"
               >
-                An experienced full-stack website developer with a passion for
-                crafting unique digital experiences.
+                Hi, I'm Mukesh and I help businesses catch up and dramatically boost their lead pipeline with simple, scalable and passive AI-driven sales strategies.
               </p>
             </div>
             <span
@@ -244,7 +243,7 @@ export default function Home() {
               data-scroll-speed=".06"
               className="flex flex-row items-center justify-center space-x-1.5"
             >
-              <Link href="mailto:wendoj@proton.me" passHref>
+              <Link href="mailto:Mukesh@spacebarr.agency" passHref>
                 <Button>
                   Get in touch <ChevronRight className="ml-1 h-4 w-4" />
                 </Button>
@@ -263,7 +262,6 @@ export default function Home() {
                 isScrolled && styles["scroll--hidden"],
               )}
             >
-              Scroll to discover{" "}
               <TriangleDownIcon className="mt-1 animate-bounce" />
             </div>
           </div>
@@ -275,22 +273,22 @@ export default function Home() {
             data-scroll
             data-scroll-speed=".4"
             data-scroll-position="top"
-            className="my-14 flex max-w-6xl flex-col justify-start space-y-10"
+            className="pt-24 mb-14 flex max-w-6xl flex-col justify-start space-y-10"
           >
             <h2 className="py-16  pb-2 text-3xl font-light leading-normal tracking-tighter text-foreground xl:text-[40px]">
-              I&apos;m an experienced full-stack developer proficient in{" "}
+              I&apos;m an experienced Sales Hunter with an interest in {" "}
               <Link
                 href="https://create.t3.gg/"
                 target="_blank"
                 className="underline"
               >
-                TypeScript, Tailwind, and Next.js
+                IT and Engineering.
               </Link>{" "}
-              since 2021. My experience spans from startups to mid-sized
-              companies, where I&apos;ve been instrumental in the entire product
-              design process; from ideation and wireframing, through
-              prototyping, to the delivery of the final product, all while
-              efficiently collaborating with cross-functional teams.
+              My experience spans from startups to Fortune 100 Companies, 
+              where I&apos;ve been instrumental in the entire     sales cycle. 
+              
+              I have vast experience in creative lead generation and sales clousures at both Mid-size and Enterprise levels.
+              
             </h2>
             <div className="grid grid-cols-2 gap-8 xl:grid-cols-3">
               {aboutStats.map((stat) => (
@@ -327,16 +325,16 @@ export default function Home() {
               />
             </div>
           </div>
-          <div data-scroll data-scroll-speed=".4" className="my-64">
+          <div data-scroll data-scroll-speed=".4" className="pt-24 mb-64">
             <span className="text-gradient clash-grotesk text-sm font-semibold tracking-tighter">
               ✨ Projects
             </span>
             <h2 className="mt-3 text-4xl font-semibold tracking-tight tracking-tighter xl:text-6xl">
-              Streamlined digital experiences.
+              Portfolio of Solutions.
             </h2>
             <p className="mt-1.5 text-base tracking-tight text-muted-foreground xl:text-lg">
-              I&apos;ve worked on a variety of projects, from small websites to
-              large-scale web applications. Here are some of my favorites:
+              I&apos;ve worked on a variety of projects, from small AI automations to
+              large-scale AI automations. Here are some of my favorites:
             </p>
 
             {/* Carousel */}
@@ -396,7 +394,7 @@ export default function Home() {
             data-scroll
             data-scroll-speed=".4"
             data-scroll-position="top"
-            className="my-24 flex flex-col justify-start space-y-10"
+            className="pt-24 mb-24 flex flex-col justify-start space-y-10"
           >
             <motion.div
               initial={{ opacity: 0, y: -10 }}
@@ -410,15 +408,14 @@ export default function Home() {
             >
               <div className="flex flex-col py-6 xl:p-6">
                 <h2 className="text-4xl font-medium tracking-tight">
-                  Need more info?
+                  Not sure what you need?
                   <br />
                   <span className="text-gradient clash-grotesk tracking-normal">
                     I got you.
                   </span>
                 </h2>
                 <p className="mt-2 tracking-tighter text-secondary-foreground">
-                  Here are some of the services I offer. If you have any
-                  questions, feel free to reach out.
+                  Here are some of the services I offer. let's have a chat and I can help plan your next winning strategy.
                 </p>
               </div>
               {services.map((service) => (
@@ -440,7 +437,7 @@ export default function Home() {
         </section>
 
         {/* Contact */}
-        <section id="contact" data-scroll-section className="my-64">
+        <section id="contact" data-scroll-section className="pt-24 mb-64">
           <div
             data-scroll
             data-scroll-speed=".4"
@@ -452,8 +449,7 @@ export default function Home() {
               <span className="text-gradient clash-grotesk">together.</span>
             </h2>
             <p className="mt-1.5 text-base tracking-tight text-muted-foreground xl:text-lg">
-              I&apos;m currently available for freelance work and open to
-              discussing new projects.
+              Let me know what you want and leave the planning to me.
             </p>
             <Link href="mailto:wendoj@proton.me" passHref>
               <Button className="mt-6">Get in touch</Button>
