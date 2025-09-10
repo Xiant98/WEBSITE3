@@ -130,7 +130,7 @@ export default function Container(props: ContainerProps) {
           href={`https://www.spacebar.com${router.asPath}`}
         />
         <meta property="og:type" content={meta.type} />
-        <meta property="og:site_name" content="SpacebaR" />
+        <meta property="og:site_name" content="SpacebarR" />
         <meta property="og:description" content={meta.description} />
         <meta property="og:title" content={meta.title} />
         <meta property="og:image" content={meta.image} />
@@ -166,7 +166,7 @@ export default function Container(props: ContainerProps) {
           </button>
         </div>
         <Link href="/">
-          <span className="text-lg font-semibold">SpacebaR</span>
+          <span className="text-lg font-semibold">SpacebarR</span>
         </Link>
 
         {/* Desktop menu */}
