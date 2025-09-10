@@ -325,7 +325,7 @@ export default function Home() {
               />
             </div>
           </div>
-          <div data-scroll data-scroll-speed=".4" className="pt-24 mb-64">
+          <div data-scroll data-scroll-speed=".4" className="pt-24 mb-24">
             <span className="text-gradient clash-grotesk text-sm font-semibold tracking-tighter">
               ✨ Projects
             </span>
