@@ -53,7 +53,7 @@ const projects = [
     href: "https://www.spacebarr.agency",
   },
   {
-    title: "Wrona",
+    title: "Email",
     description: "Robotics-focused technology company",
     image: "/assets/wrona.jpeg",
     href: "https://www.spacebarr.agency",
@@ -327,7 +327,7 @@ export default function Home() {
           </div>
           <div data-scroll data-scroll-speed=".4" className="pt-12 mb-24">
             <span className="text-gradient clash-grotesk text-sm font-semibold tracking-tighter">
-              ✨ Projects
+              ✨ Projects 
             </span>
             <h2 className="mt-3 text-4xl font-semibold tracking-tight tracking-tighter xl:text-6xl">
               Portfolio of Solutions.
