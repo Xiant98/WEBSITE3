@@ -37,31 +37,31 @@ const projects = [
   {
     title: "Linkedin AI Sales Prospector",
     description: "Linkedin",
-    image: "/assets/404.gif",
+    image: "/assets/SpacebarR.png",
     href: "https://www.spacebarr.agency",
   },
   {
     title: "Email",
     description: "test",
-    image: "/assets/404.gif",
+    image: "/assets/SpacebarR.png",
     href: "https://www.spacebarr.agency",
   },
   {
     title: "test",
     description: "test",
-    image: "/assets/404.gif",
+    image: "/assets/SpacebarR.png",
     href: "https://www.spacebarr.agency",
   },
   {
     title: "AI Email Campaign Prospector",
     description: "Email",
-    image: "/assets/404.gif",
+    image: "/assets/SpacebarR.png",
     href: "https://www.spacebarr.agency",
   },
   {
     title: "This website",
     description: "My personal website",
-    image: "/assets/404.gif",
+    image: "/assets/SpacebarR.png",
     href: "https://www.spacebarr.agency",
   },
 ];
