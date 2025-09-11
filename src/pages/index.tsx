@@ -76,7 +76,7 @@ const services = [
   {
     service: "AI Email Campaign Prospector",
     description:
-      "Run fully automated, personalised e-mails based on the prospect's or company's latest acheivements, posts or news.",
+      "Run fully automated, personalised e-mails based on the prospect&apos;s or company&apos;s latest acheivements, posts or news.",
     icon: Frame,
   },
   {
@@ -88,7 +88,7 @@ const services = [
   {
     service: "Crypto Telegram AI messaging automation",
     description:
-      "Run fully automated, personalised waterfall messaging based on the project's stock performance, funding or latest developments.",
+      "Run fully automated, personalised waterfall messaging based on the project&apos;s stock performance, funding or latest developments.",
     icon: MonitorSmartphone,
   },
   {
@@ -234,7 +234,7 @@ export default function Home() {
                 data-scroll-speed=".06"
                 className="mt-4 max-w-lg mx-auto tracking-tight text-muted-foreground 2xl:text-xl"
               >
-                Hi, I'm Mukesh and I help businesses catch up and dramatically boost their lead pipeline with simple, scalable and passive AI-driven sales strategies.
+                Hi, I&apos;m Mukesh and I help businesses catch up and dramatically boost their lead pipeline with simple, scalable and passive AI-driven sales strategies.
               </p>
             </div>
             <span
@@ -415,7 +415,7 @@ export default function Home() {
                   </span>
                 </h2>
                 <p className="mt-2 tracking-tighter text-secondary-foreground">
-                  Here are some of the services I offer. let's have a chat and I can help plan your next winning strategy.
+                  Here are some of the services I offer. let&apos;s have a chat and I can help plan your next winning strategy.
                 </p>
               </div>
               {services.map((service) => (

@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 import { useRouter } from "next/router";
 import Preloader from "@/components/Preloader";
 import styles from "@/styles/Container.module.css";
-import Image from "next/image";
+
 
 type IconProps = {
   ["data-hide"]: boolean;
