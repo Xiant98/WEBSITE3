@@ -197,7 +197,7 @@ export default function Home() {
                 pointerEvents: 'none',
                 minWidth: '120vw',
                 minHeight: '120vh',
-                transform: 'scale(2.0) translate(-10%, -10%)'
+                transform: 'scale(2.0) translate(-25%, -25%)'
               }}
             />
           </div>
