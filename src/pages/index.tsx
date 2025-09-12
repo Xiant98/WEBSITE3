@@ -176,22 +176,6 @@ export default function Home() {
 
   return (
     <Container>
-      {/* 3D Background - Fixed Full Screen */}
-      <div className="fixed inset-0 z-0 w-full h-full">
-        <iframe 
-          src="https://my.spline.design/claritystream-ubZKAYv0oW0rlm2w8dYHVPPo/" 
-          frameBorder="0" 
-          width="100%" 
-          height="100%"
-          className="w-full h-full object-cover"
-          style={{
-            pointerEvents: 'none',
-            width: '100vw',
-            height: '100vh'
-          }}
-        />
-      </div>
-      
       <div ref={refScrollContainer}>
         <Gradient />
 
@@ -199,8 +183,24 @@ export default function Home() {
         <section
           id="home"
           data-scroll-section
-          className="relative mt-0 flex w-full min-h-screen items-start justify-center pt-24 xl:pt-24"
+          className="relative mt-0 flex w-screen min-h-screen items-start justify-center pt-24 xl:pt-24 -mx-6 md:-mx-8 lg:-mx-12"
         >
+          {/* 3D Background */}
+          <div className="absolute inset-0 z-0 w-screen h-full overflow-hidden">
+            <iframe 
+              src="https://my.spline.design/claritystream-ubZKAYv0oW0rlm2w8dYHVPPo/" 
+              frameBorder="0" 
+              width="100%" 
+              height="100%"
+              className="w-full h-full object-cover scale-200"
+              style={{
+                pointerEvents: 'none',
+                minWidth: '120vw',
+                minHeight: '120vh',
+                transform: 'scale(2.0) translate(-10%, -10%)'
+              }}
+            />
+          </div>
           
           {/* Content */}
           <div className="relative z-10 flex flex-col items-center text-center max-w-4xl px-6">
@@ -278,7 +278,7 @@ export default function Home() {
             className="pt-12 mb-14 flex max-w-6xl flex-col justify-start space-y-10"
           >
             <h2 className="py-16  pb-2 text-3xl font-light leading-normal tracking-tighter text-foreground xl:text-[40px]">
-              I&apos;m an experienced Sales Hunter with an interest in {" "}
+              I'm an experienced Sales Hunter with an interest in {" "}
               <Link
                 href="https://create.t3.gg/"
                 target="_blank"
@@ -287,7 +287,7 @@ export default function Home() {
                 IT and Engineering.
               </Link>{" "}
               My experience spans from startups to Fortune 100 Companies, 
-              where I&apos;ve been instrumental in the entire     sales cycle. 
+              where I've been instrumental in the entire     sales cycle. 
               
               I have vast experience in creative lead generation and sales clousures at both Mid-size and Enterprise levels.
               
@@ -335,7 +335,7 @@ export default function Home() {
               Portfolio of Solutions.
             </h2>
             <p className="mt-1.5 text-base tracking-tight text-muted-foreground xl:text-lg">
-              I&apos;ve worked on a variety of projects, from small AI automations to
+              I've worked on a variety of projects, from small AI automations to
               large-scale AI automations. Here are some of my favorites:
             </p>
 
