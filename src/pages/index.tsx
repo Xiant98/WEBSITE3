@@ -72,13 +72,13 @@ const services = [
   {
     service: "Linkedin AI Sales Prospector",
     description:
-      "Fully automated, hyper-personalised messaging & voice mail flows, based on the prospects last posts, comments and activites.",
+      "Fully automated, hyper-personalised messaging & voice mail flows, based on the prospect's last posts, comments and activites.",
     icon: Code2,
   },
   {
     service: "AI Email Campaign Prospector",
     description:
-      "Run fully automated, personalised e-mails based on the prospect&apos;s or company&apos;s latest acheivements, posts or news.",
+      "Run fully automated, personalised e-mails based on the prospect's or company's latest acheivements, posts or news.",
     icon: Frame,
   },
   {
@@ -90,13 +90,13 @@ const services = [
   {
     service: "Crypto Telegram AI messaging automation",
     description:
-      "Run fully automated, personalised waterfall messaging based on the project&apos;s stock performance, funding or latest developments.",
+      "Run fully automated, personalised waterfall messaging based on the project's stock performance, funding or latest developments.",
     icon: MonitorSmartphone,
   },
   {
     service: "Cold Call AI Tracker",
     description:
-      "Track, transcibe and visualise performance data at scale to minimise fiction between copywrite sessions.",
+      "Track, transcibe and visualise performance data at scale to minimise fiction between copywrite & calling sessions.",
     icon: Eye,
   },
 ];
