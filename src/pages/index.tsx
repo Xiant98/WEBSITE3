@@ -37,7 +37,7 @@ const projects = [
   {
     title: "Linkedin AI Sales Prospector",
     description: "Linkedin",
-    image: "/assets/SpacebarR.png",
+    image: "/assets/Prosp — Automate LinkedIn & E-Mail Outbound with AI - 12 September 2025 (1).webm",
     href: "https://www.spacebarr.agency",
   },
   {
@@ -345,7 +345,7 @@ export default function Home() {
                     <CarouselItem key={project.title} className="md:basis-1/2">
                       <Card id="tilt">
                         <CardHeader className="p-0">
-                          <Link href={project.href} target="_blank" passHref>
+                          <Link href="#contact" passHref>
                             {project.image.endsWith(".webm") ? (
                               <video
                                 src={project.image}
