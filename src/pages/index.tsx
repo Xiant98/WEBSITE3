@@ -278,7 +278,7 @@ export default function Home() {
             className="pt-12 mb-14 flex max-w-6xl flex-col justify-start space-y-10"
           >
             <h2 className="py-16  pb-2 text-3xl font-light leading-normal tracking-tighter text-foreground xl:text-[40px]">
-              I'm an experienced Sales Hunter with an interest in {" "}
+              I&apos;m an experienced Sales Hunter with an interest in {" "}
               <Link
                 href="https://create.t3.gg/"
                 target="_blank"
@@ -287,7 +287,7 @@ export default function Home() {
                 IT and Engineering.
               </Link>{" "}
               My experience spans from startups to Fortune 100 Companies, 
-              where I've been instrumental in the entire     sales cycle. 
+              where I&apos;ve been instrumental in the entire     sales cycle. 
               
               I have vast experience in creative lead generation and sales clousures at both Mid-size and Enterprise levels.
               
@@ -335,7 +335,7 @@ export default function Home() {
               Portfolio of Solutions.
             </h2>
             <p className="mt-1.5 text-base tracking-tight text-muted-foreground xl:text-lg">
-              I've worked on a variety of projects, from small AI automations to
+              I&apos;ve worked on a variety of projects, from small AI automations to
               large-scale AI automations. Here are some of my favorites:
             </p>
 
