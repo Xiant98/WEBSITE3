@@ -341,8 +341,17 @@ export default function Home() {
 
             {/* Carousel */}
             <div className="mt-14">
-              <Carousel setApi={setCarouselApi} className="w-full">
-                <CarouselContent>
+              <Carousel 
+                setApi={setCarouselApi} 
+                className="w-full"
+                opts={{
+                  align: "start",
+                  loop: true,
+                  skipSnaps: false,
+                  dragFree: true,
+                }}
+              >
+                <CarouselContent className="[&>*]:hover:cursor-grab [&>*]:active:cursor-grabbing" style={{ scrollBehavior: 'smooth' }}>
                   {projects.map((project) => (
                     <CarouselItem key={project.title} className="md:basis-1/2">
                       <Card id="tilt">
@@ -396,9 +405,8 @@ export default function Home() {
               </Carousel>
               <div className="py-2 text-center text-sm text-muted-foreground">
                 <span className="font-semibold">
-                  {current} / {count}
-                </span>{" "}
-                projects
+                  Scroll for more
+                </span>
               </div>
             </div>
           </div>
