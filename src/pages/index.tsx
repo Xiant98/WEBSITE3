@@ -293,7 +293,7 @@ export default function Home() {
               
             </h2>
             <div className="grid grid-cols-2 gap-8 xl:grid-cols-3">
-              {aboutStats.map((stat) => (
+              {aboutStats.map((stat) => stat && (
                 <div
                   key={stat.label}
                   className="flex flex-col items-center text-center xl:items-start xl:text-start"
