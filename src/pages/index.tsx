@@ -30,37 +30,39 @@ import { motion } from "framer-motion";
 const aboutStats = [
   { label: "Years of experience", value: "5+" },
   { label: "Teams Led", value: "5+" },
-  { label: "Companies Closed", value: "200+" },
+  { label: "Industries sold into", value: "10+" },
+  { label: "New Logos Closed", value: "200+" },
+  ,
 ];
 
 const projects = [
   {
     title: "Linkedin AI Sales Prospector",
-    description: "Linkedin",
+    description: "Linkedin AI Prospector",
     image: "/assets/Prosp — Automate LinkedIn & E-Mail Outbound with AI - 12 September 2025 (1).webm",
     href: "https://www.spacebarr.agency",
   },
   {
     title: "Email",
-    description: "test",
-    image: "/assets/SpacebarR.png",
+    description: "AI Email Campaign Prospector",
+    image: "/assets/Emailreal.webm",
     href: "https://www.spacebarr.agency",
   },
   {
-    title: "test",
-    description: "test",
-    image: "/assets/SpacebarR.png",
+    title: "Telegram",
+    description: "Telegram AI Prospector",
+    image: "/assets/telegram.webm",
     href: "https://www.spacebarr.agency",
   },
   {
-    title: "AI Email Campaign Prospector",
-    description: "Email",
+    title: "AI Researcher",
+    description: "Email (Creatives coming soon)",
     image: "/assets/SpacebarR.png",
     href: "https://www.spacebarr.agency",
   },
   {
     title: "This website",
-    description: "My personal website",
+    description: "Cold Call AI Tracker (Creative coming soon)",
     image: "/assets/SpacebarR.png",
     href: "https://www.spacebarr.agency",
   },
@@ -76,7 +78,7 @@ const services = [
   {
     service: "AI Email Campaign Prospector",
     description:
-      "Run fully automated, personalised e-mails based on the prospect&apos;s or company&apos;s latest acheivements, posts or news.",
+      "Run fully automated, personalised e-mails based on the prospect's or company's latest acheivements, posts or news.",
     icon: Frame,
   },
   {
@@ -88,7 +90,7 @@ const services = [
   {
     service: "Crypto Telegram AI messaging automation",
     description:
-      "Run fully automated, personalised waterfall messaging based on the project&apos;s stock performance, funding or latest developments.",
+      "Run fully automated, personalised waterfall messaging based on the project's stock performance, funding or latest developments.",
     icon: MonitorSmartphone,
   },
   {
@@ -234,7 +236,7 @@ export default function Home() {
                 data-scroll-speed=".06"
                 className="mt-4 max-w-lg mx-auto tracking-tight text-muted-foreground 2xl:text-xl"
               >
-                Hi, I&apos;m Mukesh and I help businesses catch up and dramatically boost their lead pipeline with simple, scalable and passive AI-driven sales strategies.
+                Hi, I'm Mukesh and I help businesses catch up and dramatically boost their lead pipeline with simple, scalable and passive AI-driven sales strategies.
               </p>
             </div>
             <span
@@ -276,7 +278,7 @@ export default function Home() {
             className="pt-12 mb-14 flex max-w-6xl flex-col justify-start space-y-10"
           >
             <h2 className="py-16  pb-2 text-3xl font-light leading-normal tracking-tighter text-foreground xl:text-[40px]">
-              I&apos;m an experienced Sales Hunter with an interest in {" "}
+              I'm an experienced Sales Hunter with an interest in {" "}
               <Link
                 href="https://create.t3.gg/"
                 target="_blank"
@@ -285,7 +287,7 @@ export default function Home() {
                 IT and Engineering.
               </Link>{" "}
               My experience spans from startups to Fortune 100 Companies, 
-              where I&apos;ve been instrumental in the entire     sales cycle. 
+              where I've been instrumental in the entire     sales cycle. 
               
               I have vast experience in creative lead generation and sales clousures at both Mid-size and Enterprise levels.
               
@@ -333,7 +335,7 @@ export default function Home() {
               Portfolio of Solutions.
             </h2>
             <p className="mt-1.5 text-base tracking-tight text-muted-foreground xl:text-lg">
-              I&apos;ve worked on a variety of projects, from small AI automations to
+              I've worked on a variety of projects, from small AI automations to
               large-scale AI automations. Here are some of my favorites:
             </p>
 
@@ -429,7 +431,7 @@ export default function Home() {
                   </span>
                 </h2>
                 <p className="mt-2 tracking-tighter text-secondary-foreground">
-                  Here are some of the services I offer. let&apos;s have a chat and I can help plan your next winning strategy.
+                  Here are some of the services I offer. let's have a chat and I can help plan your next winning strategy.
                 </p>
               </div>
               {services.map((service) => (
@@ -459,7 +461,7 @@ export default function Home() {
             className="flex flex-col items-center justify-center rounded-lg bg-gradient-to-br from-primary/[6.5%] to-white/5 px-8 py-16 text-center xl:py-24"
           >
             <h2 className="text-4xl font-medium tracking-tighter xl:text-6xl">
-              Let&apos;s work{" "}
+              Let's work{" "}
               <span className="text-gradient clash-grotesk">together.</span>
             </h2>
             <p className="mt-1.5 text-base tracking-tight text-muted-foreground xl:text-lg">
