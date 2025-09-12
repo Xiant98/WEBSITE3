@@ -346,7 +346,7 @@ export default function Home() {
                 className="w-full"
                 opts={{
                   align: "start",
-                  loop: true,
+                  loop: false,
                   skipSnaps: false,
                   dragFree: true,
                 }}
@@ -404,8 +404,11 @@ export default function Home() {
                 <CarouselNext />
               </Carousel>
               <div className="py-2 text-center text-sm text-muted-foreground">
-                <span className="font-semibold">
+                <span className="font-semibold flex items-center justify-center gap-2">
                   Scroll for more
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
                 </span>
               </div>
             </div>
