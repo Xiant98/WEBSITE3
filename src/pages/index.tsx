@@ -345,7 +345,21 @@ export default function Home() {
                     <CarouselItem key={project.title} className="md:basis-1/2">
                       <Card id="tilt">
                         <CardHeader className="p-0">
-                          <Link href="#contact" passHref>
+                          <Link 
+                            href="#contact" 
+                            passHref
+                            onClick={(e) => {
+                              e.preventDefault();
+                              const section = document.querySelector('#contact');
+                              if (section) {
+                                section.scrollIntoView({
+                                  behavior: "smooth",
+                                  block: "center",
+                                  inline: "center",
+                                });
+                              }
+                            }}
+                          >
                             {project.image.endsWith(".webm") ? (
                               <video
                                 src={project.image}
