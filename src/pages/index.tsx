@@ -197,7 +197,7 @@ export default function Home() {
                 pointerEvents: 'none',
                 minWidth: '140%',
                 minHeight: '140%',
-                transform: 'scale(1.4) translate(-15%, -15%)',
+                transform: 'scale(1.4) translate(-15%, -30%)',
                 transformOrigin: 'top left'
               }}
             />
