@@ -195,8 +195,10 @@ export default function Home() {
               className="w-full h-full object-cover"
               style={{
                 pointerEvents: 'none',
-                minWidth: '100%',
-                minHeight: '100%'
+                minWidth: '140%',
+                minHeight: '140%',
+                transform: 'scale(1.4) translate(-15%, -15%)',
+                transformOrigin: 'top left'
               }}
             />
           </div>
