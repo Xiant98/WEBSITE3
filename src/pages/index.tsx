@@ -197,7 +197,9 @@ export default function Home() {
                 pointerEvents: 'none',
                 minWidth: 'calc(100% + 96px)',
                 minHeight: '100%',
-                marginLeft: '-48px'
+                marginLeft: '-48px',
+                transform: 'scale(0.25)',
+                transformOrigin: 'center center'
               }}
             />
           </div>

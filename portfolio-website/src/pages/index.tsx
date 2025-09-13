@@ -190,7 +190,7 @@ export default function Home() {
               frameBorder="0" 
               width="100%" 
               height="100%"
-              className="w-full h-full object-cover scale-150"
+              className="w-full h-full object-cover scale-200"
               style={{
                 pointerEvents: 'none',
                 minWidth: '100vw',
