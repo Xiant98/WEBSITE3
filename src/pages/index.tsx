@@ -186,7 +186,7 @@ export default function Home() {
           className="relative mt-0 flex w-screen min-h-screen items-start justify-center pt-24 xl:pt-24 -mx-6 md:-mx-8 lg:-mx-12"
         >
           {/* 3D Background */}
-          <div className="absolute inset-0 z-0 w-full h-full overflow-hidden">
+          <div className="absolute -inset-x-12 inset-y-0 z-0 overflow-hidden">
             <iframe 
               src="https://my.spline.design/claritystream-ubZKAYv0oW0rlm2w8dYHVPPo/" 
               frameBorder="0" 
@@ -195,8 +195,9 @@ export default function Home() {
               className="w-full h-full object-cover"
               style={{
                 pointerEvents: 'none',
-                minWidth: '100%',
-                minHeight: '100%'
+                minWidth: 'calc(100% + 96px)',
+                minHeight: '100%',
+                marginLeft: '-48px'
               }}
             />
           </div>
