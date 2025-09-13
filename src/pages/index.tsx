@@ -188,7 +188,7 @@ export default function Home() {
           {/* 3D Background */}
           <div className="absolute inset-0 z-0 w-full h-full overflow-hidden">
             <iframe 
-              src="https://my.spline.design/claritystream-ubZKAYv0oW0rlm2w8dYHVPPo/" 
+              src="https://my.spline.design/claritystream-ubZKAYv0oW0rlm2w8dYHVPPo/?hide-controls=true" 
               frameBorder="0" 
               width="100%" 
               height="100%"
