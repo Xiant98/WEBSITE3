@@ -1,49 +1,9 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Play, Pause, Volume2, Volume1, VolumeX, X } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { cn } from "@/lib/utils";
 
-const formatTime = (seconds: number) => {
-  const minutes = Math.floor(seconds / 60);
-  const remainingSeconds = Math.floor(seconds % 60);
-  return `${minutes}:${remainingSeconds.toString().padStart(2, "0")}`;
-};
-
-const CustomSlider = ({
-  value,
-  onChange,
-  className,
-}: {
-  value: number;
-  onChange: (value: number) => void;
-  className?: string;
-}) => {
-  return (
-    <motion.div
-      className={cn(
-        "relative w-full h-1 bg-white/20 rounded-full cursor-pointer",
-        className
-      )}
-      onClick={(e) => {
-        const rect = e.currentTarget.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const percentage = (x / rect.width) * 100;
-        onChange(Math.min(Math.max(percentage, 0), 100));
-      }}
-    >
-      <motion.div
-        className="absolute top-0 left-0 h-full bg-white rounded-full"
-        style={{ width: `${value}%` }}
-        initial={{ width: 0 }}
-        animate={{ width: `${value}%` }}
-        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      />
-    </motion.div>
-  );
-};
 
 interface VideoPlayerProps {
   isOpen: boolean;
@@ -52,55 +12,10 @@ interface VideoPlayerProps {
 }
 
 const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
-  const videoRef = useRef<HTMLIFrameElement>(null);
-  const [player, setPlayer] = useState<any>(null);
-  const [playbackSpeed, setPlaybackSpeed] = useState(1);
   const [showControls, setShowControls] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  // YouTube IFrame API integration
-  useEffect(() => {
-    if (!isOpen) return;
-
-    // Load YouTube API if not already loaded
-    if (!window.YT) {
-      const script = document.createElement('script');
-      script.src = 'https://www.youtube.com/iframe_api';
-      document.body.appendChild(script);
-
-      window.onYouTubeIframeAPIReady = () => {
-        initializePlayer();
-      };
-    } else {
-      initializePlayer();
-    }
-
-    function initializePlayer() {
-      if (videoRef.current && !player && isOpen) {
-        const newPlayer = new window.YT.Player(videoRef.current, {
-          height: '100%',
-          width: '100%',
-          videoId: videoId,
-          playerVars: {
-            autoplay: 1,
-            controls: 0, // Hide default controls
-            rel: 0,
-            modestbranding: 1,
-            enablejsapi: 1,
-            origin: window.location.origin
-          },
-          events: {
-            onReady: (event: any) => {
-              setPlayer(event.target);
-              setIsLoading(false);
-            }
-          }
-        });
-      }
-    }
-  }, [isOpen, videoId, player]);
-
-  // Handle escape key
+  // Handle escape key and body overflow
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -119,25 +34,13 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
     };
   }, [isOpen, onClose]);
 
-  // Update playback rate
-  useEffect(() => {
-    if (player && player.setPlaybackRate) {
-      player.setPlaybackRate(playbackSpeed);
-    }
-  }, [player, playbackSpeed]);
-
-  // Clean up player when modal closes
-  useEffect(() => {
-    if (!isOpen && player) {
-      player.destroy();
-      setPlayer(null);
-      setIsLoading(true);
-    }
-  }, [isOpen, player]);
-
-  const setSpeed = (speed: number) => {
-    setPlaybackSpeed(speed);
+  // Handle loading state
+  const handleIframeLoad = () => {
+    setIsLoading(false);
   };
+
+  // Build YouTube embed URL with autoplay
+  const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&controls=1&rel=0&modestbranding=1&iv_load_policy=3&cc_load_policy=0`;
 
   if (!isOpen) return null;
 
@@ -182,11 +85,12 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
             {/* YouTube Video */}
             <div className="relative w-full aspect-video">
               <iframe
-                ref={videoRef}
+                src={embedUrl}
                 className="w-full h-full"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
                 style={{ border: 'none' }}
+                onLoad={handleIframeLoad}
               />
 
               {/* Loading Animation */}
@@ -201,7 +105,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
                 </motion.div>
               )}
 
-              {/* Custom Controls Overlay */}
+              {/* Info Overlay */}
               <AnimatePresence>
                 {showControls && !isLoading && (
                   <motion.div
@@ -211,32 +115,10 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
                     exit={{ y: 20, opacity: 0, filter: "blur(10px)" }}
                     transition={{ duration: 0.6, ease: "circInOut", type: "spring" }}
                   >
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-4">
-                        <span className="text-white text-sm font-medium">Speed:</span>
-                      </div>
-
-                      <div className="flex items-center gap-2">
-                        {[0.5, 1, 1.5, 2].map((speed) => (
-                          <motion.div
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.9 }}
-                            key={speed}
-                          >
-                            <Button
-                              onClick={() => setSpeed(speed)}
-                              variant="ghost"
-                              size="icon"
-                              className={cn(
-                                "text-white hover:bg-[#111111d1] hover:text-white",
-                                playbackSpeed === speed && "bg-[#111111d1]"
-                              )}
-                            >
-                              {speed}x
-                            </Button>
-                          </motion.div>
-                        ))}
-                      </div>
+                    <div className="flex items-center justify-center">
+                      <span className="text-white text-sm font-medium">
+                        Use YouTube's built-in controls for playback options
+                      </span>
                     </div>
                   </motion.div>
                 )}
