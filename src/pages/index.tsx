@@ -2,6 +2,7 @@ import Container from "@/components/Container";
 import { useEffect, useRef, useState } from "react";
 import styles from "@/styles/Home.module.css";
 import { Button } from "@/components/ui/button";
+import VideoPlayer from "@/components/ui/video-player";
 import {
   ChevronRight,
   Code2,
@@ -103,6 +104,7 @@ const services = [
 
 export default function Home() {
   const refScrollContainer = useRef(null);
+  const [isVideoPlayerOpen, setIsVideoPlayerOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [carouselApi, setCarouselApi] = useState<CarouselApi | null>(null);
   const [current, setCurrent] = useState<number>(0);
@@ -178,6 +180,13 @@ export default function Home() {
     <Container>
       <div ref={refScrollContainer}>
         <Gradient />
+        
+        {/* Video Player Modal */}
+        <VideoPlayer 
+          isOpen={isVideoPlayerOpen}
+          onClose={() => setIsVideoPlayerOpen(false)}
+          videoId="ZILw6IfCgNg"
+        />
 
         {/* Intro */}
         <section
@@ -357,18 +366,23 @@ export default function Home() {
                     <CarouselItem key={project.title} className="md:basis-1/2">
                       <Card id="tilt">
                         <CardHeader className="p-0">
-                          <Link 
-                            href="#contact" 
-                            passHref
+                          <div 
+                            className="cursor-pointer"
                             onClick={(e) => {
                               e.preventDefault();
-                              const section = document.querySelector('#contact');
-                              if (section) {
-                                section.scrollIntoView({
-                                  behavior: "smooth",
-                                  block: "center",
-                                  inline: "center",
-                                });
+                              // Open video player only for the SpacebarR project
+                              if (project.title === "This website") {
+                                setIsVideoPlayerOpen(true);
+                              } else {
+                                // For other projects, scroll to contact
+                                const section = document.querySelector('#contact');
+                                if (section) {
+                                  section.scrollIntoView({
+                                    behavior: "smooth",
+                                    block: "center",
+                                    inline: "center",
+                                  });
+                                }
                               }
                             }}
                           >
@@ -390,7 +404,7 @@ export default function Home() {
                                 className="aspect-video h-full w-full rounded-t-md bg-primary object-cover"
                               />
                             )}
-                          </Link>
+                          </div>
                         </CardHeader>
                         <CardContent className="absolute bottom-0 w-full bg-background/50 backdrop-blur">
                           <CardTitle className="border-t border-white/5 p-4 text-base font-normal tracking-tighter">
