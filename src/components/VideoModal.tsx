@@ -1,6 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Maximize, Minimize, Play, Pause } from 'lucide-react';
+import { X, Maximize, Minimize } from 'lucide-react';
+
+// YouTube Player API types
+declare global {
+  interface Window {
+    YT: any;
+    onYouTubeIframeAPIReady: () => void;
+  }
+}
 
 interface VideoModalProps {
   isOpen: boolean;
@@ -11,11 +19,52 @@ interface VideoModalProps {
 export default function VideoModal({ isOpen, onClose, videoId }: VideoModalProps) {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [playbackRate, setPlaybackRate] = useState(1);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [player, setPlayer] = useState<any>(null);
   const modalRef = useRef<HTMLDivElement>(null);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const playerRef = useRef<HTMLDivElement>(null);
 
-  // Handle escape key
+  // Load YouTube API and initialize player
+  useEffect(() => {
+    if (!isOpen) return;
+
+    // Load YouTube API if not already loaded
+    if (!window.YT) {
+      const script = document.createElement('script');
+      script.src = 'https://www.youtube.com/iframe_api';
+      document.body.appendChild(script);
+
+      window.onYouTubeIframeAPIReady = () => {
+        initializePlayer();
+      };
+    } else {
+      initializePlayer();
+    }
+
+    function initializePlayer() {
+      if (playerRef.current && !player) {
+        const newPlayer = new window.YT.Player(playerRef.current, {
+          height: '100%',
+          width: '100%',
+          videoId: videoId,
+          playerVars: {
+            autoplay: 1,
+            controls: 1,
+            rel: 0,
+            modestbranding: 1,
+            enablejsapi: 1,
+            origin: window.location.origin
+          },
+          events: {
+            onReady: (event: any) => {
+              setPlayer(event.target);
+            }
+          }
+        });
+      }
+    }
+  }, [isOpen, videoId, player]);
+
+  // Handle escape key and fullscreen changes
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -23,16 +72,37 @@ export default function VideoModal({ isOpen, onClose, videoId }: VideoModalProps
       }
     };
 
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+
     if (isOpen) {
       document.addEventListener('keydown', handleEscape);
+      document.addEventListener('fullscreenchange', handleFullscreenChange);
       document.body.style.overflow = 'hidden';
     }
 
     return () => {
       document.removeEventListener('keydown', handleEscape);
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
       document.body.style.overflow = 'unset';
     };
   }, [isOpen, onClose]);
+
+  // Update playback rate when player is ready and rate changes
+  useEffect(() => {
+    if (player && player.setPlaybackRate) {
+      player.setPlaybackRate(playbackRate);
+    }
+  }, [player, playbackRate]);
+
+  // Clean up player when modal closes
+  useEffect(() => {
+    if (!isOpen && player) {
+      player.destroy();
+      setPlayer(null);
+    }
+  }, [isOpen, player]);
 
   // Fullscreen functionality
   const toggleFullscreen = () => {
@@ -52,9 +122,6 @@ export default function VideoModal({ isOpen, onClose, videoId }: VideoModalProps
 
   // Speed control options
   const speedOptions = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
-
-  // YouTube iframe src with autoplay and controls
-  const videoSrc = `https://www.youtube.com/embed/${videoId}?autoplay=1&controls=1&rel=0&modestbranding=1`;
 
   if (!isOpen) return null;
 
@@ -138,12 +205,9 @@ export default function VideoModal({ isOpen, onClose, videoId }: VideoModalProps
             </div>
 
             {/* Video Player */}
-            <iframe
-              ref={iframeRef}
-              src={videoSrc}
+            <div
+              ref={playerRef}
               className="w-full h-full rounded-lg"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
               style={{
                 border: 'none',
               }}

@@ -4,9 +4,11 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn, scrollTo } from "@/lib/utils";
 import { useState, useEffect } from "react";
+import { Play } from "lucide-react";
 import Footer from "@/components/Footer";
 import { useRouter } from "next/router";
 import Preloader from "@/components/Preloader";
+import VideoModal from "@/components/VideoModal";
 import styles from "@/styles/Container.module.css";
 
 
@@ -81,6 +83,7 @@ export default function Container(props: ContainerProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState<boolean>(false);
 
   const { children, ...customMeta } = props;
   const router = useRouter();
@@ -166,9 +169,20 @@ export default function Container(props: ContainerProps) {
             <CrossIcon data-hide={!isOpen} />
           </button>
         </div>
-        <Link href="/">
-          <span className="text-lg font-semibold">SpacebarR</span>
-        </Link>
+        <div className="flex items-center space-x-3">
+          <Link href="/">
+            <span className="text-lg font-semibold hover:text-primary transition-colors">SpacebarR</span>
+          </Link>
+          <motion.button 
+            onClick={() => setIsVideoModalOpen(true)}
+            className="flex items-center justify-center w-8 h-8 bg-primary/10 hover:bg-primary/20 rounded-full transition-colors group"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            title="Watch intro video"
+          >
+            <Play className="w-4 h-4 text-primary group-hover:text-primary/80 fill-current" />
+          </motion.button>
+        </div>
 
         {/* Desktop menu */}
         <ul className={styles["desktop-nav"]}>
@@ -251,6 +265,13 @@ export default function Container(props: ContainerProps) {
       {/* Main content */}
       <main className={cn("container", props.className)}>{children}</main>
       <Footer />
+      
+      {/* Video Modal */}
+      <VideoModal 
+        isOpen={isVideoModalOpen}
+        onClose={() => setIsVideoModalOpen(false)}
+        videoId="ZILw6IfCgNg"
+      />
     </>
   );
 }
