@@ -105,24 +105,6 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
                 </motion.div>
               )}
 
-              {/* Info Overlay */}
-              <AnimatePresence>
-                {showControls && !isLoading && (
-                  <motion.div
-                    className="absolute bottom-0 mx-auto max-w-xl left-0 right-0 p-4 m-2 bg-[#11111198] backdrop-blur-md rounded-2xl"
-                    initial={{ y: 20, opacity: 0, filter: "blur(10px)" }}
-                    animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-                    exit={{ y: 20, opacity: 0, filter: "blur(10px)" }}
-                    transition={{ duration: 0.6, ease: "circInOut", type: "spring" }}
-                  >
-                    <div className="flex items-center justify-center">
-                      <span className="text-white text-sm font-medium">
-                        Use YouTube's built-in controls for playback options
-                      </span>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
             </div>
           </motion.div>
         </motion.div>
