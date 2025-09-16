@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import Footer from "@/components/Footer";
 import { useRouter } from "next/router";
 import Preloader from "@/components/Preloader";
+import { SplashCursor } from "@/components/ui/splash-cursor";
 import styles from "@/styles/Container.module.css";
 
 
@@ -116,6 +117,7 @@ export default function Container(props: ContainerProps) {
 
   return (
     <>
+      <SplashCursor />
       <Head>
         <title>{meta.title}</title>
         <meta name="robots" content="follow, index" />
