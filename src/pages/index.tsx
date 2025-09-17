@@ -195,9 +195,7 @@ export default function Home() {
               </span>
             </h1>
             <p className="mt-4 max-w-2xl mx-auto tracking-tight text-muted-foreground text-lg 2xl:text-xl">
-              Hi, I&apos;m Mukesh and I help businesses catch up and dramatically boost
-              their lead pipeline with simple, scalable and passive AI-driven sales
-              strategies.
+              Hi, I&apos;m Mukesh and I have a deep passion for Sales and Learning new ways to maximise my Sales productivity, Here are some of my projects!
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
               <Link href="mailto:Mukesh@spacebarR.Agency" passHref>
@@ -212,15 +210,12 @@ export default function Home() {
           </div>
           
           {/* Animated Scroll Velocity */}
-          <div className="w-full space-y-6">
-            <ScrollVelocity velocity={3} className="text-muted-foreground/30">
-              AI AUTOMATION • LEAD GENERATION • SALES STRATEGY • GROWTH HACKING • 
+          <div className="w-full space-y-8">
+            <ScrollVelocity velocity={1.5} className="text-muted-foreground/30 leading-relaxed">
+              "Alex, your clinic's Facebook comment on patient feedback got a lot of engagement. Has gathering those insights changed how you manage remote consults?" • "Nina, your story about running wellness sessions internally was a great read. What new approach are you currently experimenting with?" • "Hi Jamie, I saw your LinkedIn post about how your team launched that onboarding sprint last month. What do you wish had gone even smoother in the process?" • "Elena, your thoughtful comment on the analytics tools comparison post really stood out to me. Have you come across any game-changing features this year?" • "Marcus, that thread you started about new campaign strategies had some bold ideas. Are there marketing challenges you still feel are unresolved?" • 
             </ScrollVelocity>
-            <ScrollVelocity velocity={-2} className="text-muted-foreground/20">
-              PROSPECTING • EMAIL CAMPAIGNS • LINKEDIN OUTREACH • CRM OPTIMIZATION • 
-            </ScrollVelocity>
-            <ScrollVelocity velocity={4} className="text-muted-foreground/25">
-              CONVERSION TRACKING • PIPELINE MANAGEMENT • REVENUE SCALING • 
+            <ScrollVelocity velocity={-1} className="text-muted-foreground/25 leading-relaxed">
+              "Dana, your company's share on Instagram about hitting record sales in July was inspiring! What helped your team keep momentum during slower retail months?" • "Jordan, I noticed your company's post celebrating community event turnout this spring. How does your team measure the long-term impact of those events?" • "Priya, your CEO's post on sustainability milestones just hit my feed—what's the next big goal you're rallying the team behind?" • "Simon, I caught your recent reply on a customer support best practices forum. If you could automate one follow-up, what would you pick first?" • 
             </ScrollVelocity>
           </div>
         </section>
