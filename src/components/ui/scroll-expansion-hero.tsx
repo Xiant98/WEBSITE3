@@ -242,16 +242,9 @@ const ScrollExpandMedia = ({
       setTouchStartY(0);
     };
 
-    const handleScroll = (): void => {
-      if (!mediaFullyExpanded) {
-        window.scrollTo(0, 0);
-      }
-    };
-
     window.addEventListener('wheel', handleWheel as unknown as EventListener, {
       passive: false,
     });
-    window.addEventListener('scroll', handleScroll as EventListener);
     window.addEventListener(
       'touchstart',
       handleTouchStart as unknown as EventListener,
@@ -269,7 +262,6 @@ const ScrollExpandMedia = ({
         'wheel',
         handleWheel as unknown as EventListener
       );
-      window.removeEventListener('scroll', handleScroll as EventListener);
       window.removeEventListener(
         'touchstart',
         handleTouchStart as unknown as EventListener
