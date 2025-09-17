@@ -20,13 +20,13 @@ const ScrollVelocity = React.forwardRef<HTMLDivElement, ScrollVelocityProps>(
       damping: 50,
       stiffness: 100,
     })
-    const velocityFactor = useTransform(smoothVelocity, [0, 10000], [0, 5], {
-      clamp,
-    })
+    const velocityFactor = useTransform(smoothVelocity, [0, 10000], [0, 5], clamp ? {
+      clamp: true,
+    } : {})
 
     const x = useTransform(baseX, (v) => `${wrap(0, -50, v)}%`)
 
-    const directionFactor = React.useRef<number>(1)
+    // const directionFactor = React.useRef<number>(1) // Unused variable
     const scrollThreshold = React.useRef<number>(5)
 
     useAnimationFrame((t, delta) => {
