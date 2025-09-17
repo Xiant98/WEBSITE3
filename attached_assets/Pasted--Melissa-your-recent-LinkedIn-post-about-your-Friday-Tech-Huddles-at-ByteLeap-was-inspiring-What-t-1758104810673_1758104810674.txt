@@ -1,0 +1,39 @@
+"Melissa, your recent LinkedIn post about your Friday Tech Huddles at ByteLeap was inspiring. What topic are you thinking about exploring next for your team?"
+
+"Arjun, I read your Medium article where Atlas Fintech adopted an AI reconciliation tool in Q2. What did your team enjoy most about rolling it out?"
+
+"Ben, your candid comment on Devon Smith’s Pulse Analytics dashboard announcement really got me thinking. What sort of early reactions have your clients shared so far?"
+
+"Sophie, I watched the behind-the-scenes video from Stellar Health’s hackathon and loved it. How did your team come up with that patient triage mobile app?"
+
+"Rina, your panel insights during the Diversity in STEM webinar stuck with me, especially your story about mentoring interns at Springboard Labs. What recent program makes you proudest?"
+
+"Omar, I saw your Q and A on Reddit about switching to zero-based budgeting at GreenSprout Ventures. Which department found the transition easiest?"
+
+"Harpreet, I caught the UpSkill Weekly podcast you co-hosted with Priya Lee on hiring for technical roles. What challenge are you hoping to solve next in your process?"
+
+"Jenny, I noticed your CEO’s Year In Review post for Mosaic Markets called out your amazing jump in client retention. Which tweak had the most impact?"
+
+"Nikhil, I appreciated your reply to Chris Tan’s tweet about multi-cloud security challenges. What tools do you wish offered more flexibility?"
+
+"Charlene, your case study on migrating Craftly CRM’s database sparked lots of discussions. Are more of your clients thinking of a stepwise migration these days?"
+
+"Miguel, I loved watching your Instagram reel from Habitat for Humanity’s team build day. What did you enjoy most about volunteering?"
+
+"Anya, your thoughtful comment on GreenBay’s ESG report and how it affects mid-market suppliers was spot on. What step comes next in your own ESG strategy?"
+
+"Sam, your teardown video on the onboarding flow for the First90 HR suite was filled with fresh ideas. Which feature are you most eager to see more startups adopt?"
+
+"Maya, your Slack AMA on launching the Women Who Scale mentorship match program seemed energizing for the group. What new features are you most excited to implement?"
+
+"Leo, I saw your notes on LinziAI’s open source NLP library over on GitHub. What improvements are you hoping to see in the next release?"
+
+"Daniela, the viral TikTok your team made for BookNest’s auto sync tool popped up on my feed this morning. Was there any scenario that proved trickier than expected?"
+
+"Vishal, your review in ProductSphere’s newsletter about the Zeno board meeting platform was really helpful. If you could change one meeting format for your team, what would you choose?"
+
+"Emily, your comment on the Acme Studio roadmap thread about dark mode accessibility was so clear. Did the product team end up acting on your suggestion?"
+
+"Tai, I caught your YouTube Short about using corn starch packing for SafeBox’s holiday orders. What packaging will you experiment with next?"
+
+"Grace, I tuned into your mental health roundtable for JavaJam’s dev community and found the discussion refreshingly honest. What topic took you by surprise during that session?"

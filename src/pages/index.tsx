@@ -110,23 +110,34 @@ export default function Home() {
   const [carouselApi, setCarouselApi] = useState<CarouselApi | null>(null);
   const [currentCycle, setCurrentCycle] = useState(0);
 
-  // All 9 personalized messages
+  // All 20 personalized messages
   const allMessages = [
-    "Alex, your clinic's Facebook comment on patient feedback got a lot of engagement. Has gathering those insights changed how you manage remote consults?",
-    "Nina, your story about running wellness sessions internally was a great read. What new approach are you currently experimenting with?", 
-    "Hi Jamie, I saw your LinkedIn post about how your team launched that onboarding sprint last month. What do you wish had gone even smoother in the process?",
-    "Elena, your thoughtful comment on the analytics tools comparison post really stood out to me. Have you come across any game-changing features this year?",
-    "Marcus, that thread you started about new campaign strategies had some bold ideas. Are there marketing challenges you still feel are unresolved?",
-    "Dana, your company's share on Instagram about hitting record sales in July was inspiring! What helped your team keep momentum during slower retail months?",
-    "Jordan, I noticed your company's post celebrating community event turnout this spring. How does your team measure the long-term impact of those events?",
-    "Priya, your CEO's post on sustainability milestones just hit my feed—what's the next big goal you're rallying the team behind?",
-    "Simon, I caught your recent reply on a customer support best practices forum. If you could automate one follow-up, what would you pick first?"
+    "Melissa, your recent LinkedIn post about your Friday Tech Huddles at ByteLeap was inspiring. What topic are you thinking about exploring next for your team?",
+    "Arjun, I read your Medium article where Atlas Fintech adopted an AI reconciliation tool in Q2. What did your team enjoy most about rolling it out?",
+    "Ben, your candid comment on Devon Smith's Pulse Analytics dashboard announcement really got me thinking. What sort of early reactions have your clients shared so far?",
+    "Sophie, I watched the behind-the-scenes video from Stellar Health's hackathon and loved it. How did your team come up with that patient triage mobile app?",
+    "Rina, your panel insights during the Diversity in STEM webinar stuck with me, especially your story about mentoring interns at Springboard Labs. What recent program makes you proudest?",
+    "Omar, I saw your Q and A on Reddit about switching to zero-based budgeting at GreenSprout Ventures. Which department found the transition easiest?",
+    "Harpreet, I caught the UpSkill Weekly podcast you co-hosted with Priya Lee on hiring for technical roles. What challenge are you hoping to solve next in your process?",
+    "Jenny, I noticed your CEO's Year In Review post for Mosaic Markets called out your amazing jump in client retention. Which tweak had the most impact?",
+    "Nikhil, I appreciated your reply to Chris Tan's tweet about multi-cloud security challenges. What tools do you wish offered more flexibility?",
+    "Charlene, your case study on migrating Craftly CRM's database sparked lots of discussions. Are more of your clients thinking of a stepwise migration these days?",
+    "Miguel, I loved watching your Instagram reel from Habitat for Humanity's team build day. What did you enjoy most about volunteering?",
+    "Anya, your thoughtful comment on GreenBay's ESG report and how it affects mid-market suppliers was spot on. What step comes next in your own ESG strategy?",
+    "Sam, your teardown video on the onboarding flow for the First90 HR suite was filled with fresh ideas. Which feature are you most eager to see more startups adopt?",
+    "Maya, your Slack AMA on launching the Women Who Scale mentorship match program seemed energizing for the group. What new features are you most excited to implement?",
+    "Leo, I saw your notes on LinziAI's open source NLP library over on GitHub. What improvements are you hoping to see in the next release?",
+    "Daniela, the viral TikTok your team made for BookNest's auto sync tool popped up on my feed this morning. Was there any scenario that proved trickier than expected?",
+    "Vishal, your review in ProductSphere's newsletter about the Zeno board meeting platform was really helpful. If you could change one meeting format for your team, what would you choose?",
+    "Emily, your comment on the Acme Studio roadmap thread about dark mode accessibility was so clear. Did the product team end up acting on your suggestion?",
+    "Tai, I caught your YouTube Short about using corn starch packing for SafeBox's holiday orders. What packaging will you experiment with next?",
+    "Grace, I tuned into your mental health roundtable for JavaJam's dev community and found the discussion refreshingly honest. What topic took you by surprise during that session?"
   ];
 
-  // Create cycling message sets - randomized rotation every cycle
+  // Create cycling message sets - rotation every cycle through all 20 messages
   const getMessageSet = (cycle: number) => {
     const shuffled = [...allMessages];
-    const offset = (cycle * 3) % shuffled.length;
+    const offset = (cycle * 4) % shuffled.length; // Rotate by 4 each cycle for more variety
     return [
       ...shuffled.slice(offset),
       ...shuffled.slice(0, offset)
@@ -134,8 +145,8 @@ export default function Home() {
   };
 
   const currentMessages = getMessageSet(currentCycle);
-  const topRowMessages = currentMessages.slice(0, 5);
-  const bottomRowMessages = currentMessages.slice(5, 9);
+  const topRowMessages = currentMessages.slice(0, 10);  // Top row gets 10 messages
+  const bottomRowMessages = currentMessages.slice(10, 20); // Bottom row gets 10 messages
 
   // handle scroll
   useEffect(() => {
@@ -196,8 +207,8 @@ export default function Home() {
   // Message cycling effect
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentCycle(prev => (prev + 1) % 3); // Cycle through 3 different combinations
-    }, 12000); // Change every 12 seconds
+      setCurrentCycle(prev => (prev + 1) % 5); // Cycle through 5 different combinations for more variety
+    }, 15000); // Change every 15 seconds to give more time to read longer messages
 
     return () => clearInterval(interval);
   }, []);
