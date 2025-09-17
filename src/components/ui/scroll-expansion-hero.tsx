@@ -44,7 +44,7 @@ const ScrollExpandMedia = ({
     "Ben, your candid <span class='text-yellow-300'>comment</span> on Devon Smith's Pulse Analytics dashboard announcement really got me thinking. What sort of early reactions have your clients shared so far?",
     "Sophie, I watched the <span class='text-yellow-300'>behind-the-scenes video</span> from Stellar Health's hackathon and loved it. How did your team come up with that patient triage mobile app?",
     "Rina, your <span class='text-yellow-300'>panel insights</span> during the Diversity in STEM <span class='text-yellow-300'>webinar</span> stuck with me, especially your story about mentoring interns at Springboard Labs. What recent program makes you proudest?",
-    "Omar, I saw your <span class='text-yellow-300'>Q and A</span> on Reddit about switching to zero-based budgeting at GreenSprout Ventures. Which department found the transition easiest?",
+    "Omar, I saw your <span class='text-yellow-300'>Q&A</span> on Reddit about switching to zero-based budgeting at GreenSprout Ventures. Which department found the transition easiest?",
     "Harpreet, I caught the UpSkill Weekly <span class='text-yellow-300'>podcast</span> you co-hosted with Priya Lee on hiring for technical roles. What challenge are you hoping to solve next in your process?",
     "Jenny, I noticed your <span class='text-yellow-300'>CEO's Year In Review post</span> for Mosaic Markets called out your amazing jump in client retention. Which tweak had the most impact?",
     "Nikhil, I appreciated your <span class='text-yellow-300'>reply</span> to Chris Tan's <span class='text-yellow-300'>tweet</span> about multi-cloud security challenges. What tools do you wish offered more flexibility?",
