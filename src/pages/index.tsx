@@ -108,6 +108,34 @@ export default function Home() {
   const [isVideoPlayerOpen, setIsVideoPlayerOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [carouselApi, setCarouselApi] = useState<CarouselApi | null>(null);
+  const [currentCycle, setCurrentCycle] = useState(0);
+
+  // All 9 personalized messages
+  const allMessages = [
+    "Alex, your clinic's Facebook comment on patient feedback got a lot of engagement. Has gathering those insights changed how you manage remote consults?",
+    "Nina, your story about running wellness sessions internally was a great read. What new approach are you currently experimenting with?", 
+    "Hi Jamie, I saw your LinkedIn post about how your team launched that onboarding sprint last month. What do you wish had gone even smoother in the process?",
+    "Elena, your thoughtful comment on the analytics tools comparison post really stood out to me. Have you come across any game-changing features this year?",
+    "Marcus, that thread you started about new campaign strategies had some bold ideas. Are there marketing challenges you still feel are unresolved?",
+    "Dana, your company's share on Instagram about hitting record sales in July was inspiring! What helped your team keep momentum during slower retail months?",
+    "Jordan, I noticed your company's post celebrating community event turnout this spring. How does your team measure the long-term impact of those events?",
+    "Priya, your CEO's post on sustainability milestones just hit my feed—what's the next big goal you're rallying the team behind?",
+    "Simon, I caught your recent reply on a customer support best practices forum. If you could automate one follow-up, what would you pick first?"
+  ];
+
+  // Create cycling message sets - randomized rotation every cycle
+  const getMessageSet = (cycle: number) => {
+    const shuffled = [...allMessages];
+    const offset = (cycle * 3) % shuffled.length;
+    return [
+      ...shuffled.slice(offset),
+      ...shuffled.slice(0, offset)
+    ];
+  };
+
+  const currentMessages = getMessageSet(currentCycle);
+  const topRowMessages = currentMessages.slice(0, 5);
+  const bottomRowMessages = currentMessages.slice(5, 9);
 
   // handle scroll
   useEffect(() => {
@@ -165,6 +193,15 @@ export default function Home() {
     });
   }, []);
 
+  // Message cycling effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentCycle(prev => (prev + 1) % 3); // Cycle through 3 different combinations
+    }, 12000); // Change every 12 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <Container>
       <div ref={refScrollContainer}>
@@ -211,22 +248,11 @@ export default function Home() {
           
           {/* Animated Scroll Velocity */}
           <div className="w-full space-y-8">
-            <ScrollVelocity velocity={1.5} className="text-muted-foreground/30 leading-relaxed">
-              {[
-                "Alex, your clinic's Facebook comment on patient feedback got a lot of engagement. Has gathering those insights changed how you manage remote consults?",
-                "Nina, your story about running wellness sessions internally was a great read. What new approach are you currently experimenting with?",
-                "Hi Jamie, I saw your LinkedIn post about how your team launched that onboarding sprint last month. What do you wish had gone even smoother in the process?",
-                "Elena, your thoughtful comment on the analytics tools comparison post really stood out to me. Have you come across any game-changing features this year?",
-                "Marcus, that thread you started about new campaign strategies had some bold ideas. Are there marketing challenges you still feel are unresolved?"
-              ]}
+            <ScrollVelocity velocity={0.8} className="text-muted-foreground/30 leading-relaxed">
+              {topRowMessages}
             </ScrollVelocity>
-            <ScrollVelocity velocity={-1} className="text-muted-foreground/25 leading-relaxed">
-              {[
-                "Dana, your company's share on Instagram about hitting record sales in July was inspiring! What helped your team keep momentum during slower retail months?",
-                "Jordan, I noticed your company's post celebrating community event turnout this spring. How does your team measure the long-term impact of those events?",
-                "Priya, your CEO's post on sustainability milestones just hit my feed—what's the next big goal you're rallying the team behind?",
-                "Simon, I caught your recent reply on a customer support best practices forum. If you could automate one follow-up, what would you pick first?"
-              ]}
+            <ScrollVelocity velocity={-0.6} className="text-muted-foreground/25 leading-relaxed">
+              {bottomRowMessages}
             </ScrollVelocity>
           </div>
         </section>

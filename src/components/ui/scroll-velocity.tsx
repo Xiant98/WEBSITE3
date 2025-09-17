@@ -54,23 +54,24 @@ const ScrollVelocity = React.forwardRef<HTMLDivElement, ScrollVelocityProps>(
     return (
       <div
         ref={ref}
-        className={cn("relative m-0 flex flex-nowrap overflow-hidden leading-relaxed tracking-normal", className)}
+        className={cn("relative m-0 w-full flex flex-nowrap overflow-hidden leading-relaxed tracking-normal px-6", className)}
         {...props}
       >
         <motion.div
-          className="flex flex-row flex-nowrap text-lg font-normal normal-case md:text-xl xl:text-2xl"
+          className="flex flex-row flex-nowrap gap-12 text-lg font-normal normal-case md:text-xl xl:text-xl"
           style={{ x }}
         >
           {Array.isArray(children) ? (
             <>
-              {Array.from({ length: 3 }).map((_, repeatIdx) => 
+              {Array.from({ length: 2 }).map((_, repeatIdx) => 
                 children.map((message, msgIdx) => (
                   <span 
                     key={`${repeatIdx}-${msgIdx}`}
-                    className="mr-8 block max-w-[300px] line-clamp-2 whitespace-normal"
+                    className="block shrink-0 whitespace-normal leading-relaxed line-clamp-3"
                     style={{ 
+                      width: 'calc((100vw - 9rem) / 2 - 1px)',
                       display: '-webkit-box',
-                      WebkitLineClamp: 2,
+                      WebkitLineClamp: 3,
                       WebkitBoxOrient: 'vertical',
                       overflow: 'hidden'
                     }}
@@ -85,10 +86,11 @@ const ScrollVelocity = React.forwardRef<HTMLDivElement, ScrollVelocityProps>(
               {Array.from({ length: 5 }).map((_, idx) => (
                 <span 
                   key={idx}
-                  className="mr-8 block max-w-[300px] line-clamp-2 whitespace-normal"
+                  className="block shrink-0 whitespace-normal leading-relaxed line-clamp-3"
                   style={{ 
+                    width: 'calc((100vw - 9rem) / 2 - 1px)',
                     display: '-webkit-box',
-                    WebkitLineClamp: 2,
+                    WebkitLineClamp: 3,
                     WebkitBoxOrient: 'vertical',
                     overflow: 'hidden'
                   }}
