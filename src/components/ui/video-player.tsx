@@ -12,7 +12,6 @@ interface VideoPlayerProps {
 }
 
 const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
-  const [showControls, setShowControls] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   // Handle escape key and body overflow
@@ -69,8 +68,6 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            onMouseEnter={() => setShowControls(true)}
-            onMouseLeave={() => setShowControls(false)}
           >
             {/* Close Button */}
             <motion.button
