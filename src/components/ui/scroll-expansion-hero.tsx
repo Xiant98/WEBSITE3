@@ -39,7 +39,7 @@ const ScrollExpandMedia = ({
 
   // All 40 personalized messages
   const allMessages = [
-    "Melissa, your recent LinkedIn post about your Friday Tech Huddles at ByteLeap was inspiring. What topic are you thinking about exploring next for your team?",
+    "Melissa, your recent LinkedIn post about your <span class='text-yellow-400'>Friday Tech Huddles</span> at ByteLeap was inspiring. What topic are you thinking about exploring next for your team?",
     "Arjun, I read your Medium article where Atlas Fintech adopted an AI reconciliation tool in Q2. What did your team enjoy most about rolling it out?",
     "Ben, your candid comment on Devon Smith's Pulse Analytics dashboard announcement really got me thinking. What sort of early reactions have your clients shared so far?",
     "Sophie, I watched the behind-the-scenes video from Stellar Health's hackathon and loved it. How did your team come up with that patient triage mobile app?",
