@@ -49,6 +49,7 @@ export default function FloatingMessages() {
   const [visibleMessages, setVisibleMessages] = useState<Message[]>([]);
   const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout>>();
   const messageIndexRef = useRef(0);
+  const lastTimeRef = useRef(0);
   
   // Motion value for smooth infinite scroll
   const y = useMotionValue(0);
@@ -64,11 +65,28 @@ export default function FloatingMessages() {
     setVisibleMessages(initialMessages);
   }, []);
 
-  // Seamless infinite scroll animation
+  // Seamless infinite scroll animation  
   useAnimationFrame((time) => {
-    const speed = 0.5; // Pixels per frame (adjust for desired speed)
-    const newY = (time * speed) % window.innerHeight;
-    y.set(-newY);
+    if (lastTimeRef.current === 0) {
+      lastTimeRef.current = time;
+      return;
+    }
+    
+    const deltaTime = time - lastTimeRef.current;
+    lastTimeRef.current = time;
+    
+    const speedPxPerSec = 30; // Slow scroll speed (30px per second)
+    const increment = (speedPxPerSec * deltaTime) / 1000;
+    
+    const currentY = y.get();
+    const newY = currentY - increment;
+    
+    // Reset when we've scrolled one full viewport height
+    if (newY <= -window.innerHeight) {
+      y.set(0);
+    } else {
+      y.set(newY);
+    }
   });
 
   // Auto-refresh messages
@@ -116,73 +134,79 @@ export default function FloatingMessages() {
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {/* Duplicated layers for seamless infinite scroll */}
       {[0, 1].map((layerIndex) => (
-        <motion.div
+        <div 
           key={layerIndex}
           className="absolute inset-0 w-full h-full"
           style={{
-            y,
-            willChange: "transform",
             transform: `translateY(${layerIndex * 100}vh)`,
           }}
         >
-          <AnimatePresence>
-            {visibleMessages.map((message) => (
-              <div
-                key={`${message.id}-${layerIndex}`}
-                className="absolute pointer-events-none hidden sm:block"
-                style={{
-                  left: `${message.x}%`,
-                  top: `${message.y}%`,
-                  zIndex: 0,
-                }}
-              >
-                <div className="relative">
-                  <motion.div
-                    initial={{ 
-                      opacity: 0, 
-                      scale: 0.8,
-                      rotate: message.rotation
-                    }}
-                    animate={{ 
-                      opacity: 0.4,
-                      scale: message.scale,
-                      rotate: message.rotation
-                    }}
-                    exit={{ 
-                      opacity: 0, 
-                      scale: 0.8,
-                      transition: { duration: 1.0 }
-                    }}
-                    transition={{ 
-                      duration: 1.5,
-                      ease: "easeOut",
-                      opacity: { duration: 1.0 }
-                    }}
-                    className="absolute -translate-x-1/2 -translate-y-1/2"
-                  >
-                    <div 
-                      className={cn(
-                        "max-w-xs lg:max-w-sm p-3 lg:p-4 bg-card/60 backdrop-blur-sm border border-border/30",
-                        "rounded-lg shadow-md text-xs lg:text-sm text-foreground/80",
-                        "select-none pointer-events-none"
-                      )}
+          <motion.div
+            className="absolute inset-0 w-full h-full"
+            style={{
+              y,
+              willChange: "transform",
+            }}
+          >
+            <AnimatePresence>
+              {visibleMessages.map((message) => (
+                <div
+                  key={`${message.id}-${layerIndex}`}
+                  className="absolute pointer-events-none hidden sm:block"
+                  style={{
+                    left: `${message.x}%`,
+                    top: `${message.y}%`,
+                    zIndex: 0,
+                  }}
+                >
+                  {/* Non-motion wrapper for centering */}
+                  <div className="absolute -translate-x-1/2 -translate-y-1/2">
+                    <motion.div
+                      initial={{ 
+                        opacity: 0, 
+                        scale: 0.8,
+                        rotate: message.rotation
+                      }}
+                      animate={{ 
+                        opacity: 0.4,
+                        scale: message.scale,
+                        rotate: message.rotation
+                      }}
+                      exit={{ 
+                        opacity: 0, 
+                        scale: 0.8,
+                        transition: { duration: 1.0 }
+                      }}
+                      transition={{ 
+                        duration: 1.5,
+                        ease: "easeOut",
+                        opacity: { duration: 1.0 }
+                      }}
                     >
-                      <p className="leading-relaxed">
-                        {message.text}
-                      </p>
-                      <div className="mt-2 flex items-center justify-between">
-                        <span className="text-xs text-muted-foreground/60">
-                          AI Generated
-                        </span>
-                        <div className="w-1.5 h-1.5 bg-green-500/60 rounded-full animate-pulse" />
+                      <div 
+                        className={cn(
+                          "max-w-xs lg:max-w-sm p-3 lg:p-4 bg-card/60 backdrop-blur-sm border border-border/30",
+                          "rounded-lg shadow-md text-xs lg:text-sm text-foreground/80",
+                          "select-none pointer-events-none"
+                        )}
+                      >
+                        <p className="leading-relaxed">
+                          {message.text}
+                        </p>
+                        <div className="mt-2 flex items-center justify-between">
+                          <span className="text-xs text-muted-foreground/60">
+                            AI Generated
+                          </span>
+                          <div className="w-1.5 h-1.5 bg-green-500/60 rounded-full animate-pulse" />
+                        </div>
                       </div>
-                    </div>
-                  </motion.div>
+                    </motion.div>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
+        </div>
       ))}
     </div>
   );
