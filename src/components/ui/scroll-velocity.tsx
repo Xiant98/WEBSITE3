@@ -54,11 +54,11 @@ const ScrollVelocity = React.forwardRef<HTMLDivElement, ScrollVelocityProps>(
     return (
       <div
         ref={ref}
-        className={cn("relative m-0 w-full flex flex-nowrap overflow-hidden leading-relaxed tracking-normal px-4 md:px-6", className)}
+        className={cn("relative m-0 w-full flex flex-nowrap overflow-hidden leading-tight md:leading-relaxed tracking-normal px-4 md:px-6", className)}
         {...props}
       >
         <motion.div
-          className="flex flex-row flex-nowrap gap-6 md:gap-12 text-sm md:text-lg font-normal normal-case md:text-xl xl:text-xl"
+          className="flex flex-row flex-nowrap gap-3 md:gap-6 lg:gap-12 text-xs sm:text-sm md:text-lg lg:text-xl font-normal normal-case"
           style={{ x }}
         >
           {Array.isArray(children) ? (
@@ -67,11 +67,11 @@ const ScrollVelocity = React.forwardRef<HTMLDivElement, ScrollVelocityProps>(
                 children.map((message, msgIdx) => (
                   <span 
                     key={`${repeatIdx}-${msgIdx}`}
-                    className="block shrink-0 whitespace-normal leading-relaxed line-clamp-3"
+                    className="block shrink-0 whitespace-normal leading-tight sm:leading-relaxed line-clamp-2 md:line-clamp-3"
                     style={{ 
-                      width: 'clamp(200px, 45vw, 400px)',
+                      width: 'clamp(120px, 25vw, 400px)',
                       display: '-webkit-box',
-                      WebkitLineClamp: 3,
+                      WebkitLineClamp: 2,
                       WebkitBoxOrient: 'vertical',
                       overflow: 'hidden'
                     }}
@@ -85,11 +85,11 @@ const ScrollVelocity = React.forwardRef<HTMLDivElement, ScrollVelocityProps>(
               {Array.from({ length: 5 }).map((_, idx) => (
                 <span 
                   key={idx}
-                  className="block shrink-0 whitespace-normal leading-relaxed line-clamp-3"
+                  className="block shrink-0 whitespace-normal leading-tight sm:leading-relaxed line-clamp-2 md:line-clamp-3"
                   style={{ 
-                    width: 'clamp(200px, 45vw, 400px)',
+                    width: 'clamp(120px, 25vw, 400px)',
                     display: '-webkit-box',
-                    WebkitLineClamp: 3,
+                    WebkitLineClamp: 2,
                     WebkitBoxOrient: 'vertical',
                     overflow: 'hidden'
                   }}
