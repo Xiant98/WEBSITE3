@@ -301,8 +301,8 @@ const ScrollExpandMedia = ({
         <div className='relative w-full flex flex-col items-center min-h-[100dvh]'>
           <div className='container mx-auto flex flex-col items-center justify-start relative z-10'>
             <div className='flex flex-col items-center justify-center w-full h-[100dvh] relative'>
-              <div
-                className='absolute z-0 transition-none rounded-2xl overflow-hidden bg-background border border-border'
+              <motion.div
+                className='fixed z-50 transition-none rounded-2xl overflow-hidden bg-background border border-border'
                 style={{
                   width: `${mediaWidth}px`,
                   height: `${mediaHeight}px`,
@@ -313,6 +313,12 @@ const ScrollExpandMedia = ({
                   top: '50%',
                   transformOrigin: 'center',
                   transform: 'translate(-50%, -50%)',
+                }}
+                animate={{
+                  opacity: isReadyToContinue ? 0 : 1
+                }}
+                transition={{
+                  opacity: { duration: 0.8, ease: "easeInOut" }
                 }}
               >
                 {/* Scroll Velocity "Video" Content */}
@@ -396,7 +402,7 @@ const ScrollExpandMedia = ({
                     </p>
                   )}
                 </div>
-              </div>
+              </motion.div>
 
               <div
                 className={`flex items-center justify-center text-center gap-4 w-full relative z-10 transition-none flex-col ${
