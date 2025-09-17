@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import styles from "@/styles/Home.module.css";
 import { Button } from "@/components/ui/button";
 import VideoPlayer from "@/components/ui/video-player";
+import { ScrollVelocity } from "@/components/ui/scroll-velocity";
 import {
   ChevronRight,
   Code2,
@@ -176,6 +177,54 @@ export default function Home() {
           videoId="ZILw6IfCgNg"
         />
 
+        {/* Scroll Velocity Hero Section */}
+        <section className="relative w-full bg-background py-20 overflow-hidden">
+          <div className="relative z-10 text-center mb-12">
+            <div className="flex flex-row items-center justify-center space-x-1.5 mb-8">
+              <span className={styles.pill}>Simple</span>
+              <span className={styles.pill}>Scalable</span>
+              <span className={styles.pill}>Passive</span>
+            </div>
+            <h1 className="mb-6">
+              <span className="text-6xl tracking-tighter text-foreground 2xl:text-8xl">
+                AI Sales Automation that
+                <br />
+              </span>
+              <span className="clash-grotesk text-gradient text-6xl 2xl:text-8xl">
+                Just works.
+              </span>
+            </h1>
+            <p className="mt-4 max-w-2xl mx-auto tracking-tight text-muted-foreground text-lg 2xl:text-xl">
+              Hi, I&apos;m Mukesh and I help businesses catch up and dramatically boost
+              their lead pipeline with simple, scalable and passive AI-driven sales
+              strategies.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+              <Link href="mailto:Mukesh@spacebarR.Agency" passHref>
+                <Button size="lg" className="px-8 py-3 text-lg">
+                  Get in touch →
+                </Button>
+              </Link>
+              <Button variant="outline" size="lg" className="px-8 py-3 text-lg">
+                Learn more
+              </Button>
+            </div>
+          </div>
+          
+          {/* Animated Scroll Velocity */}
+          <div className="w-full space-y-6">
+            <ScrollVelocity velocity={3} className="text-muted-foreground/30">
+              AI AUTOMATION • LEAD GENERATION • SALES STRATEGY • GROWTH HACKING • 
+            </ScrollVelocity>
+            <ScrollVelocity velocity={-2} className="text-muted-foreground/20">
+              PROSPECTING • EMAIL CAMPAIGNS • LINKEDIN OUTREACH • CRM OPTIMIZATION • 
+            </ScrollVelocity>
+            <ScrollVelocity velocity={4} className="text-muted-foreground/25">
+              CONVERSION TRACKING • PIPELINE MANAGEMENT • REVENUE SCALING • 
+            </ScrollVelocity>
+          </div>
+        </section>
+
         {/* Intro */}
         <section
           id="home"
@@ -200,62 +249,12 @@ export default function Home() {
             />
           </div>
           
-          {/* Content */}
-          <div className="relative z-10 flex flex-col items-center text-center max-w-4xl px-6">
-            <div
-              data-scroll
-              data-scroll-direction="horizontal"
-              data-scroll-speed=".09"
-              className="flex flex-row items-center justify-center space-x-1.5 mb-6"
-            >
-              <span className={styles.pill}>Simple</span>
-              <span className={styles.pill}>Scalable</span>
-              <span className={styles.pill}>Passive</span>
-            </div>
-            <div className="mb-8">
-              <h1
-                data-scroll
-                data-scroll-enable-touch-speed
-                data-scroll-speed=".06"
-                data-scroll-direction="horizontal"
-                className="mb-4"
-              >
-                <span className="text-6xl tracking-tighter text-foreground 2xl:text-8xl">
-                  AI Sales Automation that
-                  <br />
-                </span>
-                <span className="clash-grotesk text-gradient text-6xl 2xl:text-8xl">
-                  Just works.
-                </span>
-              </h1>
-              <p
-                data-scroll
-                data-scroll-enable-touch-speed
-                data-scroll-speed=".06"
-                className="mt-4 max-w-lg mx-auto tracking-tight text-muted-foreground 2xl:text-xl"
-              >
-                Hi, I&apos;m Mukesh and I help businesses catch up and dramatically boost their lead pipeline with simple, scalable and passive AI-driven sales strategies.
-              </p>
-            </div>
-            <span
-              data-scroll
-              data-scroll-enable-touch-speed
-              data-scroll-speed=".06"
-              className="flex flex-row items-center justify-center space-x-1.5"
-            >
-              <Link href="mailto:Mukesh@spacebarr.agency" passHref>
-                <Button>
-                  Get in touch <ChevronRight className="ml-1 h-4 w-4" />
-                </Button>
-              </Link>
-              <Button
-                variant="outline"
-                onClick={() => scrollTo(document.querySelector("#about"))}
-              >
-                Learn more
-              </Button>
-            </span>
-
+          {/* Minimal Content Overlay */}
+          <div className="relative z-10 flex flex-col items-center text-center max-w-2xl px-6">
+            <p className="text-lg text-muted-foreground/80 font-light">
+              Experience the future of sales automation
+            </p>
+            
             <div
               className={cn(
                 styles.scroll,
