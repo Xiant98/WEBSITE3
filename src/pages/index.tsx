@@ -282,8 +282,20 @@ export default function Home() {
                             className="cursor-pointer"
                             onClick={(e) => {
                               e.preventDefault();
-                              // Open video player for all projects
-                              setIsVideoPlayerOpen(true);
+                              // Open video player only for the SpacebarR project
+                              if (project.title === "This website") {
+                                setIsVideoPlayerOpen(true);
+                              } else {
+                                // For other projects, scroll to contact
+                                const section = document.querySelector('#contact');
+                                if (section) {
+                                  section.scrollIntoView({
+                                    behavior: "smooth",
+                                    block: "center",
+                                    inline: "center",
+                                  });
+                                }
+                              }
                             }}
                           >
                             {project.image.endsWith(".webm") ? (
