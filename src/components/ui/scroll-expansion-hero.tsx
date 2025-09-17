@@ -114,44 +114,45 @@ const ScrollExpandMedia = ({
   }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      const maxScrollForExpansion = window.innerHeight * 1.5; // Scroll 1.5 viewport heights to fully expand
-      const stickyTriggerScroll = window.innerHeight * 2; // Becomes sticky after 2 viewport heights
-
-      // Track scroll direction
-      if (currentScrollY > lastScrollY) {
-        setScrollDirection('down');
-      } else if (currentScrollY < lastScrollY) {
-        setScrollDirection('up');
-      }
-      setLastScrollY(currentScrollY);
-
-      // Calculate expansion progress based on scroll position
-      const progress = Math.min(Math.max(currentScrollY / maxScrollForExpansion, 0), 1);
-      setScrollProgress(progress);
-
-      // Determine if fully expanded
-      const fullyExpanded = progress >= 1;
-      setMediaFullyExpanded(fullyExpanded);
-
-      // Determine if should be sticky
-      if (currentScrollY >= stickyTriggerScroll && fullyExpanded) {
-        setIsSticky(true);
-      } else if (currentScrollY < stickyTriggerScroll && scrollDirection === 'up') {
-        setIsSticky(false);
+    const handleWheel = (e: WheelEvent) => {
+      if (mediaFullyExpanded && e.deltaY > 0) {
+        // Allow normal scrolling when fully expanded and scrolling down
+        return;
       }
 
-      // Show content when mostly expanded
-      setShowContent(progress > 0.75);
+      if (e.deltaY < 0 && scrollProgress <= 0) {
+        // Scrolling up at the beginning - do nothing
+        return;
+      }
+
+      // Prevent default scrolling during expansion
+      e.preventDefault();
+
+      // Calculate new progress based on wheel delta
+      const scrollSensitivity = 0.001;
+      const delta = e.deltaY * scrollSensitivity;
+      const newProgress = Math.min(Math.max(scrollProgress + delta, 0), 1);
+      
+      setScrollProgress(newProgress);
+      setMediaFullyExpanded(newProgress >= 1);
+      setShowContent(newProgress > 0.75);
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    const handleScroll = () => {
+      // Keep scroll position locked at top until fully expanded
+      if (!mediaFullyExpanded) {
+        window.scrollTo(0, 0);
+      }
+    };
+
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    window.addEventListener('scroll', handleScroll, { passive: false });
 
     return () => {
+      window.removeEventListener('wheel', handleWheel);
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [lastScrollY, scrollDirection]);
+  }, [scrollProgress, mediaFullyExpanded]);
 
   useEffect(() => {
     const checkIfMobile = (): void => {
@@ -181,19 +182,17 @@ const ScrollExpandMedia = ({
           <div className='container mx-auto flex flex-col items-center justify-start relative z-10'>
             <div className='flex flex-col items-center justify-center w-full h-[100dvh] relative'>
               <motion.div
-                className={`transition-none rounded-2xl overflow-hidden bg-background border border-border ${
-                  isSticky ? 'fixed z-40' : 'absolute z-20'
-                }`}
+                className='fixed transition-none rounded-2xl overflow-hidden bg-background border border-border z-20'
                 style={{
-                  width: isSticky ? '100vw' : `${mediaWidth}px`,
-                  height: isSticky ? 'calc(100vh - 64px)' : `${mediaHeight}px`,
-                  maxWidth: isSticky ? '100vw' : '95vw',
-                  maxHeight: isSticky ? 'calc(100vh - 64px)' : '85vh',
+                  width: mediaFullyExpanded ? '100vw' : `${mediaWidth}px`,
+                  height: mediaFullyExpanded ? '100vh' : `${mediaHeight}px`,
+                  maxWidth: mediaFullyExpanded ? '100vw' : '95vw',
+                  maxHeight: mediaFullyExpanded ? '100vh' : '85vh',
                   boxShadow: '0px 0px 50px rgba(0, 0, 0, 0.3)',
-                  left: isSticky ? '0' : '50%',
-                  top: isSticky ? '64px' : '50%',
+                  left: '50%',
+                  top: '50%',
                   transformOrigin: 'center',
-                  transform: isSticky ? 'none' : 'translate(-50%, -50%)',
+                  transform: 'translate(-50%, -50%)',
                 }}
                 animate={{
                   opacity: 1
