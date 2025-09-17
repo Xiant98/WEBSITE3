@@ -279,7 +279,7 @@ export default function Home() {
             <h2 className="py-16  pb-2 text-3xl font-light leading-normal tracking-tighter text-foreground xl:text-[40px]">
               I&apos;m an experienced full-stack developer proficient in{" "}
               <Link
-                href="https://create.t3.gg/"
+                href=""
                 target="_blank"
                 className="underline"
               >

@@ -1,10 +1,6 @@
 # 🖥️ Personal Portfolio
 
-A sleek, modern, and responsive portfolio bootstrapped with [create-t3-app](https://create.t3.gg/).
 
-[Website Preview](https://github.com/wendoj/portfolio/assets/77996774/b73b02d7-0657-41e3-9124-e6d04b17fe93)
-
-[🔗 Link to portfolio](https://wendoj.vercel.app)
 
 All you need to know about me, my projects and skills can be found here. Personalize the portfolio by modifying `src/pages/index.tsx` and `src/styles/globals.css` to emulate your own portfolio. Made some improvements and want to share? Open a pull request.
 For any issues, feel free to report them here.
@@ -50,6 +46,4 @@ $ npm run dev
 Now, open your browser and navigate to `http://localhost:3000` to view your portfolio live.
 
 
-## How do I deploy this?
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.

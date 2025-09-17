@@ -202,18 +202,16 @@ export default function Home() {
             className="pt-8 mb-8 flex max-w-6xl flex-col justify-start space-y-10 bg-background"
           >
             <h2 className="py-16  pb-2 text-3xl font-light leading-normal tracking-tighter text-foreground xl:text-[40px]">
-              I&apos;m Mukesh, an experienced Sales Hunter with an interest in {" "}
+              I&apos;m Mukesh, an experienced Sales Hunter with a strong foundation in {" "}
               <Link
-                href="https://create.t3.gg/"
-                target="_blank"
+                href=""
+                target=""
                 className="underline"
-              >
-                Effective Sales Methods.
-              </Link>{" "}
-              My experience spans from startups to Fortune 100 Companies, 
-              where I&apos;ve been instrumental in the entire     sales cycle. 
               
-              I have vast experience in creative lead generation and sales clousures at both Mid-size and Enterprise levels.
+              >
+                Classic Enterprise Sales and Technical Fluency.
+              </Link>{" "}
+              I&apos;ve worked complex, long-cycle deals with decision-makers at major organizations, using traditional sales skills honed through hands-on experience. What sets me apart is how I blend that old-school sales grit with a background in IT and automation, making me highly productive and effective at engaging new prospects.
               
             </h2>
             <div className="grid grid-cols-2 gap-8 xl:grid-cols-3">
@@ -284,20 +282,8 @@ export default function Home() {
                             className="cursor-pointer"
                             onClick={(e) => {
                               e.preventDefault();
-                              // Open video player only for the SpacebarR project
-                              if (project.title === "This website") {
-                                setIsVideoPlayerOpen(true);
-                              } else {
-                                // For other projects, scroll to contact
-                                const section = document.querySelector('#contact');
-                                if (section) {
-                                  section.scrollIntoView({
-                                    behavior: "smooth",
-                                    block: "center",
-                                    inline: "center",
-                                  });
-                                }
-                              }
+                              // Open video player for all projects
+                              setIsVideoPlayerOpen(true);
                             }}
                           >
                             {project.image.endsWith(".webm") ? (
