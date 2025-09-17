@@ -252,7 +252,7 @@ export default function Home() {
           {/* Minimal Content Overlay */}
           <div className="relative z-10 flex flex-col items-center text-center max-w-2xl px-6">
             <p className="text-lg text-muted-foreground/80 font-light">
-              Experience the future of sales automation
+              
             </p>
             
             <div
