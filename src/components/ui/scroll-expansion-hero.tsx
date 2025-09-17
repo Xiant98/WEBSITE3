@@ -182,18 +182,18 @@ const ScrollExpandMedia = ({
             <div className='flex flex-col items-center justify-center w-full h-[100dvh] relative'>
               <motion.div
                 className={`transition-none rounded-2xl overflow-hidden bg-background border border-border ${
-                  isSticky ? 'fixed top-16 z-40' : 'absolute z-20'
+                  isSticky ? 'fixed z-40' : 'absolute z-20'
                 }`}
                 style={{
-                  width: (isSticky || mediaFullyExpanded) ? '100vw' : `${mediaWidth}px`,
-                  height: isSticky ? 'calc(100vh - 64px)' : (mediaFullyExpanded ? '100vh' : `${mediaHeight}px`),
-                  maxWidth: (isSticky || mediaFullyExpanded) ? '100vw' : '95vw',
-                  maxHeight: isSticky ? 'calc(100vh - 64px)' : (mediaFullyExpanded ? '100vh' : '85vh'),
+                  width: isSticky ? '100vw' : `${mediaWidth}px`,
+                  height: isSticky ? 'calc(100vh - 64px)' : `${mediaHeight}px`,
+                  maxWidth: isSticky ? '100vw' : '95vw',
+                  maxHeight: isSticky ? 'calc(100vh - 64px)' : '85vh',
                   boxShadow: '0px 0px 50px rgba(0, 0, 0, 0.3)',
-                  left: (isSticky || mediaFullyExpanded) ? '0' : '50%',
-                  top: isSticky ? '64px' : (mediaFullyExpanded ? '0' : '50%'),
+                  left: isSticky ? '0' : '50%',
+                  top: isSticky ? '64px' : '50%',
                   transformOrigin: 'center',
-                  transform: (isSticky || mediaFullyExpanded) ? 'none' : 'translate(-50%, -50%)',
+                  transform: isSticky ? 'none' : 'translate(-50%, -50%)',
                 }}
                 animate={{
                   opacity: 1
@@ -262,7 +262,7 @@ const ScrollExpandMedia = ({
               </motion.div>
 
               <div
-                className={`flex items-center justify-center text-center gap-4 w-full relative z-10 transition-none flex-col ${
+                className={`flex items-center justify-center text-center gap-4 w-full relative z-50 transition-none flex-col ${
                   textBlend ? 'mix-blend-difference' : 'mix-blend-normal'
                 }`}
               >
