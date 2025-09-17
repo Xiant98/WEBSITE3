@@ -188,7 +188,7 @@ export default function Home() {
         <ScrollExpandMedia 
           title="Mass Messaging, Uniquely Personal."
           scrollToExpand="Scroll to expand"
-          onExpansionChange={setNavFadeOut}
+          onExpansionChange={(scrollProgress) => setNavFadeOut(scrollProgress > 0)}
         >
         </ScrollExpandMedia>
 

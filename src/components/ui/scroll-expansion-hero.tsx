@@ -17,7 +17,7 @@ interface ScrollExpandMediaProps {
   scrollToExpand?: string;
   textBlend?: boolean;
   children?: ReactNode;
-  onExpansionChange?: (isFullyExpanded: boolean) => void;
+  onExpansionChange?: (scrollProgress: number) => void;
 }
 
 const ScrollExpandMedia = ({
@@ -117,9 +117,9 @@ const ScrollExpandMedia = ({
   // Notify parent component when expansion state changes
   useEffect(() => {
     if (onExpansionChange) {
-      onExpansionChange(mediaFullyExpanded);
+      onExpansionChange(scrollProgress);
     }
-  }, [mediaFullyExpanded, onExpansionChange]);
+  }, [scrollProgress, onExpansionChange]);
 
   useEffect(() => {
     const handleScroll = () => {
