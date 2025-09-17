@@ -34,6 +34,7 @@ const ScrollExpandMedia = ({
   const [isSticky, setIsSticky] = useState<boolean>(false);
   const [lastScrollY, setLastScrollY] = useState<number>(0);
   const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('down');
+  const [touchStartY, setTouchStartY] = useState<number>(0);
 
   const sectionRef = useRef<HTMLDivElement | null>(null);
 
@@ -117,27 +118,66 @@ const ScrollExpandMedia = ({
     const handleWheel = (e: Event) => {
       const wheelEvent = e as unknown as WheelEvent;
       
-      // If fully expanded, allow normal scrolling
-      if (mediaFullyExpanded) {
-        return;
+      // If fully expanded and scrolling up near top, allow collapse
+      if (mediaFullyExpanded && wheelEvent.deltaY < 0 && window.scrollY <= 5) {
+        setMediaFullyExpanded(false);
+        e.preventDefault();
+      } else if (!mediaFullyExpanded) {
+        e.preventDefault();
+        const scrollSensitivity = 0.0009;
+        const delta = wheelEvent.deltaY * scrollSensitivity;
+        const newProgress = Math.min(Math.max(scrollProgress + delta, 0), 1);
+        
+        setScrollProgress(newProgress);
+        
+        if (newProgress >= 1) {
+          setMediaFullyExpanded(true);
+          setShowContent(true);
+        } else if (newProgress < 0.75) {
+          setShowContent(false);
+        }
       }
+    };
 
-      if (wheelEvent.deltaY < 0 && scrollProgress <= 0) {
-        // Scrolling up at the beginning - do nothing
-        return;
+    const handleTouchStart = (e: Event) => {
+      const touchEvent = e as unknown as TouchEvent;
+      if (touchEvent.touches && touchEvent.touches[0]) {
+        setTouchStartY(touchEvent.touches[0].clientY);
       }
+    };
 
-      // Prevent default scrolling during expansion
-      e.preventDefault();
+    const handleTouchMove = (e: Event) => {
+      const touchEvent = e as unknown as TouchEvent;
+      if (!touchStartY || !touchEvent.touches || !touchEvent.touches[0]) return;
 
-      // Calculate new progress based on wheel delta
-      const scrollSensitivity = 0.001;
-      const delta = wheelEvent.deltaY * scrollSensitivity;
-      const newProgress = Math.min(Math.max(scrollProgress + delta, 0), 1);
-      
-      setScrollProgress(newProgress);
-      setMediaFullyExpanded(newProgress >= 1);
-      setShowContent(newProgress > 0.75);
+      const touchY = touchEvent.touches[0].clientY;
+      const deltaY = touchStartY - touchY;
+
+      if (mediaFullyExpanded && deltaY < -20 && window.scrollY <= 5) {
+        setMediaFullyExpanded(false);
+        e.preventDefault();
+      } else if (!mediaFullyExpanded) {
+        e.preventDefault();
+        // Higher sensitivity for mobile touch
+        const scrollFactor = deltaY < 0 ? 0.008 : 0.005;
+        const scrollDelta = deltaY * scrollFactor;
+        const newProgress = Math.min(Math.max(scrollProgress + scrollDelta, 0), 1);
+        
+        setScrollProgress(newProgress);
+        
+        if (newProgress >= 1) {
+          setMediaFullyExpanded(true);
+          setShowContent(true);
+        } else if (newProgress < 0.75) {
+          setShowContent(false);
+        }
+
+        setTouchStartY(touchY);
+      }
+    };
+
+    const handleTouchEnd = () => {
+      setTouchStartY(0);
     };
 
     const handleScroll = () => {
@@ -148,13 +188,19 @@ const ScrollExpandMedia = ({
     };
 
     window.addEventListener('wheel', handleWheel, { passive: false });
+    window.addEventListener('touchstart', handleTouchStart, { passive: false });
+    window.addEventListener('touchmove', handleTouchMove, { passive: false });
+    window.addEventListener('touchend', handleTouchEnd);
     window.addEventListener('scroll', handleScroll, { passive: false });
 
     return () => {
       window.removeEventListener('wheel', handleWheel);
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('touchend', handleTouchEnd);
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [scrollProgress, mediaFullyExpanded]);
+  }, [scrollProgress, mediaFullyExpanded, touchStartY]);
 
   useEffect(() => {
     const checkIfMobile = (): void => {
@@ -183,65 +229,40 @@ const ScrollExpandMedia = ({
         <div className='relative w-full flex flex-col items-center min-h-[100dvh]'>
           <div className='container mx-auto flex flex-col items-center justify-start relative z-10'>
             <div className='flex flex-col items-center justify-center w-full h-[100dvh] relative'>
-              <motion.div
-                className={`fixed transition-none overflow-hidden bg-background ${
-                  mediaFullyExpanded ? 'z-0' : 'z-20 rounded-2xl border border-border'
-                }`}
+              <div
+                className='fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-none rounded-2xl z-20'
                 style={{
                   width: mediaFullyExpanded ? '100vw' : `${mediaWidth}px`,
                   height: mediaFullyExpanded ? '100vh' : `${mediaHeight}px`,
                   maxWidth: mediaFullyExpanded ? '100vw' : '95vw',
                   maxHeight: mediaFullyExpanded ? '100vh' : '85vh',
                   boxShadow: mediaFullyExpanded ? 'none' : '0px 0px 50px rgba(0, 0, 0, 0.3)',
-                  left: mediaFullyExpanded ? '0' : '50%',
-                  top: mediaFullyExpanded ? '0' : '50%',
-                  transformOrigin: 'center',
-                  transform: mediaFullyExpanded ? 'none' : 'translate(-50%, -50%)',
-                }}
-                animate={{
-                  opacity: 1
-                }}
-                transition={{
-                  opacity: { duration: 0.8, ease: "easeInOut" }
+                  borderRadius: mediaFullyExpanded ? '0' : '1rem',
                 }}
               >
-                {/* Scroll Velocity "Video" Content */}
-                <div className='relative w-full h-full bg-background'>
-                  <div className="absolute inset-0 z-0 w-full h-full flex flex-col justify-center space-y-6 opacity-90 overflow-hidden">
-                    <ScrollVelocity velocity={0.35} className="text-muted-foreground/50 leading-relaxed">
-                      {row1Messages}
-                    </ScrollVelocity>
-                    <ScrollVelocity velocity={-0.25} className="text-muted-foreground/40 leading-relaxed">
-                      {row2Messages}
-                    </ScrollVelocity>
-                    <ScrollVelocity velocity={0.45} className="text-muted-foreground/45 leading-relaxed">
-                      {row3Messages}
-                    </ScrollVelocity>
-                    <ScrollVelocity velocity={-0.2} className="text-muted-foreground/35 leading-relaxed">
-                      {row4Messages}
-                    </ScrollVelocity>
-                    <ScrollVelocity velocity={0.55} className="text-muted-foreground/40 leading-relaxed">
-                      {row5Messages}
-                    </ScrollVelocity>
-                  </div>
+                {/* Actual Video Content */}
+                <div className='relative w-full h-full bg-background overflow-hidden'>
+                  <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload='auto'
+                    className='w-full h-full object-cover'
+                    controls={false}
+                    disablePictureInPicture
+                    disableRemotePlayback
+                  >
+                    <source src="/assets/Prosp — Automate LinkedIn & E-Mail Outbound with AI - 12 September 2025 (1).webm" type="video/webm" />
+                    Your browser does not support the video tag.
+                  </video>
 
                   <motion.div
-                    className='absolute inset-0 bg-background/20 rounded-xl'
-                    initial={{ opacity: 0.3 }}
-                    animate={{ opacity: 0.2 - scrollProgress * 0.15 }}
+                    className='absolute inset-0 bg-black/30 pointer-events-none'
+                    initial={{ opacity: 0.5 }}
+                    animate={{ opacity: 0.3 - scrollProgress * 0.2 }}
                     transition={{ duration: 0.2 }}
                   />
-
-                  {/* Background fade overlay when sticky */}
-                  {isSticky && (
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-b from-transparent via-background/30 to-background/60 z-10"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.5 }}
-                    />
-                  )}
-
                 </div>
 
                 <div className='flex flex-col items-center text-center relative z-10 mt-4 transition-none'>
@@ -262,7 +283,7 @@ const ScrollExpandMedia = ({
                     </p>
                   )}
                 </div>
-              </motion.div>
+              </div>
 
               <div
                 className={`flex items-center justify-center text-center gap-4 w-full relative z-50 transition-none flex-col ${

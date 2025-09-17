@@ -207,12 +207,12 @@ export default function Home() {
 
 
         {/* About */}
-        <section id="about" data-scroll-section className="relative z-10 bg-background">
+        <section id="about" data-scroll-section>
           <div
             data-scroll
             data-scroll-speed=".4"
             data-scroll-position="top"
-            className="pt-12 mb-14 flex max-w-6xl flex-col justify-start space-y-10 bg-background"
+            className="pt-12 mb-14 flex max-w-6xl flex-col justify-start space-y-10"
           >
             <h2 className="py-16  pb-2 text-3xl font-light leading-normal tracking-tighter text-foreground xl:text-[40px]">
               I&apos;m an experienced Sales Hunter with an interest in {" "}
@@ -248,7 +248,7 @@ export default function Home() {
         </section>
 
         {/* Projects */}
-        <section id="projects" data-scroll-section className="relative z-10 bg-background">
+        <section id="projects" data-scroll-section>
           {/* Gradient */}
           <div className="relative isolate -z-10">
             <div
@@ -358,7 +358,7 @@ export default function Home() {
         </section>
 
         {/* Services */}
-        <section id="services" data-scroll-section className="relative z-10 bg-background">
+        <section id="services" data-scroll-section>
           <div
             data-scroll
             data-scroll-speed=".4"
@@ -406,7 +406,7 @@ export default function Home() {
         </section>
 
         {/* Contact */}
-        <section id="contact" data-scroll-section className="relative z-10 bg-background pt-12 mb-64">
+        <section id="contact" data-scroll-section className="pt-12 mb-64">
           <div
             data-scroll
             data-scroll-speed=".4"
