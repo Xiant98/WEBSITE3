@@ -207,8 +207,8 @@ const ScrollExpandMedia = ({
         height: `300vh`, // Enough height for expansion (150vh) + hold (50vh) + content reveal (100vh)
       }}
     >
-      <div className='sticky top-0 w-full h-screen flex flex-col items-center justify-center'>
-        <div className='container mx-auto flex flex-col items-center justify-center relative'>
+      <div className='sticky top-0 w-full h-screen flex flex-col items-center justify-center overflow-hidden'>
+        <div className='container mx-auto flex flex-col items-center justify-center relative max-w-full overflow-hidden'>
           <div className='flex flex-col items-center justify-center w-full h-full relative'>
             <motion.div
               className='transition-none overflow-hidden bg-background rounded-2xl border border-border'
