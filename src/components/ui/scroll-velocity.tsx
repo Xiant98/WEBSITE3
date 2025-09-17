@@ -5,7 +5,7 @@ import { motion, useScroll, useSpring, useTransform, useMotionValue, useVelocity
 import { cn } from "@/lib/utils"
 
 interface ScrollVelocityProps extends React.HTMLAttributes<HTMLDivElement> {
-  children: React.ReactNode[] | string
+  children: string[] | string
   velocity: number
   movable?: boolean
   clamp?: boolean
@@ -40,13 +40,14 @@ const ScrollVelocity = React.forwardRef<HTMLDivElement, ScrollVelocityProps>(
     })
 
     function move(delta: number) {
-      let moveBy = directionFactor.current * velocity * (delta / 1000)
-      if (velocityFactor.get() < 0) {
-        directionFactor.current = -1
-      } else if (velocityFactor.get() > 0) {
-        directionFactor.current = 1
-      }
-      moveBy += directionFactor.current * moveBy * velocityFactor.get()
+      const baseDirection = Math.sign(velocity) || 1
+      const speed = Math.abs(velocity)
+      let moveBy = baseDirection * speed * (delta / 1000)
+      
+      // Add scroll-based velocity adjustment while maintaining base direction
+      const scrollAdjustment = baseDirection * speed * velocityFactor.get() * (delta / 1000)
+      moveBy += scrollAdjustment
+      
       baseX.set(baseX.get() + moveBy)
     }
 
@@ -57,17 +58,45 @@ const ScrollVelocity = React.forwardRef<HTMLDivElement, ScrollVelocityProps>(
         {...props}
       >
         <motion.div
-          className="flex flex-row flex-nowrap text-lg font-normal normal-case *:mr-8 *:block *:max-w-[400px] *:whitespace-normal md:text-xl xl:text-2xl"
+          className="flex flex-row flex-nowrap text-lg font-normal normal-case md:text-xl xl:text-2xl"
           style={{ x }}
         >
-          {typeof children === "string" ? (
+          {Array.isArray(children) ? (
             <>
-              {Array.from({ length: 5 }).map((_, idx) => (
-                <span key={idx}>{children}</span>
-              ))}
+              {Array.from({ length: 3 }).map((_, repeatIdx) => 
+                children.map((message, msgIdx) => (
+                  <span 
+                    key={`${repeatIdx}-${msgIdx}`}
+                    className="mr-8 block max-w-[300px] line-clamp-2 whitespace-normal"
+                    style={{ 
+                      display: '-webkit-box',
+                      WebkitLineClamp: 2,
+                      WebkitBoxOrient: 'vertical',
+                      overflow: 'hidden'
+                    }}
+                  >
+                    "{message}"
+                  </span>
+                ))
+              )}
             </>
           ) : (
-            children
+            <>
+              {Array.from({ length: 5 }).map((_, idx) => (
+                <span 
+                  key={idx}
+                  className="mr-8 block max-w-[300px] line-clamp-2 whitespace-normal"
+                  style={{ 
+                    display: '-webkit-box',
+                    WebkitLineClamp: 2,
+                    WebkitBoxOrient: 'vertical',
+                    overflow: 'hidden'
+                  }}
+                >
+                  "{children}"
+                </span>
+              ))}
+            </>
           )}
         </motion.div>
       </div>

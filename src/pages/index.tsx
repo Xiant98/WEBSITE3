@@ -212,10 +212,21 @@ export default function Home() {
           {/* Animated Scroll Velocity */}
           <div className="w-full space-y-8">
             <ScrollVelocity velocity={1.5} className="text-muted-foreground/30 leading-relaxed">
-              "Alex, your clinic's Facebook comment on patient feedback got a lot of engagement. Has gathering those insights changed how you manage remote consults?" • "Nina, your story about running wellness sessions internally was a great read. What new approach are you currently experimenting with?" • "Hi Jamie, I saw your LinkedIn post about how your team launched that onboarding sprint last month. What do you wish had gone even smoother in the process?" • "Elena, your thoughtful comment on the analytics tools comparison post really stood out to me. Have you come across any game-changing features this year?" • "Marcus, that thread you started about new campaign strategies had some bold ideas. Are there marketing challenges you still feel are unresolved?" • 
+              {[
+                "Alex, your clinic's Facebook comment on patient feedback got a lot of engagement. Has gathering those insights changed how you manage remote consults?",
+                "Nina, your story about running wellness sessions internally was a great read. What new approach are you currently experimenting with?",
+                "Hi Jamie, I saw your LinkedIn post about how your team launched that onboarding sprint last month. What do you wish had gone even smoother in the process?",
+                "Elena, your thoughtful comment on the analytics tools comparison post really stood out to me. Have you come across any game-changing features this year?",
+                "Marcus, that thread you started about new campaign strategies had some bold ideas. Are there marketing challenges you still feel are unresolved?"
+              ]}
             </ScrollVelocity>
             <ScrollVelocity velocity={-1} className="text-muted-foreground/25 leading-relaxed">
-              "Dana, your company's share on Instagram about hitting record sales in July was inspiring! What helped your team keep momentum during slower retail months?" • "Jordan, I noticed your company's post celebrating community event turnout this spring. How does your team measure the long-term impact of those events?" • "Priya, your CEO's post on sustainability milestones just hit my feed—what's the next big goal you're rallying the team behind?" • "Simon, I caught your recent reply on a customer support best practices forum. If you could automate one follow-up, what would you pick first?" • 
+              {[
+                "Dana, your company's share on Instagram about hitting record sales in July was inspiring! What helped your team keep momentum during slower retail months?",
+                "Jordan, I noticed your company's post celebrating community event turnout this spring. How does your team measure the long-term impact of those events?",
+                "Priya, your CEO's post on sustainability milestones just hit my feed—what's the next big goal you're rallying the team behind?",
+                "Simon, I caught your recent reply on a customer support best practices forum. If you could automate one follow-up, what would you pick first?"
+              ]}
             </ScrollVelocity>
           </div>
         </section>
