@@ -473,10 +473,10 @@ export default function Home() {
             >
               <div className="flex flex-col py-6 xl:p-6">
                 <h2 className="text-4xl font-medium tracking-tight">
-                  Not sure what you need?
+                  Here are some automtaions that I built from
                   <br />
                   <span className="text-gradient clash-grotesk tracking-normal">
-                    I got you.
+                    the ground up.
                   </span>
                 </h2>
                 <p className="mt-2 tracking-tighter text-secondary-foreground">
