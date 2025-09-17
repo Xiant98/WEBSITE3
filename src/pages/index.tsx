@@ -197,7 +197,7 @@ export default function Home() {
             data-scroll
             data-scroll-speed=".4"
             data-scroll-position="top"
-            className="pt-12 mb-14 flex max-w-6xl flex-col justify-start space-y-10 bg-background"
+            className="pt-8 mb-8 flex max-w-6xl flex-col justify-start space-y-10 bg-background"
           >
             <h2 className="py-16  pb-2 text-3xl font-light leading-normal tracking-tighter text-foreground xl:text-[40px]">
               I&apos;m an experienced Sales Hunter with an interest in {" "}
@@ -249,7 +249,7 @@ export default function Home() {
               />
             </div>
           </div>
-          <div data-scroll data-scroll-speed=".4" className="pt-12 mb-24">
+          <div data-scroll data-scroll-speed=".4" className="pt-8 mb-12">
             <span className="text-gradient clash-grotesk text-sm font-semibold tracking-tighter">
               ✨ Projects
             </span>
@@ -348,7 +348,7 @@ export default function Home() {
             data-scroll
             data-scroll-speed=".4"
             data-scroll-position="top"
-            className="pt-12 mb-24 flex flex-col justify-start space-y-10"
+            className="pt-8 mb-12 flex flex-col justify-start space-y-10"
           >
             <motion.div
               initial={{ opacity: 0, y: -10 }}
@@ -391,7 +391,7 @@ export default function Home() {
         </section>
 
         {/* Contact */}
-        <section id="contact" data-scroll-section className="relative z-10 bg-background pt-12 mb-64">
+        <section id="contact" data-scroll-section className="relative z-10 bg-background pt-8 mb-16">
           <div
             data-scroll
             data-scroll-speed=".4"
