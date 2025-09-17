@@ -202,7 +202,7 @@ const ScrollExpandMedia = ({
   return (
     <section 
       ref={sectionRef}
-      className='relative bg-background'
+      className='relative bg-background w-screen max-w-[100vw] overflow-x-hidden'
       style={{
         height: `300vh`, // Enough height for expansion (150vh) + hold (50vh) + content reveal (100vh)
       }}
@@ -228,7 +228,7 @@ const ScrollExpandMedia = ({
             >
                 {/* Scroll Velocity "Video" Content */}
                 <div className='relative w-full h-full bg-background'>
-                  <div className="absolute inset-0 z-0 w-full h-full flex flex-col justify-center space-y-6 opacity-90 overflow-hidden">
+                  <div className="absolute inset-0 z-0 w-full h-full flex flex-col justify-center space-y-6 opacity-90 overflow-hidden" style={{ contain: 'layout paint' }}>
                     <ScrollVelocity velocity={0.35} className="text-muted-foreground/50 leading-relaxed">
                       {row1Messages}
                     </ScrollVelocity>

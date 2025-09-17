@@ -371,7 +371,7 @@ export default function Home() {
                   </span>
                 </h2>
                 <p className="mt-2 tracking-tighter text-secondary-foreground">
-                  Here are some of the services I offer. let&apos;s have a chat and I can help plan your next winning strategy.
+                  Here are some projects I've finished. let&apos;s have a chat and I can help plan your next winning strategy.
                 </p>
               </div>
               {services.map((service) => (

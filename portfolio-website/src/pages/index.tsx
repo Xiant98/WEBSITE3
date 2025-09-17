@@ -416,7 +416,7 @@ export default function Home() {
                   </span>
                 </h2>
                 <p className="mt-2 tracking-tighter text-secondary-foreground">
-                  Here are some of the services I offer. If you have any
+                  Here are some of the projects I've completed. If you have any
                   questions, feel free to reach out.
                 </p>
               </div>

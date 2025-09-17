@@ -52,10 +52,10 @@
     @apply border-border;
   }
   html {
-    @apply antialiased;
+    @apply antialiased overflow-x-hidden;
   }
   body {
-    @apply bg-background text-foreground cursor-wait;
+    @apply bg-background text-foreground cursor-wait overflow-x-hidden;
   }
   section {
     scroll-margin-top: 60px;
