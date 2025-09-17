@@ -188,22 +188,6 @@ export default function Home() {
           title="Mass Messaging, Uniquely Personal."
           scrollToExpand="Scroll to expand"
         >
-          {/* Content that appears when fully expanded */}
-          <div className="max-w-4xl mx-auto text-center space-y-8">
-            <p className="text-xl text-muted-foreground leading-relaxed">
-              Hi, I&apos;m Mukesh and I have a deep passion for Sales and Learning new ways to maximise my Sales productivity. Here are some of my projects!
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link href="mailto:Mukesh@spacebarR.Agency" passHref>
-                <Button size="lg" className="px-8 py-3 text-lg">
-                  Get in touch →
-                </Button>
-              </Link>
-              <Button variant="outline" size="lg" className="px-8 py-3 text-lg">
-                Learn more
-              </Button>
-            </div>
-          </div>
         </ScrollExpandMedia>
 
 
