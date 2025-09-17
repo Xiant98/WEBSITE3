@@ -114,13 +114,15 @@ const ScrollExpandMedia = ({
   }, []);
 
   useEffect(() => {
-    const handleWheel = (e: WheelEvent) => {
-      if (mediaFullyExpanded && e.deltaY > 0) {
-        // Allow normal scrolling when fully expanded and scrolling down
+    const handleWheel = (e: Event) => {
+      const wheelEvent = e as unknown as WheelEvent;
+      
+      // If fully expanded, allow normal scrolling
+      if (mediaFullyExpanded) {
         return;
       }
 
-      if (e.deltaY < 0 && scrollProgress <= 0) {
+      if (wheelEvent.deltaY < 0 && scrollProgress <= 0) {
         // Scrolling up at the beginning - do nothing
         return;
       }
@@ -130,7 +132,7 @@ const ScrollExpandMedia = ({
 
       // Calculate new progress based on wheel delta
       const scrollSensitivity = 0.001;
-      const delta = e.deltaY * scrollSensitivity;
+      const delta = wheelEvent.deltaY * scrollSensitivity;
       const newProgress = Math.min(Math.max(scrollProgress + delta, 0), 1);
       
       setScrollProgress(newProgress);
@@ -182,17 +184,19 @@ const ScrollExpandMedia = ({
           <div className='container mx-auto flex flex-col items-center justify-start relative z-10'>
             <div className='flex flex-col items-center justify-center w-full h-[100dvh] relative'>
               <motion.div
-                className='fixed transition-none rounded-2xl overflow-hidden bg-background border border-border z-20'
+                className={`fixed transition-none overflow-hidden bg-background ${
+                  mediaFullyExpanded ? 'z-0' : 'z-20 rounded-2xl border border-border'
+                }`}
                 style={{
                   width: mediaFullyExpanded ? '100vw' : `${mediaWidth}px`,
                   height: mediaFullyExpanded ? '100vh' : `${mediaHeight}px`,
                   maxWidth: mediaFullyExpanded ? '100vw' : '95vw',
                   maxHeight: mediaFullyExpanded ? '100vh' : '85vh',
-                  boxShadow: '0px 0px 50px rgba(0, 0, 0, 0.3)',
-                  left: '50%',
-                  top: '50%',
+                  boxShadow: mediaFullyExpanded ? 'none' : '0px 0px 50px rgba(0, 0, 0, 0.3)',
+                  left: mediaFullyExpanded ? '0' : '50%',
+                  top: mediaFullyExpanded ? '0' : '50%',
                   transformOrigin: 'center',
-                  transform: 'translate(-50%, -50%)',
+                  transform: mediaFullyExpanded ? 'none' : 'translate(-50%, -50%)',
                 }}
                 animate={{
                   opacity: 1
