@@ -19,6 +19,7 @@ type ContainerProps = {
   title?: string;
   description?: string;
   className?: string;
+  navFadeOut?: boolean;
 };
 
 type NavProps = {
@@ -85,8 +86,8 @@ export default function Container(props: ContainerProps) {
   const { children, ...customMeta } = props;
   const router = useRouter();
   const meta = {
-    title: "SpacebarR",
-    description: `Full-stack website developer and TypeScript enthusiast.`,
+    title: "Mukesh Sinner Kalungan",
+    description: `Salesman.`,
     image: "/assets/logo.webp",
     type: "website",
     ...customMeta,
@@ -150,6 +151,10 @@ export default function Container(props: ContainerProps) {
             ? "bg-gradient-to-br from-background to-transparent shadow-md backdrop-blur transition"
             : "bg-transparent",
         )}
+        style={{
+          opacity: props.navFadeOut ? 0 : 1,
+          transition: 'opacity 0.3s ease-in-out'
+        }}
       >
         <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
           <button
@@ -167,7 +172,7 @@ export default function Container(props: ContainerProps) {
           </button>
         </div>
         <Link href="/">
-          <span className="text-lg font-semibold hover:text-primary transition-colors">SpacebarR</span>
+          <span className="text-lg font-semibold hover:text-primary transition-colors">Mukesh Sinner Kalungan</span>
         </Link>
 
         {/* Desktop menu */}

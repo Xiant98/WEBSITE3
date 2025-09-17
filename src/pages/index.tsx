@@ -108,6 +108,7 @@ export default function Home() {
   const [isVideoPlayerOpen, setIsVideoPlayerOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [carouselApi, setCarouselApi] = useState<CarouselApi | null>(null);
+  const [navFadeOut, setNavFadeOut] = useState<boolean>(false);
 
 
 
@@ -172,7 +173,7 @@ export default function Home() {
 
 
   return (
-    <Container>
+    <Container navFadeOut={navFadeOut}>
       <div ref={refScrollContainer}>
         <Gradient />
         
@@ -187,6 +188,7 @@ export default function Home() {
         <ScrollExpandMedia 
           title="Mass Messaging, Uniquely Personal."
           scrollToExpand="Scroll to expand"
+          onExpansionChange={setNavFadeOut}
         >
         </ScrollExpandMedia>
 
@@ -200,13 +202,13 @@ export default function Home() {
             className="pt-8 mb-8 flex max-w-6xl flex-col justify-start space-y-10 bg-background"
           >
             <h2 className="py-16  pb-2 text-3xl font-light leading-normal tracking-tighter text-foreground xl:text-[40px]">
-              I&apos;m an experienced Sales Hunter with an interest in {" "}
+              I&apos;m Mukesh, an experienced Sales Hunter with an interest in {" "}
               <Link
                 href="https://create.t3.gg/"
                 target="_blank"
                 className="underline"
               >
-                IT and Engineering.
+                Effective Sales Methods.
               </Link>{" "}
               My experience spans from startups to Fortune 100 Companies, 
               where I&apos;ve been instrumental in the entire     sales cycle. 
@@ -391,7 +393,7 @@ export default function Home() {
         </section>
 
         {/* Contact */}
-        <section id="contact" data-scroll-section className="relative z-10 bg-background pt-8 mb-16">
+<section id="contact" data-scroll-section className="relative z-10 bg-background pt-8 mb-24">
           <div
             data-scroll
             data-scroll-speed=".4"
@@ -405,7 +407,7 @@ export default function Home() {
             <p className="mt-1.5 text-base tracking-tight text-muted-foreground xl:text-lg">
               Let me know what your goals are and leave the planning to me.
             </p>
-            <Link href="mailto:Mukesh@spacebarR.Agency" passHref>
+            <Link href="mailto:Mukesh.Kalungan@gmail.com" passHref>
               <Button className="mt-6">Get in touch</Button>
             </Link>
           </div>

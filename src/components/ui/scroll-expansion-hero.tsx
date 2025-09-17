@@ -17,6 +17,7 @@ interface ScrollExpandMediaProps {
   scrollToExpand?: string;
   textBlend?: boolean;
   children?: ReactNode;
+  onExpansionChange?: (isFullyExpanded: boolean) => void;
 }
 
 const ScrollExpandMedia = ({
@@ -25,6 +26,7 @@ const ScrollExpandMedia = ({
   scrollToExpand,
   textBlend,
   children,
+  onExpansionChange,
 }: ScrollExpandMediaProps) => {
   const [scrollProgress, setScrollProgress] = useState<number>(0);
   const [showContent, setShowContent] = useState<boolean>(false);
@@ -112,6 +114,13 @@ const ScrollExpandMedia = ({
     setShowContinueArrow(false);
   }, []);
 
+  // Notify parent component when expansion state changes
+  useEffect(() => {
+    if (onExpansionChange) {
+      onExpansionChange(mediaFullyExpanded);
+    }
+  }, [mediaFullyExpanded, onExpansionChange]);
+
   useEffect(() => {
     const handleScroll = () => {
       if (!sectionRef.current) return;
@@ -133,7 +142,7 @@ const ScrollExpandMedia = ({
       } else if (scrollTop >= scrollableHeight) {
         // After section
         setScrollProgress(1);
-        setMediaFullyExpanded(true);
+        setMediaFullyExpanded(false);
         setShowContinueArrow(false);
         setShowContent(true);
       } else {
@@ -157,7 +166,7 @@ const ScrollExpandMedia = ({
         } else {
           // Reveal content phase
           setScrollProgress(1);
-          setMediaFullyExpanded(true);
+          setMediaFullyExpanded(false);
           setShowContinueArrow(false);
           setShowContent(true);
         }
