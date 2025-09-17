@@ -187,11 +187,11 @@ export default function Home() {
             </div>
             <h1 className="mb-6">
               <span className="text-6xl tracking-tighter text-foreground 2xl:text-8xl">
-                AI Sales Automation that
+                Mass Messaging,
                 <br />
               </span>
               <span className="clash-grotesk text-gradient text-6xl 2xl:text-8xl">
-                Just works.
+                Uniquely Personal.
               </span>
             </h1>
             <p className="mt-4 max-w-2xl mx-auto tracking-tight text-muted-foreground text-lg 2xl:text-xl">
