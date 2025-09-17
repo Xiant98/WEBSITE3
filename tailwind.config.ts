@@ -4,7 +4,8 @@ const config = {
   darkMode: ["class"],
   content: [
     './src/**/*.{ts,tsx}',
-	],
+        ],
+  safelist: ['text-yellow-300'],
   prefix: "",
   theme: {
     container: {

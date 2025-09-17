@@ -24,7 +24,7 @@ const ScrollVelocity = React.forwardRef<HTMLDivElement, ScrollVelocityProps>(
       clamp,
     })
 
-    const x = useTransform(baseX, (v) => `${wrap(0, -50, v)}%`)
+    const x = useTransform(baseX, (v) => `${wrap(-50, 0, v)}%`)
 
     const directionFactor = React.useRef<number>(1)
     const scrollThreshold = React.useRef<number>(5)
@@ -55,7 +55,6 @@ const ScrollVelocity = React.forwardRef<HTMLDivElement, ScrollVelocityProps>(
       <div
         ref={ref}
         className={cn("relative m-0 w-full flex flex-nowrap overflow-hidden leading-relaxed tracking-normal px-4 md:px-6", className)}
-        style={{ contain: 'layout size style' }}
         {...props}
       >
         <motion.div
