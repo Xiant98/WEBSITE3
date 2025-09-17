@@ -27,7 +27,7 @@ import {
 } from "@/components/ui/carousel";
 import VanillaTilt from "vanilla-tilt";
 import { motion } from "framer-motion";
-import { FlowingBackground } from "@/components/ui/flowing-background";
+import { StaticGradientBackground } from "@/components/ui/static-gradient-background";
 
 const aboutStats = [
   { label: "Years of experience", value: "5+" },
@@ -183,9 +183,9 @@ export default function Home() {
           data-scroll-section
           className="relative mt-0 flex w-screen min-h-screen items-start justify-center pt-24 xl:pt-24 -mx-6 md:-mx-8 lg:-mx-12"
         >
-          {/* Flowing Gradient Background */}
+          {/* Static Gradient Background */}
           <div className="absolute inset-0 z-0 w-full h-full">
-            <FlowingBackground />
+            <StaticGradientBackground />
           </div>
           
           {/* Content */}
