@@ -92,11 +92,9 @@ const ScrollExpandMedia = ({
   };
 
   const currentMessages = getMessageSet(currentCycle);
-  const row1Messages = currentMessages.slice(0, 8);   // Row 1: 8 messages
-  const row2Messages = currentMessages.slice(8, 16);  // Row 2: 8 messages
-  const row3Messages = currentMessages.slice(16, 24); // Row 3: 8 messages  
-  const row4Messages = currentMessages.slice(24, 32); // Row 4: 8 messages
-  const row5Messages = currentMessages.slice(32, 40); // Row 5: 8 messages
+  const row1Messages = currentMessages.slice(0, 13);   // Row 1: 13 messages
+  const row2Messages = currentMessages.slice(13, 27);  // Row 2: 14 messages
+  const row3Messages = currentMessages.slice(27, 40);  // Row 3: 13 messages
 
   // Cycle through message sets every 15 seconds
   useEffect(() => {
@@ -228,21 +226,15 @@ const ScrollExpandMedia = ({
             >
                 {/* Scroll Velocity "Video" Content */}
                 <div className='relative w-full h-full bg-background'>
-                  <div className="absolute inset-0 z-10 w-full h-full flex flex-col justify-center space-y-6 opacity-90 overflow-hidden">
-                    <ScrollVelocity velocity={0.35} className="text-muted-foreground/50 leading-relaxed">
+                  <div className="absolute inset-0 z-10 w-full h-full flex flex-col justify-center space-y-8 opacity-90 overflow-hidden">
+                    <ScrollVelocity velocity={0.35} className="text-muted-foreground/60 leading-relaxed">
                       {row1Messages}
                     </ScrollVelocity>
-                    <ScrollVelocity velocity={-0.25} className="text-muted-foreground/40 leading-relaxed">
+                    <ScrollVelocity velocity={-0.25} className="text-muted-foreground/55 leading-relaxed">
                       {row2Messages}
                     </ScrollVelocity>
-                    <ScrollVelocity velocity={0.45} className="text-muted-foreground/45 leading-relaxed">
+                    <ScrollVelocity velocity={0.45} className="text-muted-foreground/50 leading-relaxed">
                       {row3Messages}
-                    </ScrollVelocity>
-                    <ScrollVelocity velocity={-0.2} className="text-muted-foreground/35 leading-relaxed">
-                      {row4Messages}
-                    </ScrollVelocity>
-                    <ScrollVelocity velocity={0.55} className="text-muted-foreground/40 leading-relaxed">
-                      {row5Messages}
                     </ScrollVelocity>
                   </div>
 

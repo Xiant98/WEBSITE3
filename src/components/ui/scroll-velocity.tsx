@@ -67,11 +67,11 @@ const ScrollVelocity = React.forwardRef<HTMLDivElement, ScrollVelocityProps>(
                 children.map((message, msgIdx) => (
                   <span 
                     key={`${repeatIdx}-${msgIdx}`}
-                    className="block flex-none whitespace-normal leading-relaxed line-clamp-3"
+                    className="block flex-none whitespace-normal leading-relaxed line-clamp-4"
                     style={{ 
                       width: 'clamp(120px, 25vw, 300px)',
                       display: '-webkit-box',
-                      WebkitLineClamp: 3,
+                      WebkitLineClamp: 4,
                       WebkitBoxOrient: 'vertical',
                       overflow: 'hidden'
                     }}
@@ -85,11 +85,11 @@ const ScrollVelocity = React.forwardRef<HTMLDivElement, ScrollVelocityProps>(
               {Array.from({ length: 5 }).map((_, idx) => (
                 <span 
                   key={idx}
-                  className="block flex-none whitespace-normal leading-relaxed line-clamp-3"
+                  className="block flex-none whitespace-normal leading-relaxed line-clamp-4"
                   style={{ 
                     width: 'clamp(120px, 25vw, 300px)',
                     display: '-webkit-box',
-                    WebkitLineClamp: 3,
+                    WebkitLineClamp: 4,
                     WebkitBoxOrient: 'vertical',
                     overflow: 'hidden'
                   }}
