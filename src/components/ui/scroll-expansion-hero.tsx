@@ -4,9 +4,7 @@ import {
   useEffect,
   useRef,
   useState,
-  ReactNode,
-  TouchEvent,
-  WheelEvent,
+  type ReactNode,
 } from 'react';
 import { motion } from 'framer-motion';
 import { ScrollVelocity } from './scroll-velocity';
@@ -21,16 +19,16 @@ interface ScrollExpandMediaProps {
 }
 
 const ScrollExpandMedia = ({
-  title,
+  title: _title,
   date,
   scrollToExpand,
-  textBlend,
+  textBlend: _textBlend,
   children,
   onExpansionChange,
 }: ScrollExpandMediaProps) => {
   const [scrollProgress, setScrollProgress] = useState<number>(0);
   const [showContent, setShowContent] = useState<boolean>(false);
-  const [mediaFullyExpanded, setMediaFullyExpanded] = useState<boolean>(false);
+  const [, setMediaFullyExpanded] = useState<boolean>(false);
   const [showContinueArrow, setShowContinueArrow] = useState<boolean>(false);
   const [isMobileState, setIsMobileState] = useState<boolean>(false);
   const [currentCycle, setCurrentCycle] = useState(0);
@@ -193,8 +191,6 @@ const ScrollExpandMedia = ({
   const mediaHeight = 400 + scrollProgress * (isMobileState ? 200 : 400);
   const textTranslateX = scrollProgress * (isMobileState ? 180 : 150);
 
-  const firstWord = title ? title.split(' ')[0] : '';
-  const restOfTitle = title ? title.split(' ').slice(1).join(' ') : '';
 
   return (
     <section 
@@ -266,7 +262,7 @@ const ScrollExpandMedia = ({
 
               <div
                 className={`flex items-center justify-center text-center gap-4 w-full relative z-50 transition-none flex-col ${
-                  textBlend ? 'mix-blend-difference' : 'mix-blend-normal'
+                  _textBlend ? 'mix-blend-difference' : 'mix-blend-normal'
                 }`}
               >
                 <motion.h2

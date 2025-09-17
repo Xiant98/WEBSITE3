@@ -1,22 +1,17 @@
 import Container from "@/components/Container";
 import { useEffect, useRef, useState } from "react";
-import styles from "@/styles/Home.module.css";
 import { Button } from "@/components/ui/button";
 import VideoPlayer from "@/components/ui/video-player";
-import { ScrollVelocity } from "@/components/ui/scroll-velocity";
 import ScrollExpandMedia from "@/components/ui/scroll-expansion-hero";
 import {
-  ChevronRight,
   Code2,
   Frame,
   SearchCheck,
   Eye,
   MonitorSmartphone,
 } from "lucide-react";
-import { TriangleDownIcon } from "@radix-ui/react-icons";
 
 import Link from "next/link";
-import { cn, scrollTo } from "@/lib/utils";
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -106,8 +101,7 @@ const services = [
 export default function Home() {
   const refScrollContainer = useRef(null);
   const [isVideoPlayerOpen, setIsVideoPlayerOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState<boolean>(false);
-  const [carouselApi, setCarouselApi] = useState<CarouselApi | null>(null);
+  const [, setCarouselApi] = useState<CarouselApi | null>(null);
   const [navFadeOut, setNavFadeOut] = useState<boolean>(false);
 
 
@@ -130,7 +124,6 @@ export default function Home() {
 
     function handleScroll() {
       let current = "";
-      setIsScrolled(window.scrollY > 0);
 
       sections.forEach((section) => {
         const sectionTop = section.offsetTop;
@@ -357,7 +350,7 @@ export default function Home() {
                   </span>
                 </h2>
                 <p className="mt-2 tracking-tighter text-secondary-foreground">
-                  Here are some projects I've finished. let&apos;s have a chat and I can help plan your next winning strategy.
+                  Here are some projects I&apos;ve finished. let&apos;s have a chat and I can help plan your next winning strategy.
                 </p>
               </div>
               {services.map((service) => (
