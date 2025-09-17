@@ -75,9 +75,8 @@ const ScrollVelocity = React.forwardRef<HTMLDivElement, ScrollVelocityProps>(
                       WebkitBoxOrient: 'vertical',
                       overflow: 'hidden'
                     }}
-                  >
-                    "{message}"
-                  </span>
+                    dangerouslySetInnerHTML={{ __html: `"${message}"` }}
+                  />
                 ))
               )}
             </>
@@ -94,9 +93,8 @@ const ScrollVelocity = React.forwardRef<HTMLDivElement, ScrollVelocityProps>(
                     WebkitBoxOrient: 'vertical',
                     overflow: 'hidden'
                   }}
-                >
-                  "{children}"
-                </span>
+                  dangerouslySetInnerHTML={{ __html: `"${children}"` }}
+                />
               ))}
             </>
           )}
