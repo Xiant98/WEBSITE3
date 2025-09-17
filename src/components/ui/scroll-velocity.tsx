@@ -54,11 +54,11 @@ const ScrollVelocity = React.forwardRef<HTMLDivElement, ScrollVelocityProps>(
     return (
       <div
         ref={ref}
-        className={cn("relative m-0 w-full flex flex-nowrap overflow-hidden leading-relaxed tracking-normal px-6", className)}
+        className={cn("relative m-0 w-full flex flex-nowrap overflow-hidden leading-relaxed tracking-normal px-4 md:px-6", className)}
         {...props}
       >
         <motion.div
-          className="flex flex-row flex-nowrap gap-12 text-lg font-normal normal-case md:text-xl xl:text-xl"
+          className="flex flex-row flex-nowrap gap-6 md:gap-12 text-sm md:text-lg font-normal normal-case md:text-xl xl:text-xl"
           style={{ x }}
         >
           {Array.isArray(children) ? (
@@ -69,7 +69,7 @@ const ScrollVelocity = React.forwardRef<HTMLDivElement, ScrollVelocityProps>(
                     key={`${repeatIdx}-${msgIdx}`}
                     className="block shrink-0 whitespace-normal leading-relaxed line-clamp-3"
                     style={{ 
-                      width: 'calc((100vw - 9rem) / 2 - 1px)',
+                      width: 'clamp(200px, 45vw, 400px)',
                       display: '-webkit-box',
                       WebkitLineClamp: 3,
                       WebkitBoxOrient: 'vertical',
@@ -88,7 +88,7 @@ const ScrollVelocity = React.forwardRef<HTMLDivElement, ScrollVelocityProps>(
                   key={idx}
                   className="block shrink-0 whitespace-normal leading-relaxed line-clamp-3"
                   style={{ 
-                    width: 'calc((100vw - 9rem) / 2 - 1px)',
+                    width: 'clamp(200px, 45vw, 400px)',
                     display: '-webkit-box',
                     WebkitLineClamp: 3,
                     WebkitBoxOrient: 'vertical',
