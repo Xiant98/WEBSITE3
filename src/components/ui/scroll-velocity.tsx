@@ -54,7 +54,7 @@ const ScrollVelocity = React.forwardRef<HTMLDivElement, ScrollVelocityProps>(
     return (
       <div
         ref={ref}
-        className={cn("relative m-0 w-screen max-w-[100vw] flex flex-nowrap overflow-hidden leading-relaxed tracking-normal px-4 md:px-6", className)}
+        className={cn("relative m-0 w-full flex flex-nowrap overflow-hidden leading-relaxed tracking-normal px-4 md:px-6", className)}
         {...props}
       >
         <motion.div

@@ -202,7 +202,7 @@ const ScrollExpandMedia = ({
   return (
     <section 
       ref={sectionRef}
-      className='relative bg-background w-screen max-w-[100vw] overflow-x-hidden'
+      className='relative bg-background'
       style={{
         height: `300vh`, // Enough height for expansion (150vh) + hold (50vh) + content reveal (100vh)
       }}
