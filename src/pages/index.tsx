@@ -4,7 +4,6 @@ import styles from "@/styles/Home.module.css";
 import { Button } from "@/components/ui/button";
 import VideoPlayer from "@/components/ui/video-player";
 import { ScrollVelocity } from "@/components/ui/scroll-velocity";
-import FloatingMessages from "@/components/ui/floating-messages";
 import {
   ChevronRight,
   Code2,
@@ -179,10 +178,7 @@ export default function Home() {
         />
 
         {/* Scroll Velocity Hero Section */}
-        <section className="relative w-full bg-background py-20 overflow-hidden min-h-screen">
-          {/* Floating Messages Background */}
-          <FloatingMessages />
-          
+        <section className="relative w-full bg-background py-20 overflow-hidden">
           <div className="relative z-10 text-center mb-12">
             <div className="flex flex-row items-center justify-center space-x-1.5 mb-8">
               <span className={styles.pill}>Simple</span>
