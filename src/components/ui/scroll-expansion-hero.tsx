@@ -92,9 +92,8 @@ const ScrollExpandMedia = ({
   };
 
   const currentMessages = getMessageSet(currentCycle);
-  const row1Messages = currentMessages.slice(0, 13);   // Row 1: 13 messages
-  const row2Messages = currentMessages.slice(13, 27);  // Row 2: 14 messages
-  const row3Messages = currentMessages.slice(27, 40);  // Row 3: 13 messages
+  const row1Messages = currentMessages.slice(0, 20);   // Row 1: 20 messages
+  const row2Messages = currentMessages.slice(20, 40);  // Row 2: 20 messages
 
   // Cycle through message sets every 15 seconds
   useEffect(() => {
@@ -226,15 +225,12 @@ const ScrollExpandMedia = ({
             >
                 {/* Scroll Velocity "Video" Content */}
                 <div className='relative w-full h-full bg-background'>
-                  <div className="absolute inset-0 z-10 w-full h-full flex flex-col justify-center space-y-8 opacity-90 overflow-hidden">
-                    <ScrollVelocity velocity={0.35} className="text-muted-foreground/60 leading-relaxed">
+                  <div className="absolute inset-0 z-10 w-full h-full flex flex-col justify-center space-y-12 opacity-90 overflow-hidden">
+                    <ScrollVelocity velocity={0.35} className="text-muted-foreground/65 leading-relaxed">
                       {row1Messages}
                     </ScrollVelocity>
-                    <ScrollVelocity velocity={-0.25} className="text-muted-foreground/55 leading-relaxed">
+                    <ScrollVelocity velocity={-0.25} className="text-muted-foreground/60 leading-relaxed">
                       {row2Messages}
-                    </ScrollVelocity>
-                    <ScrollVelocity velocity={0.45} className="text-muted-foreground/50 leading-relaxed">
-                      {row3Messages}
                     </ScrollVelocity>
                   </div>
 
