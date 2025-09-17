@@ -96,20 +96,20 @@ export default function Footer() {
   return (
     <footer className="relative w-full bg-gradient-to-t from-primary/[1%] to-transparent overflow-hidden">
       {/* Background Scroll Velocity Messages */}
-      <div className="absolute inset-0 z-0 w-full h-full flex flex-col justify-center space-y-4 opacity-20">
-        <ScrollVelocity velocity={0.6} className="text-muted-foreground/30 leading-relaxed">
+      <div className="absolute inset-0 z-0 w-full h-full flex flex-col justify-center space-y-2 opacity-60">
+        <ScrollVelocity velocity={0.6} className="text-muted-foreground/60 leading-relaxed">
           {row1Messages}
         </ScrollVelocity>
-        <ScrollVelocity velocity={-0.4} className="text-muted-foreground/25 leading-relaxed">
+        <ScrollVelocity velocity={-0.4} className="text-muted-foreground/50 leading-relaxed">
           {row2Messages}
         </ScrollVelocity>
-        <ScrollVelocity velocity={0.8} className="text-muted-foreground/30 leading-relaxed">
+        <ScrollVelocity velocity={0.8} className="text-muted-foreground/60 leading-relaxed">
           {row3Messages}
         </ScrollVelocity>
-        <ScrollVelocity velocity={-0.3} className="text-muted-foreground/20 leading-relaxed">
+        <ScrollVelocity velocity={-0.3} className="text-muted-foreground/40 leading-relaxed">
           {row4Messages}
         </ScrollVelocity>
-        <ScrollVelocity velocity={0.9} className="text-muted-foreground/25 leading-relaxed">
+        <ScrollVelocity velocity={0.9} className="text-muted-foreground/50 leading-relaxed">
           {row5Messages}
         </ScrollVelocity>
       </div>
