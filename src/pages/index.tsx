@@ -110,7 +110,7 @@ export default function Home() {
   const [carouselApi, setCarouselApi] = useState<CarouselApi | null>(null);
   const [currentCycle, setCurrentCycle] = useState(0);
 
-  // All 20 personalized messages
+  // All 40 personalized messages
   const allMessages = [
     "Melissa, your recent LinkedIn post about your Friday Tech Huddles at ByteLeap was inspiring. What topic are you thinking about exploring next for your team?",
     "Arjun, I read your Medium article where Atlas Fintech adopted an AI reconciliation tool in Q2. What did your team enjoy most about rolling it out?",
@@ -131,7 +131,27 @@ export default function Home() {
     "Vishal, your review in ProductSphere's newsletter about the Zeno board meeting platform was really helpful. If you could change one meeting format for your team, what would you choose?",
     "Emily, your comment on the Acme Studio roadmap thread about dark mode accessibility was so clear. Did the product team end up acting on your suggestion?",
     "Tai, I caught your YouTube Short about using corn starch packing for SafeBox's holiday orders. What packaging will you experiment with next?",
-    "Grace, I tuned into your mental health roundtable for JavaJam's dev community and found the discussion refreshingly honest. What topic took you by surprise during that session?"
+    "Grace, I tuned into your mental health roundtable for JavaJam's dev community and found the discussion refreshingly honest. What topic took you by surprise during that session?",
+    "Kevin, that LinkedIn post you wrote about managing rapid growth at Veloz really hit home. What leadership habit has helped you stay grounded during the rush?",
+    "Amanda, I caught your comment on Jade Tan's thread about hybrid work setups. What's been the biggest surprise for your team since making the switch?",
+    "Marcus, I enjoyed your firm's blog about moving to cloud-based accounting. Which tool made the biggest difference to your workflow?",
+    "Priya, your Instagram story from the wellness retreat last week looked restorative. What part of the program would you most recommend to others?",
+    "Julian, your CEO's recent company update namedropped your team's success launching the BlueBird app. What challenge did you have to work hardest to overcome?",
+    "Abby, I read your thoughtful reply on the ProductHive forum about user research interviews. How do you keep participants engaged during longer sessions?",
+    "Rahul, your quick poll on X about preferred project management methods got me thinking. How did your own team decide on their approach?",
+    "Rachel, your Facebook post celebrating your hundredth customer was fantastic. What's helped you build strong relationships as you scaled?",
+    "Owen, your detailed feedback on the BetaHub community regarding onboarding processes showed real insight. What small change brought the biggest improvement?",
+    "Tara, your podcast episode on creative branding strategies was packed with ideas. Which tip have your listeners said made the most difference?",
+    "Simone, I saw your story on the Green Future initiative dinner your company hosted. What sparked the idea for the collaboration?",
+    "Noah, your CEO's shout-out to your data visualization work at the town hall sounded well deserved. What's your go-to tool for sharing insights with non-technical teams?",
+    "Alyssa, your tweet about building up your mentor circle really resonated. Who's been unexpectedly influential for your career growth?",
+    "Chris, I enjoyed your LinkedIn comment about balancing big goals with small wins at FastPath. What helps you keep your team inspired week to week?",
+    "Lara, your panel discussion on sustainable finance at the FinForward summit revealed some creative approaches. Which idea do you hope more companies adopt?",
+    "Vik, I noticed your reply regarding flexible scheduling in the FlexWork group. Have you run into any common misconceptions about it?",
+    "Selene, your profile video for the Engineering Women in Tech campaign was motivating. What advice would you give newcomers joining your field now?",
+    "Matt, loved your summer photo series from the Build for Good volunteering event. Which project had the most lasting impact on the community?",
+    "Olivia, your recent blog about making customer handovers smoother was spot on. What process tweak has paid off the most for your clients?",
+    "Benji, your CEO's town hall highlight of your team's record customer service ratings made me curious. What traits do you look for most when hiring new reps?"
   ];
 
   // Create cycling message sets - rotation every cycle through all 20 messages
@@ -145,9 +165,11 @@ export default function Home() {
   };
 
   const currentMessages = getMessageSet(currentCycle);
-  const topRowMessages = currentMessages.slice(0, 7);     // Top row gets 7 messages
-  const middleRowMessages = currentMessages.slice(7, 14);  // Middle row gets 7 messages  
-  const bottomRowMessages = currentMessages.slice(14, 20); // Bottom row gets 6 messages
+  const row1Messages = currentMessages.slice(0, 8);   // Row 1: 8 messages
+  const row2Messages = currentMessages.slice(8, 16);  // Row 2: 8 messages
+  const row3Messages = currentMessages.slice(16, 24); // Row 3: 8 messages  
+  const row4Messages = currentMessages.slice(24, 32); // Row 4: 8 messages
+  const row5Messages = currentMessages.slice(32, 40); // Row 5: 8 messages
 
   // handle scroll
   useEffect(() => {
@@ -229,15 +251,21 @@ export default function Home() {
         {/* Scroll Velocity Hero Section */}
         <section className="relative w-full bg-background py-20 overflow-hidden min-h-screen flex items-center">
           {/* Background Scroll Velocity Messages */}
-          <div className="absolute inset-0 z-0 w-full h-full flex flex-col justify-center space-y-12 opacity-40">
-            <ScrollVelocity velocity={0.8} className="text-muted-foreground/40 leading-relaxed">
-              {topRowMessages}
+          <div className="absolute inset-0 z-0 w-full h-full flex flex-col justify-center space-y-8 opacity-30">
+            <ScrollVelocity velocity={0.7} className="text-muted-foreground/40 leading-relaxed">
+              {row1Messages}
             </ScrollVelocity>
-            <ScrollVelocity velocity={-0.6} className="text-muted-foreground/30 leading-relaxed">
-              {middleRowMessages}
+            <ScrollVelocity velocity={-0.5} className="text-muted-foreground/30 leading-relaxed">
+              {row2Messages}
             </ScrollVelocity>
-            <ScrollVelocity velocity={1.2} className="text-muted-foreground/35 leading-relaxed">
-              {bottomRowMessages}
+            <ScrollVelocity velocity={0.9} className="text-muted-foreground/35 leading-relaxed">
+              {row3Messages}
+            </ScrollVelocity>
+            <ScrollVelocity velocity={-0.4} className="text-muted-foreground/25 leading-relaxed">
+              {row4Messages}
+            </ScrollVelocity>
+            <ScrollVelocity velocity={1.1} className="text-muted-foreground/30 leading-relaxed">
+              {row5Messages}
             </ScrollVelocity>
           </div>
 
