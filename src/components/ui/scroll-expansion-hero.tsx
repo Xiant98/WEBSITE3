@@ -10,7 +10,6 @@ import {
 } from 'react';
 import { motion } from 'framer-motion';
 import { ScrollVelocity } from './scroll-velocity';
-import { GradientDots } from './gradient-dots';
 
 interface ScrollExpandMediaProps {
   title?: string;
@@ -205,15 +204,7 @@ const ScrollExpandMedia = ({
         height: `300vh`, // Enough height for expansion (150vh) + hold (50vh) + content reveal (100vh)
       }}
     >
-      {/* Animated Rainbow Gradient Dots Background */}
-      <GradientDots 
-        className="z-0" 
-        dotSize={15}
-        spacing={25}
-        duration={12}
-        colorCycleDuration={3}
-      />
-      <div className='sticky top-0 w-full h-screen flex flex-col items-center justify-center overflow-hidden relative z-10'>
+      <div className='sticky top-0 w-full h-screen flex flex-col items-center justify-center overflow-hidden'>
         <div className='container mx-auto flex flex-col items-center justify-center relative max-w-full overflow-hidden'>
           <div className='flex flex-col items-center justify-center w-full h-full relative'>
             <motion.div
