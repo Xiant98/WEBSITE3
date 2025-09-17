@@ -145,8 +145,9 @@ export default function Home() {
   };
 
   const currentMessages = getMessageSet(currentCycle);
-  const topRowMessages = currentMessages.slice(0, 10);  // Top row gets 10 messages
-  const bottomRowMessages = currentMessages.slice(10, 20); // Bottom row gets 10 messages
+  const topRowMessages = currentMessages.slice(0, 7);     // Top row gets 7 messages
+  const middleRowMessages = currentMessages.slice(7, 14);  // Middle row gets 7 messages  
+  const bottomRowMessages = currentMessages.slice(14, 20); // Bottom row gets 6 messages
 
   // handle scroll
   useEffect(() => {
@@ -226,8 +227,22 @@ export default function Home() {
         />
 
         {/* Scroll Velocity Hero Section */}
-        <section className="relative w-full bg-background py-20 overflow-hidden">
-          <div className="relative z-10 text-center mb-12">
+        <section className="relative w-full bg-background py-20 overflow-hidden min-h-screen flex items-center">
+          {/* Background Scroll Velocity Messages */}
+          <div className="absolute inset-0 z-0 w-full h-full flex flex-col justify-center space-y-12 opacity-40">
+            <ScrollVelocity velocity={0.8} className="text-muted-foreground/40 leading-relaxed">
+              {topRowMessages}
+            </ScrollVelocity>
+            <ScrollVelocity velocity={-0.6} className="text-muted-foreground/30 leading-relaxed">
+              {middleRowMessages}
+            </ScrollVelocity>
+            <ScrollVelocity velocity={1.2} className="text-muted-foreground/35 leading-relaxed">
+              {bottomRowMessages}
+            </ScrollVelocity>
+          </div>
+
+          {/* Hero Content Overlay */}
+          <div className="relative z-10 w-full text-center">
             <div className="flex flex-row items-center justify-center space-x-1.5 mb-8">
               <span className={styles.pill}>Simple</span>
               <span className={styles.pill}>Scalable</span>
@@ -255,16 +270,6 @@ export default function Home() {
                 Learn more
               </Button>
             </div>
-          </div>
-          
-          {/* Animated Scroll Velocity */}
-          <div className="w-full space-y-8">
-            <ScrollVelocity velocity={0.8} className="text-muted-foreground/30 leading-relaxed">
-              {topRowMessages}
-            </ScrollVelocity>
-            <ScrollVelocity velocity={-0.6} className="text-muted-foreground/25 leading-relaxed">
-              {bottomRowMessages}
-            </ScrollVelocity>
           </div>
         </section>
 
