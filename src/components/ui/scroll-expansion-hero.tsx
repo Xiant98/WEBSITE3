@@ -29,11 +29,9 @@ const ScrollExpandMedia = ({
   const [scrollProgress, setScrollProgress] = useState<number>(0);
   const [showContent, setShowContent] = useState<boolean>(false);
   const [mediaFullyExpanded, setMediaFullyExpanded] = useState<boolean>(false);
+  const [showContinueArrow, setShowContinueArrow] = useState<boolean>(false);
   const [isMobileState, setIsMobileState] = useState<boolean>(false);
   const [currentCycle, setCurrentCycle] = useState(0);
-  const [isSticky, setIsSticky] = useState<boolean>(false);
-  const [lastScrollY, setLastScrollY] = useState<number>(0);
-  const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('down');
 
   const sectionRef = useRef<HTMLDivElement | null>(null);
 
@@ -111,50 +109,68 @@ const ScrollExpandMedia = ({
     setScrollProgress(0);
     setShowContent(false);
     setMediaFullyExpanded(false);
+    setShowContinueArrow(false);
   }, []);
 
   useEffect(() => {
-    const handleWheel = (e: Event) => {
-      const wheelEvent = e as unknown as WheelEvent;
-      
-      // If fully expanded, allow normal scrolling
-      if (mediaFullyExpanded) {
-        return;
-      }
-
-      if (wheelEvent.deltaY < 0 && scrollProgress <= 0) {
-        // Scrolling up at the beginning - do nothing
-        return;
-      }
-
-      // Prevent default scrolling during expansion
-      e.preventDefault();
-
-      // Calculate new progress based on wheel delta
-      const scrollSensitivity = 0.001;
-      const delta = wheelEvent.deltaY * scrollSensitivity;
-      const newProgress = Math.min(Math.max(scrollProgress + delta, 0), 1);
-      
-      setScrollProgress(newProgress);
-      setMediaFullyExpanded(newProgress >= 1);
-      setShowContent(newProgress > 0.75);
-    };
-
     const handleScroll = () => {
-      // Keep scroll position locked at top until fully expanded
-      if (!mediaFullyExpanded) {
-        window.scrollTo(0, 0);
+      if (!sectionRef.current) return;
+
+      const rect = sectionRef.current.getBoundingClientRect();
+      const sectionHeight = sectionRef.current.offsetHeight;
+      const viewportHeight = window.innerHeight;
+      
+      // Calculate scroll progress through this section
+      const scrollTop = -rect.top;
+      const scrollableHeight = sectionHeight - viewportHeight;
+      
+      if (scrollTop <= 0) {
+        // Before section
+        setScrollProgress(0);
+        setMediaFullyExpanded(false);
+        setShowContinueArrow(false);
+        setShowContent(false);
+      } else if (scrollTop >= scrollableHeight) {
+        // After section
+        setScrollProgress(1);
+        setMediaFullyExpanded(true);
+        setShowContinueArrow(false);
+        setShowContent(true);
+      } else {
+        // Inside section
+        const expansionHeight = viewportHeight * 1.5; // 1.5vh to fully expand
+        const holdHeight = viewportHeight * 0.5; // Additional 0.5vh at full expansion
+        
+        if (scrollTop <= expansionHeight) {
+          // Expansion phase
+          const progress = scrollTop / expansionHeight;
+          setScrollProgress(progress);
+          setMediaFullyExpanded(false);
+          setShowContinueArrow(false);
+          setShowContent(false);
+        } else if (scrollTop <= (expansionHeight + holdHeight)) {
+          // Hold at full expansion phase
+          setScrollProgress(1);
+          setMediaFullyExpanded(true);
+          setShowContinueArrow(true);
+          setShowContent(false);
+        } else {
+          // Reveal content phase
+          setScrollProgress(1);
+          setMediaFullyExpanded(true);
+          setShowContinueArrow(false);
+          setShowContent(true);
+        }
       }
     };
 
-    window.addEventListener('wheel', handleWheel, { passive: false });
-    window.addEventListener('scroll', handleScroll, { passive: false });
+    handleScroll(); // Initial call
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
-      window.removeEventListener('wheel', handleWheel);
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [scrollProgress, mediaFullyExpanded]);
+  }, []);
 
   useEffect(() => {
     const checkIfMobile = (): void => {
@@ -175,36 +191,32 @@ const ScrollExpandMedia = ({
   const restOfTitle = title ? title.split(' ').slice(1).join(' ') : '';
 
   return (
-    <div
+    <section 
       ref={sectionRef}
-      className='transition-colors duration-700 ease-in-out overflow-x-hidden'
+      className='relative bg-background'
+      style={{
+        height: `300vh`, // Enough height for expansion (150vh) + hold (50vh) + content reveal (100vh)
+      }}
     >
-      <section className='relative flex flex-col items-center justify-start min-h-[100dvh] bg-background'>
-        <div className='relative w-full flex flex-col items-center min-h-[100dvh]'>
-          <div className='container mx-auto flex flex-col items-center justify-start relative z-10'>
-            <div className='flex flex-col items-center justify-center w-full h-[100dvh] relative'>
-              <motion.div
-                className={`fixed transition-none overflow-hidden bg-background ${
-                  mediaFullyExpanded ? 'z-0' : 'z-20 rounded-2xl border border-border'
-                }`}
-                style={{
-                  width: mediaFullyExpanded ? '100vw' : `${mediaWidth}px`,
-                  height: mediaFullyExpanded ? '100vh' : `${mediaHeight}px`,
-                  maxWidth: mediaFullyExpanded ? '100vw' : '95vw',
-                  maxHeight: mediaFullyExpanded ? '100vh' : '85vh',
-                  boxShadow: mediaFullyExpanded ? 'none' : '0px 0px 50px rgba(0, 0, 0, 0.3)',
-                  left: mediaFullyExpanded ? '0' : '50%',
-                  top: mediaFullyExpanded ? '0' : '50%',
-                  transformOrigin: 'center',
-                  transform: mediaFullyExpanded ? 'none' : 'translate(-50%, -50%)',
-                }}
-                animate={{
-                  opacity: 1
-                }}
-                transition={{
-                  opacity: { duration: 0.8, ease: "easeInOut" }
-                }}
-              >
+      <div className='sticky top-0 w-full h-screen flex flex-col items-center justify-center'>
+        <div className='container mx-auto flex flex-col items-center justify-center relative'>
+          <div className='flex flex-col items-center justify-center w-full h-full relative'>
+            <motion.div
+              className='transition-none overflow-hidden bg-background rounded-2xl border border-border'
+              style={{
+                width: `${mediaWidth}px`,
+                height: `${mediaHeight}px`,
+                maxWidth: '95vw',
+                maxHeight: '85vh',
+                boxShadow: '0px 0px 50px rgba(0, 0, 0, 0.3)',
+              }}
+              animate={{
+                opacity: 1
+              }}
+              transition={{
+                opacity: { duration: 0.8, ease: "easeInOut" }
+              }}
+            >
                 {/* Scroll Velocity "Video" Content */}
                 <div className='relative w-full h-full bg-background'>
                   <div className="absolute inset-0 z-0 w-full h-full flex flex-col justify-center space-y-6 opacity-90 overflow-hidden">
@@ -232,15 +244,6 @@ const ScrollExpandMedia = ({
                     transition={{ duration: 0.2 }}
                   />
 
-                  {/* Background fade overlay when sticky */}
-                  {isSticky && (
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-b from-transparent via-background/30 to-background/60 z-10"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.5 }}
-                    />
-                  )}
 
                 </div>
 
@@ -290,18 +293,41 @@ const ScrollExpandMedia = ({
               </div>
             </div>
 
-            <motion.section
-              className='flex flex-col w-full px-8 py-10 md:px-16 lg:py-20'
-              initial={{ opacity: 0 }}
-              animate={{ opacity: showContent ? 1 : 0 }}
-              transition={{ duration: 0.7 }}
+            {/* Down Arrow Indicator */}
+            {showContinueArrow && (
+              <motion.div
+                className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-primary/70"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+              >
+                <motion.div
+                  animate={{ y: [0, 8, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                  className="w-6 h-6"
+                >
+                  <svg className="w-full h-full" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 3a1 1 0 011 1v10.586l2.293-2.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 14.586V4a1 1 0 011-1z" clipRule="evenodd" />
+                  </svg>
+                </motion.div>
+              </motion.div>
+            )}
+
+            {/* Content that appears when scrolling away */}
+            <motion.div
+              className='absolute inset-x-0 bottom-0 flex flex-col w-full px-8 py-10 md:px-16 lg:py-20 bg-background/95 backdrop-blur-sm'
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ 
+                opacity: showContent ? 1 : 0, 
+                y: showContent ? 0 : 50 
+              }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
             >
               {children}
-            </motion.section>
+            </motion.div>
           </div>
         </div>
-      </section>
-    </div>
+    </section>
   );
 };
 

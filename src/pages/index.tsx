@@ -35,7 +35,6 @@ const aboutStats = [
   { label: "Teams Led", value: "5+" },
   { label: "Industries sold into", value: "10+" },
   { label: "New Logos Closed", value: "200+" },
-  ,
 ];
 
 const projects = [
@@ -119,9 +118,11 @@ export default function Home() {
     const navLinks = document.querySelectorAll(".nav-link");
 
     async function getLocomotive() {
+      if (!refScrollContainer.current) return;
+      
       const Locomotive = (await import("locomotive-scroll")).default;
       new Locomotive({
-        el: refScrollContainer.current ?? new HTMLElement(),
+        el: refScrollContainer.current,
         smooth: true,
       });
     }
