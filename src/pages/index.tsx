@@ -27,7 +27,6 @@ import {
 } from "@/components/ui/carousel";
 import VanillaTilt from "vanilla-tilt";
 import { motion } from "framer-motion";
-import { StaticGradientBackground } from "@/components/ui/static-gradient-background";
 
 const aboutStats = [
   { label: "Years of experience", value: "5+" },
@@ -183,9 +182,22 @@ export default function Home() {
           data-scroll-section
           className="relative mt-0 flex w-screen min-h-screen items-start justify-center pt-24 xl:pt-24 -mx-6 md:-mx-8 lg:-mx-12"
         >
-          {/* Static Gradient Background */}
-          <div className="absolute inset-0 z-0 w-full h-full">
-            <StaticGradientBackground />
+          {/* 3D Background */}
+          <div className="absolute inset-0 z-0 w-full h-full overflow-hidden">
+            <iframe 
+              src="https://my.spline.design/claritystream-ubZKAYv0oW0rlm2w8dYHVPPo/?hide-controls=true" 
+              frameBorder="0" 
+              width="100%" 
+              height="100%"
+              className="w-full h-full object-cover"
+              style={{
+                pointerEvents: 'none',
+                minWidth: '140%',
+                minHeight: '140%',
+                transform: 'scale(1.4) translate(-15%, -30%)',
+                transformOrigin: 'top left'
+              }}
+            />
           </div>
           
           {/* Content */}

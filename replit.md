@@ -35,7 +35,8 @@ Uses **@t3-oss/env-nextjs** for type-safe environment variable validation with Z
 - **Lucide React**: Modern icon library
 - **Vanilla Tilt**: 3D tilt effects for interactive elements
 
-## Media and Animation
+## Media and 3D Content
+- **Spline**: 3D scene integration and interactive 3D models
 - **Embla Carousel**: Touch-friendly carousel component
 - **Sharp**: High-performance image optimization
 
