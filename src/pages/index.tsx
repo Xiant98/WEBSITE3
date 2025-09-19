@@ -3,8 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import VideoPlayer from "@/components/ui/video-player";
 import ScrollExpandMedia from "@/components/ui/scroll-expansion-hero";
-import ScrollArrow from "@/components/ui/scroll-arrow";
 import YouTubeSection from "@/components/ui/youtube-section";
+import SimpleScrollIndicator from "@/components/ui/simple-scroll-indicator";
 import {
   Code2,
   Frame,
@@ -187,8 +187,8 @@ export default function Home() {
         >
         </ScrollExpandMedia>
 
-        {/* Scroll Arrow - indicates scrolling is possible */}
-        <ScrollArrow className="relative z-10 bg-background" />
+        {/* Simple Scroll Indicator - visible on first load */}
+        <SimpleScrollIndicator />
 
         {/* About */}
         <section id="about" data-scroll-section className="relative z-10 bg-background">
