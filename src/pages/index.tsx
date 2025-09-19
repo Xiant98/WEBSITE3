@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import VideoPlayer from "@/components/ui/video-player";
 import ScrollExpandMedia from "@/components/ui/scroll-expansion-hero";
+import ScrollArrow from "@/components/ui/scroll-arrow";
+import YouTubeSection from "@/components/ui/youtube-section";
 import {
   Code2,
   Frame,
@@ -185,6 +187,8 @@ export default function Home() {
         >
         </ScrollExpandMedia>
 
+        {/* Scroll Arrow - indicates scrolling is possible */}
+        <ScrollArrow className="relative z-10 bg-background" />
 
         {/* About */}
         <section id="about" data-scroll-section className="relative z-10 bg-background">
@@ -224,6 +228,14 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* YouTube Video Section */}
+        <YouTubeSection 
+          videoId="dQw4w9WgXcQ"
+          title="Our Story in Motion"
+          description="Watch how we're revolutionizing business communication with AI-powered personalization"
+          className="relative z-10"
+        />
 
         {/* Projects */}
         <section id="projects" data-scroll-section className="relative z-10 bg-background">
