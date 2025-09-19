@@ -6,7 +6,9 @@ channel = "stable-25_05"
 packages = ["undollar"]
 
 [deployment]
-run = ["sh", "-c", "npm run dev"]
+deploymentTarget = "autoscale"
+build = ["pnpm", "build"]
+run = ["pnpm", "start"]
 
 [[ports]]
 localPort = 5000
