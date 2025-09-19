@@ -29,6 +29,21 @@ const config = withPWA({
     locales: ["en"],
     defaultLocale: "en",
   },
+  
+  // Replit configuration - allow all hosts for proxy environment
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-Frame-Options',
+            value: 'SAMEORIGIN',
+          },
+        ],
+      },
+    ];
+  },
 });
 
 export default config;
