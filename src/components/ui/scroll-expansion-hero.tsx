@@ -290,12 +290,18 @@ const ScrollExpandMedia = ({
             {/* Down Arrow Indicator - Fixed to viewport bottom */}
             {showContinueArrow && (
               <motion.div
-                className="fixed left-1/2 transform -translate-x-1/2 text-primary/70 z-50 pointer-events-none"
+                className="fixed left-1/2 transform -translate-x-1/2 text-primary/70 z-50 pointer-events-none flex flex-col items-center"
                 style={{ bottom: 'calc(env(safe-area-inset-bottom, 0px) + 20px)' }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
               >
+                {/* Keep scrolling text */}
+                <p className="text-sm font-medium mb-2 tracking-wide">
+                  Keep scrolling
+                </p>
+                
+                {/* Arrow */}
                 <motion.div
                   animate={{ y: [0, 8, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity }}
