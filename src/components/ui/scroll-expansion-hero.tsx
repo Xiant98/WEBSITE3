@@ -297,7 +297,7 @@ const ScrollExpandMedia = ({
                 transition={{ duration: 0.5 }}
               >
                 {/* Keep scrolling text */}
-                <p className="text-xs font-medium mb-1 tracking-wide">
+                <p className="text-[10px] font-medium mb-1 tracking-wide">
                   Keep scrolling
                 </p>
                 
@@ -305,7 +305,7 @@ const ScrollExpandMedia = ({
                 <motion.div
                   animate={{ y: [0, 8, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity }}
-                  className="w-6 h-6"
+                  className="w-5 h-5"
                 >
                   <svg className="w-full h-full" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 3a1 1 0 011 1v10.586l2.293-2.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 14.586V4a1 1 0 011-1z" clipRule="evenodd" />
