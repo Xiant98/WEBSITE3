@@ -229,6 +229,28 @@ const ScrollExpandMedia = ({
             >
                 {/* Scroll Velocity "Video" Content */}
                 <div className='relative w-full h-full bg-background'>
+                  {/* "Your Online Activity, Mass AI Automation" heading on top of video */}
+                  <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center">
+                    <motion.h2
+                      className='text-4xl md:text-5xl lg:text-6xl font-bold text-center transition-none whitespace-nowrap mb-2'
+                      style={{ 
+                        transform: `translateX(-${textTranslateX}vw)`,
+                        opacity: Math.max(0, 1 - scrollProgress * 1.2)
+                      }}
+                    >
+                      <span className="text-foreground">Your Online Activity,</span>
+                    </motion.h2>
+                    <motion.h2
+                      className='text-4xl md:text-5xl lg:text-6xl font-bold text-center transition-none'
+                      style={{ 
+                        transform: `translateX(${textTranslateX}vw)`,
+                        opacity: Math.max(0, 1 - scrollProgress * 1.2)
+                      }}
+                    >
+                      <span className="text-primary">Mass AI Automation.</span>
+                    </motion.h2>
+                  </div>
+                  
                   <div className="absolute inset-0 z-10 w-full h-full flex flex-col justify-center space-y-12 opacity-90 overflow-hidden">
                     <ScrollVelocity velocity={0.35} className="text-muted-foreground/65 leading-relaxed">
                       {row1Messages}
@@ -261,30 +283,6 @@ const ScrollExpandMedia = ({
                 </div>
               </motion.div>
 
-              <div
-                className={`flex items-center justify-center text-center gap-4 w-full relative z-50 transition-none flex-col ${
-                  _textBlend ? 'mix-blend-difference' : 'mix-blend-normal'
-                }`}
-              >
-                <motion.h2
-                  className='text-4xl md:text-5xl lg:text-6xl font-bold text-center transition-none whitespace-nowrap'
-                  style={{ 
-                    transform: `translateX(-${textTranslateX}vw)`,
-                    opacity: Math.max(0, 1 - scrollProgress * 1.2)
-                  }}
-                >
-                  <span className="text-foreground">Mass Messaging,</span>
-                </motion.h2>
-                <motion.h2
-                  className='text-4xl md:text-5xl lg:text-6xl font-bold text-center transition-none'
-                  style={{ 
-                    transform: `translateX(${textTranslateX}vw)`,
-                    opacity: Math.max(0, 1 - scrollProgress * 1.2)
-                  }}
-                >
-                  <span className="text-primary">Uniquely Personal.</span>
-                </motion.h2>
-              </div>
             </div>
 
             {/* Down Arrow Indicator - Fixed to viewport bottom */}
