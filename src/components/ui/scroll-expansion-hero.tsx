@@ -29,7 +29,7 @@ const ScrollExpandMedia = ({
   const [scrollProgress, setScrollProgress] = useState<number>(0);
   const [showContent, setShowContent] = useState<boolean>(false);
   const [, setMediaFullyExpanded] = useState<boolean>(false);
-  const [showContinueArrow, setShowContinueArrow] = useState<boolean>(false);
+  const [showContinueArrow, setShowContinueArrow] = useState<boolean>(true);
   const [isMobileState, setIsMobileState] = useState<boolean>(false);
   const [currentCycle, setCurrentCycle] = useState(0);
 
@@ -106,7 +106,11 @@ const ScrollExpandMedia = ({
     setScrollProgress(0);
     setShowContent(false);
     setMediaFullyExpanded(false);
-    setShowContinueArrow(false);
+    
+    // Check initial state for about section visibility
+    const aboutSection = document.getElementById('about');
+    const initialArrowVisibility = aboutSection ? aboutSection.getBoundingClientRect().top > window.innerHeight : true;
+    setShowContinueArrow(initialArrowVisibility);
   }, []);
 
   // Notify parent component when expansion state changes
@@ -128,17 +132,21 @@ const ScrollExpandMedia = ({
       const scrollTop = -rect.top;
       const scrollableHeight = sectionHeight - viewportHeight;
       
+      // Check if about section is entering viewport to hide arrow
+      const aboutSection = document.getElementById('about');
+      const shouldShowArrow = aboutSection ? aboutSection.getBoundingClientRect().top > window.innerHeight : true;
+      
       if (scrollTop <= 0) {
         // Before section
         setScrollProgress(0);
         setMediaFullyExpanded(false);
-        setShowContinueArrow(false);
+        setShowContinueArrow(shouldShowArrow);
         setShowContent(false);
       } else if (scrollTop >= scrollableHeight) {
         // After section
         setScrollProgress(1);
         setMediaFullyExpanded(false);
-        setShowContinueArrow(false);
+        setShowContinueArrow(false); // Always hide when leaving hero section
         setShowContent(true);
       } else {
         // Inside section
@@ -146,23 +154,23 @@ const ScrollExpandMedia = ({
         const holdHeight = viewportHeight * 0.5; // Additional 0.5vh at full expansion
         
         if (scrollTop <= expansionHeight) {
-          // Expansion phase
+          // Expansion phase - keep arrow visible
           const progress = scrollTop / expansionHeight;
           setScrollProgress(progress);
           setMediaFullyExpanded(false);
-          setShowContinueArrow(false);
+          setShowContinueArrow(shouldShowArrow);
           setShowContent(false);
         } else if (scrollTop <= (expansionHeight + holdHeight)) {
-          // Hold at full expansion phase
+          // Hold at full expansion phase - keep arrow visible
           setScrollProgress(1);
           setMediaFullyExpanded(true);
-          setShowContinueArrow(true);
+          setShowContinueArrow(shouldShowArrow);
           setShowContent(false);
         } else {
-          // Reveal content phase
+          // Reveal content phase - keep arrow visible until about section
           setScrollProgress(1);
           setMediaFullyExpanded(false);
-          setShowContinueArrow(false);
+          setShowContinueArrow(shouldShowArrow);
           setShowContent(true);
         }
       }
@@ -249,14 +257,7 @@ const ScrollExpandMedia = ({
                       {date}
                     </p>
                   )}
-                  {scrollToExpand && (
-                    <p
-                      className='text-primary/80 font-medium text-center'
-                      style={{ transform: `translateX(${textTranslateX}vw)` }}
-                    >
-                      {scrollToExpand}
-                    </p>
-                  )}
+                  {/* Text completely removed - showing only arrow */}
                 </div>
               </motion.div>
 

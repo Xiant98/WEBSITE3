@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import VideoPlayer from "@/components/ui/video-player";
 import ScrollExpandMedia from "@/components/ui/scroll-expansion-hero";
 import YouTubeSection from "@/components/ui/youtube-section";
-import SimpleScrollIndicator from "@/components/ui/simple-scroll-indicator";
 import {
   Code2,
   Frame,
@@ -186,9 +185,6 @@ export default function Home() {
           onExpansionChange={(scrollProgress) => setNavFadeOut(scrollProgress > 0)}
         >
         </ScrollExpandMedia>
-
-        {/* Simple Scroll Indicator - visible on first load */}
-        <SimpleScrollIndicator />
 
         {/* About */}
         <section id="about" data-scroll-section className="relative z-10 bg-background">
