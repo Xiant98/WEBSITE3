@@ -273,7 +273,7 @@ const ScrollExpandMedia = ({
                     opacity: Math.max(0, 1 - scrollProgress * 1.2)
                   }}
                 >
-                  <span className="text-foreground">Mass Messaging,</span>
+                  <span className="text-foreground">Prospect's Activity,</span>
                 </motion.h2>
                 <motion.h2
                   className='text-4xl md:text-5xl lg:text-6xl font-bold text-center transition-none'
@@ -282,7 +282,7 @@ const ScrollExpandMedia = ({
                     opacity: Math.max(0, 1 - scrollProgress * 1.2)
                   }}
                 >
-                  <span className="text-primary">Uniquely Personal.</span>
+                  <span className="text-primary">Mass AI-Automation.</span>
                 </motion.h2>
               </div>
             </div>
@@ -297,7 +297,7 @@ const ScrollExpandMedia = ({
                 transition={{ duration: 0.5 }}
               >
                 {/* Keep scrolling text */}
-                <p className="text-[10px] font-medium mb-1 tracking-wide">
+                <p className="text-[10px] font-medium mb-px tracking-wide">
                   Keep scrolling
                 </p>
                 
