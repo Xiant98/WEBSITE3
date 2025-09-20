@@ -211,6 +211,28 @@ const ScrollExpandMedia = ({
       <div className='sticky top-0 w-full h-screen flex flex-col items-center justify-center overflow-hidden'>
         <div className='container mx-auto flex flex-col items-center justify-center relative max-w-full overflow-hidden'>
           <div className='flex flex-col items-center justify-center w-full h-full relative'>
+            {/* "Your Online Activity, Mass AI Automation" heading above video */}
+            <div className="flex flex-col items-center justify-center text-center mb-8">
+              <motion.h2
+                className='text-4xl md:text-5xl lg:text-6xl font-bold text-center transition-none whitespace-nowrap mb-2'
+                style={{ 
+                  transform: `translateX(-${textTranslateX}vw)`,
+                  opacity: Math.max(0, 1 - scrollProgress * 1.2)
+                }}
+              >
+                <span className="text-foreground">Your Online Activity,</span>
+              </motion.h2>
+              <motion.h2
+                className='text-4xl md:text-5xl lg:text-6xl font-bold text-center transition-none'
+                style={{ 
+                  transform: `translateX(${textTranslateX}vw)`,
+                  opacity: Math.max(0, 1 - scrollProgress * 1.2)
+                }}
+              >
+                <span className="text-primary">Mass AI Automation.</span>
+              </motion.h2>
+            </div>
+            
             <motion.div
               className='transition-none overflow-hidden bg-background rounded-2xl border border-border'
               style={{
@@ -229,28 +251,6 @@ const ScrollExpandMedia = ({
             >
                 {/* Scroll Velocity "Video" Content */}
                 <div className='relative w-full h-full bg-background'>
-                  {/* "Your Online Activity, Mass AI Automation" heading on top of video */}
-                  <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center">
-                    <motion.h2
-                      className='text-4xl md:text-5xl lg:text-6xl font-bold text-center transition-none whitespace-nowrap mb-2'
-                      style={{ 
-                        transform: `translateX(-${textTranslateX}vw)`,
-                        opacity: Math.max(0, 1 - scrollProgress * 1.2)
-                      }}
-                    >
-                      <span className="text-foreground">Your Online Activity,</span>
-                    </motion.h2>
-                    <motion.h2
-                      className='text-4xl md:text-5xl lg:text-6xl font-bold text-center transition-none'
-                      style={{ 
-                        transform: `translateX(${textTranslateX}vw)`,
-                        opacity: Math.max(0, 1 - scrollProgress * 1.2)
-                      }}
-                    >
-                      <span className="text-primary">Mass AI Automation.</span>
-                    </motion.h2>
-                  </div>
-                  
                   <div className="absolute inset-0 z-10 w-full h-full flex flex-col justify-center space-y-12 opacity-90 overflow-hidden">
                     <ScrollVelocity velocity={0.35} className="text-muted-foreground/65 leading-relaxed">
                       {row1Messages}
