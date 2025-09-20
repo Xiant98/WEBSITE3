@@ -287,10 +287,11 @@ const ScrollExpandMedia = ({
               </div>
             </div>
 
-            {/* Down Arrow Indicator */}
+            {/* Down Arrow Indicator - Fixed to viewport bottom */}
             {showContinueArrow && (
               <motion.div
-                className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-primary/70"
+                className="fixed left-1/2 transform -translate-x-1/2 text-primary/70 z-50 pointer-events-none"
+                style={{ bottom: 'calc(env(safe-area-inset-bottom, 0px) + 20px)' }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
