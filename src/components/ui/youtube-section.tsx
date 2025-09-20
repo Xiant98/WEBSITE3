@@ -14,7 +14,7 @@ interface YouTubeSectionProps {
 const YouTubeSection = ({ 
   videoId = "dQw4w9WgXcQ", // Placeholder - Rick Roll 
   title = "Watch Our Story",
-  description = "Discover how we're revolutionizing business communication through innovative solutions.",
+  description,
   className = ""
 }: YouTubeSectionProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -48,9 +48,11 @@ const YouTubeSection = ({
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
             {title}
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            {description}
-          </p>
+          {description && (
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+              {description}
+            </p>
+          )}
         </motion.div>
 
         {/* Video Player Container - Full width with 90% and margins */}
