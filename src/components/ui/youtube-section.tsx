@@ -14,7 +14,7 @@ interface YouTubeSectionProps {
 const YouTubeSection = ({ 
   videoId = "dQw4w9WgXcQ", // Placeholder - Rick Roll 
   title = "Watch Our Story",
-  description = "Discover how we're revolutionizing mass messaging with personal touch",
+  description = "Discover how we're revolutionizing business communication through innovative solutions.",
   className = ""
 }: YouTubeSectionProps) => {
   const [isPlaying, setIsPlaying] = useState(false);

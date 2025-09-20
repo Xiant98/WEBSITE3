@@ -297,7 +297,7 @@ const ScrollExpandMedia = ({
                 transition={{ duration: 0.5 }}
               >
                 {/* Keep scrolling text */}
-                <p className="text-[10px] font-medium mb-px tracking-wide">
+                <p className="text-[10px] font-medium mb-1 tracking-wide">
                   Keep scrolling
                 </p>
                 

@@ -228,8 +228,7 @@ export default function Home() {
         {/* YouTube Video Section */}
         <YouTubeSection 
           videoId="dQw4w9WgXcQ"
-          title="Our Story in Motion"
-          description="Watch how we're revolutionizing business communication with AI-powered personalization"
+          title="Meet Mukesh, the Sales Hunter"
           className="relative z-10"
         />
 
