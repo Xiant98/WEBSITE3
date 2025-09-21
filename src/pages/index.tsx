@@ -1,7 +1,7 @@
 import Container from "@/components/Container";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import VideoPlayer from "@/components/ui/video-player";
+import MediaModal from "@/components/ui/media-modal";
 import ScrollExpandMedia from "@/components/ui/scroll-expansion-hero";
 import YouTubeSection from "@/components/ui/youtube-section";
 import {
@@ -101,7 +101,7 @@ const services = [
 
 export default function Home() {
   const refScrollContainer = useRef(null);
-  const [isVideoPlayerOpen, setIsVideoPlayerOpen] = useState(false);
+  const [selectedMedia, setSelectedMedia] = useState<string | null>(null);
   const [, setCarouselApi] = useState<CarouselApi | null>(null);
   const [navFadeOut, setNavFadeOut] = useState<boolean>(false);
 
@@ -171,11 +171,12 @@ export default function Home() {
       <div ref={refScrollContainer}>
         <Gradient />
         
-        {/* Video Player Modal */}
-        <VideoPlayer 
-          isOpen={isVideoPlayerOpen}
-          onClose={() => setIsVideoPlayerOpen(false)}
-          videoId="ZILw6IfCgNg"
+        {/* Media Modal */}
+        <MediaModal 
+          isOpen={!!selectedMedia}
+          onClose={() => setSelectedMedia(null)}
+          mediaUrl={selectedMedia || ""}
+          title="Project Media"
         />
 
         {/* Scroll Expansion Hero Section */}
@@ -228,7 +229,7 @@ export default function Home() {
         {/* YouTube Video Section */}
         <YouTubeSection 
           videoId="dQw4w9WgXcQ"
-          title="Meet Mukesh, the Sales Hunter"
+          title="Winning with AI When Everyone’s Doing It"
           className="relative z-10"
         />
 
@@ -282,8 +283,8 @@ export default function Home() {
                             className="cursor-pointer"
                             onClick={(e) => {
                               e.preventDefault();
-                              // Open video player for all projects
-                              setIsVideoPlayerOpen(true);
+                              // Open media modal with the project's media file
+                              setSelectedMedia(project.image);
                             }}
                           >
                             {project.image.endsWith(".webm") ? (

@@ -153,7 +153,7 @@ const YouTubeSection = ({
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <p className="text-muted-foreground">
-            See how we&apos;re transforming business communication with AI-powered personalization
+            I specialize in deep data-driven personalization that companies & firms struggle to replicate due to compliance and ethical reasons.
           </p>
         </motion.div>
       </div>

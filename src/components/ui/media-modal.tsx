@@ -1,19 +1,18 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
-
-interface VideoPlayerProps {
+interface MediaModalProps {
   isOpen: boolean;
   onClose: () => void;
-  videoId: string;
+  mediaUrl: string;
+  title?: string;
 }
 
-const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
-  const [isLoading, setIsLoading] = useState(true);
-
+const MediaModal = ({ isOpen, onClose, mediaUrl, title }: MediaModalProps) => {
   // Handle escape key and body overflow
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -33,13 +32,8 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
     };
   }, [isOpen, onClose]);
 
-  // Handle loading state
-  const handleIframeLoad = () => {
-    setIsLoading(false);
-  };
-
-  // Build YouTube embed URL with autoplay
-  const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&controls=1&rel=0&modestbranding=1&iv_load_policy=3&cc_load_policy=0`;
+  // Determine if media is video or image
+  const isVideo = mediaUrl.endsWith('.webm') || mediaUrl.endsWith('.mp4');
 
   if (!isOpen) return null;
 
@@ -53,7 +47,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
         >
-          {/* Background Overlay - 50% darkened */}
+          {/* Background Overlay - Click outside to close */}
           <motion.div
             className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"
             initial={{ opacity: 0 }}
@@ -62,7 +56,7 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
             onClick={onClose}
           />
 
-          {/* Video Player Container */}
+          {/* Media Container */}
           <motion.div
             className="relative w-full max-w-4xl mx-auto rounded-xl overflow-hidden bg-[#11111198] shadow-[0_0_20px_rgba(0,0,0,0.2)] backdrop-blur-sm"
             initial={{ opacity: 0, y: 20 }}
@@ -79,29 +73,26 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
               <X className="w-5 h-5" />
             </motion.button>
 
-            {/* YouTube Video */}
+            {/* Media Content */}
             <div className="relative w-full aspect-video">
-              <iframe
-                src={embedUrl}
-                className="w-full h-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                style={{ border: 'none' }}
-                onLoad={handleIframeLoad}
-              />
-
-              {/* Loading Animation */}
-              {isLoading && (
-                <motion.div
-                  className="absolute inset-0 bg-black/20 flex items-center justify-center"
-                  initial={{ opacity: 1 }}
-                  animate={{ opacity: isLoading ? 1 : 0 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <div className="w-12 h-12 border-4 border-white/20 border-t-white rounded-full animate-spin" />
-                </motion.div>
+              {isVideo ? (
+                <video
+                  src={mediaUrl}
+                  autoPlay
+                  loop
+                  muted
+                  className="w-full h-full object-cover"
+                  style={{ border: 'none' }}
+                />
+              ) : (
+                <Image
+                  src={mediaUrl}
+                  alt={title || "Media content"}
+                  fill
+                  className="object-contain"
+                  quality={100}
+                />
               )}
-
             </div>
           </motion.div>
         </motion.div>
@@ -110,4 +101,4 @@ const VideoPlayer = ({ isOpen, onClose, videoId }: VideoPlayerProps) => {
   );
 };
 
-export default VideoPlayer;
+export default MediaModal;
