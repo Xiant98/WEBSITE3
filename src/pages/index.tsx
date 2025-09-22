@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import MediaModal from "@/components/ui/media-modal";
 import ScrollExpandMedia from "@/components/ui/scroll-expansion-hero";
-import YouTubeSection from "@/components/ui/youtube-section";
+import LoomSection from "@/components/ui/loom-section";
 import {
   Code2,
   Frame,
@@ -226,9 +226,9 @@ export default function Home() {
           </div>
         </section>
 
-        {/* YouTube Video Section */}
-        <YouTubeSection 
-          videoId="https://www.loom.com/embed/42dd4e8ce40c40129fdf851bb2ac710e?sid=19b7c37e-283c-4657-a251-ffc67bcae31c"
+        {/* Loom Video Section */}
+        <LoomSection 
+          loomUrl="https://www.loom.com/embed/42dd4e8ce40c40129fdf851bb2ac710e?sid=19b7c37e-283c-4657-a251-ffc67bcae31c"
           title="Winning with AI When Everyone’s Doing It"
           className="relative z-10"
         />

@@ -4,35 +4,24 @@ import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Loader2 } from 'lucide-react';
 
-interface YouTubeSectionProps {
-  videoId?: string;
+interface LoomSectionProps {
+  loomUrl: string;
   title?: string;
   description?: string;
   className?: string;
 }
 
-const YouTubeSection = ({ 
-  videoId = "dQw4w9WgXcQ", // Placeholder - Rick Roll 
+const LoomSection = ({ 
+  loomUrl,
   title = "Watch Our Story",
   description,
   className = ""
-}: YouTubeSectionProps) => {
+}: LoomSectionProps) => {
   
-  // Extract video ID and determine platform
-  const extractYouTubeId = (url: string): string | null => {
-    const patterns = [
-      /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/,
-      /youtube\.com\/watch\?.*v=([^&\n?#]+)/
-    ];
-    
-    for (const pattern of patterns) {
-      const match = url.match(pattern);
-      if (match && match[1]) return match[1];
-    }
-    return null;
-  };
-  
+  // Extract Loom video ID from URL
   const extractLoomId = (url: string): string | null => {
+    if (!url || typeof url !== 'string') return null;
+    
     const patterns = [
       /loom\.com\/embed\/([^?&\n#]+)/,
       /loom\.com\/share\/([^?&\n#]+)/
@@ -45,39 +34,28 @@ const YouTubeSection = ({
     return null;
   };
   
-  const youtubeId = extractYouTubeId(videoId);
-  const loomId = extractLoomId(videoId);
-  const isPlainYouTubeId = /^[\w-]{11}$/.test(videoId);
-  const isLoom = !!loomId;
-  const isYouTube = !!youtubeId || (!loomId && isPlainYouTubeId);
-  const finalVideoId = loomId || youtubeId || (isPlainYouTubeId ? videoId : videoId);
+  const loomId = extractLoomId(loomUrl);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   const handlePlayClick = () => {
-    setIsPlaying(true);
-    if (isYouTube || isLoom) {
-      setIsLoading(true);
-    } else {
+    if (!loomId) {
+      setIsPlaying(true);
       setIsLoading(false);
+      return;
     }
+    setIsPlaying(true);
+    setIsLoading(true);
   };
 
   const handleIframeLoad = () => {
     setIsLoading(false);
   };
 
-  const getThumbnailUrl = (videoId: string) => {
-    if (isLoom) {
-      // Loom doesn't have a public thumbnail API, so we'll use a generic video placeholder (SSR-safe)
-      return `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720"><rect width="100%" height="100%" fill="%231a1a1a"/><circle cx="640" cy="360" r="60" fill="%236366f1" opacity="0.8"/><polygon points="620,340 620,380 660,360" fill="white"/><text x="640" y="420" text-anchor="middle" fill="%239ca3af" font-family="Arial, sans-serif" font-size="24">Loom Video</text></svg>`;
-    }
-    if (isYouTube) {
-      return `https://img.youtube.com/vi/${finalVideoId}/maxresdefault.jpg`;
-    }
-    // Fallback for unknown video types
-    return `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720"><rect width="100%" height="100%" fill="%231a1a1a"/><circle cx="640" cy="360" r="60" fill="%236366f1" opacity="0.8"/><polygon points="620,340 620,380 660,360" fill="white"/><text x="640" y="420" text-anchor="middle" fill="%239ca3af" font-family="Arial, sans-serif" font-size="24">Video</text></svg>`;
+  // Loom doesn't have a public thumbnail API, so we use a custom placeholder
+  const getThumbnailUrl = () => {
+    return `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720"><rect width="100%" height="100%" fill="%231a1a1a"/><circle cx="640" cy="360" r="60" fill="%236366f1" opacity="0.8"/><polygon points="620,340 620,380 660,360" fill="white"/><text x="640" y="420" text-anchor="middle" fill="%239ca3af" font-family="Arial, sans-serif" font-size="24">Loom Video</text></svg>`;
   };
 
   return (
@@ -101,7 +79,7 @@ const YouTubeSection = ({
           )}
         </motion.div>
 
-        {/* Video Player Container - Full width with 90% and margins */}
+        {/* Loom Player Container - Full width with 90% and margins */}
         <motion.div 
           className="relative w-[90%] mx-auto"
           initial={{ opacity: 0, scale: 0.95 }}
@@ -109,7 +87,7 @@ const YouTubeSection = ({
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <div className={`relative w-full h-0 ${isLoom ? 'pb-[65%]' : 'pb-[56.25%]'} rounded-2xl overflow-hidden shadow-2xl bg-black`}>
+          <div className="relative w-full h-0 pb-[65%] rounded-2xl overflow-hidden shadow-2xl bg-black">
             <AnimatePresence mode="wait">
               {!isPlaying ? (
                 // Thumbnail with Play Button
@@ -121,18 +99,11 @@ const YouTubeSection = ({
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  {/* Video Thumbnail */}
+                  {/* Loom Thumbnail */}
                   <img
-                    src={getThumbnailUrl(finalVideoId)}
-                    alt="Video thumbnail"
+                    src={getThumbnailUrl()}
+                    alt="Loom video thumbnail"
                     className="absolute inset-0 w-full h-full object-cover"
-                    onError={(e) => {
-                      // Fallback to default thumbnail if maxres doesn't exist
-                      const target = e.target as HTMLImageElement;
-                      if (isYouTube) {
-                        target.src = `https://img.youtube.com/vi/${finalVideoId}/hqdefault.jpg`;
-                      }
-                    }}
                   />
                   
                   {/* Dark overlay */}
@@ -157,7 +128,7 @@ const YouTubeSection = ({
                   </div>
                 </motion.div>
               ) : (
-                // YouTube iFrame with Loading Overlay
+                // Loom iFrame with Loading Overlay
                 <motion.div
                   key="video"
                   className="absolute inset-0"
@@ -165,30 +136,23 @@ const YouTubeSection = ({
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.3 }}
                 >
-                  {/* Video iFrame - YouTube or Loom */}
-                  {(isYouTube || isLoom) ? (
+                  {/* Loom Video iFrame */}
+                  {loomId ? (
                     <iframe
                       ref={iframeRef}
-                      src={isLoom 
-                        ? `https://www.loom.com/embed/${finalVideoId}?autoplay=1&hideTitle=true`
-                        : `https://www.youtube.com/embed/${finalVideoId}?autoplay=1&rel=0&showinfo=0&modestbranding=1`
-                      }
-                      title={isLoom ? "Loom video player" : "YouTube video player"}
+                      src={`https://www.loom.com/embed/${loomId}?autoplay=1&hideTitle=true`}
+                      title="Loom video player"
                       className="absolute inset-0 w-full h-full"
                       frameBorder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                       allowFullScreen
                       onLoad={handleIframeLoad}
-                      {...(isLoom && {
-                        webkitallowfullscreen: "true",
-                        mozallowfullscreen: "true"
-                      })}
                     />
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center bg-black">
                       <div className="flex flex-col items-center text-white">
-                        <p className="text-lg mb-4">Unsupported video type</p>
-                        <p className="text-sm text-gray-400">Please provide a YouTube or Loom video URL</p>
+                        <p className="text-lg mb-4">Invalid Loom URL</p>
+                        <p className="text-sm text-gray-400">Please provide a valid Loom video URL</p>
                       </div>
                     </div>
                   )}
@@ -225,4 +189,4 @@ const YouTubeSection = ({
   );
 };
 
-export default YouTubeSection;
+export default LoomSection;
