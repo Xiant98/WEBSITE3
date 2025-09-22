@@ -140,7 +140,7 @@ const LoomSection = ({
                   {loomId ? (
                     <iframe
                       ref={iframeRef}
-                      src={`https://www.loom.com/embed/${loomId}?autoplay=1&hideTitle=true`}
+                      src={`https://www.loom.com/embed/${loomId}?autoplay=1&hide_owner=true`}
                       title="Loom video player"
                       className="absolute inset-0 w-full h-full"
                       frameBorder="0"
