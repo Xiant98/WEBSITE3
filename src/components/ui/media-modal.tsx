@@ -13,6 +13,20 @@ interface MediaModalProps {
 }
 
 const MediaModal = ({ isOpen, onClose, mediaUrl, title }: MediaModalProps) => {
+  // Extract YouTube video ID from various YouTube URL formats
+  const extractYouTubeId = (url: string): string | null => {
+    const patterns = [
+      /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/,
+      /youtube\.com\/watch\?.*v=([^&\n?#]+)/
+    ];
+    
+    for (const pattern of patterns) {
+      const match = url.match(pattern);
+      if (match && match[1]) return match[1];
+    }
+    return null;
+  };
+
   // Handle escape key and body overflow
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -32,8 +46,10 @@ const MediaModal = ({ isOpen, onClose, mediaUrl, title }: MediaModalProps) => {
     };
   }, [isOpen, onClose]);
 
-  // Determine if media is video or image
-  const isVideo = mediaUrl.endsWith('.webm') || mediaUrl.endsWith('.mp4');
+  // Determine media type
+  const youtubeId = extractYouTubeId(mediaUrl);
+  const isYouTube = !!youtubeId;
+  const isVideo = !isYouTube && (mediaUrl.endsWith('.webm') || mediaUrl.endsWith('.mp4'));
 
   if (!isOpen) return null;
 
@@ -75,7 +91,18 @@ const MediaModal = ({ isOpen, onClose, mediaUrl, title }: MediaModalProps) => {
 
             {/* Media Content */}
             <div className="relative w-full aspect-video">
-              {isVideo ? (
+              {isYouTube ? (
+                <iframe
+                  src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0&modestbranding=1`}
+                  title="YouTube video player"
+                  className="w-full h-full"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                  style={{ border: 'none' }}
+                />
+              ) : isVideo ? (
                 <video
                   src={mediaUrl}
                   autoPlay
