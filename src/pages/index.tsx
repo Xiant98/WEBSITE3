@@ -228,7 +228,7 @@ export default function Home() {
 
         {/* YouTube Video Section */}
         <YouTubeSection 
-          videoId="dQw4w9WgXcQ"
+          videoId="https://www.loom.com/embed/42dd4e8ce40c40129fdf851bb2ac710e?sid=19b7c37e-283c-4657-a251-ffc67bcae31c"
           title="Winning with AI When Everyone’s Doing It"
           className="relative z-10"
         />
