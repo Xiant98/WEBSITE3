@@ -22,7 +22,7 @@ const MediaModal = ({ isOpen, onClose, mediaUrl, title }: MediaModalProps) => {
     
     for (const pattern of patterns) {
       const match = url.match(pattern);
-      if (match && match[1]) return match[1];
+      if (match?.[1]) return match[1];
     }
     return null;
   };
@@ -114,7 +114,7 @@ const MediaModal = ({ isOpen, onClose, mediaUrl, title }: MediaModalProps) => {
               ) : (
                 <Image
                   src={mediaUrl}
-                  alt={title || "Media content"}
+                  alt={title ?? "Media content"}
                   fill
                   className="object-contain"
                   quality={100}
