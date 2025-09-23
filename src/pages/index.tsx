@@ -242,7 +242,8 @@ export default function Home() {
                 frameBorder="0" 
                 allowFullScreen 
                 style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-                    />
+                title="Winning with AI When Everyone's Doing It"
+              />
             </div>
           </div>
         </section> 
