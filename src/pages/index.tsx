@@ -245,6 +245,13 @@ export default function Home() {
                 title="Winning with AI When Everyone's Doing It"
               />
             </div>
+            
+            {/* Bottom descriptive text */}
+            <div className="text-center mt-8">
+              <p className="text-muted-foreground">
+                I specialize in deep data-driven personalization that companies & firms struggle to replicate due to technical and ethical reasons.
+              </p>
+            </div>
           </div>
         </section> 
 
