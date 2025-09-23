@@ -181,7 +181,7 @@ const LoomSection = ({
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <p className="text-muted-foreground">
-            I specialize in deep data-driven personalization that companies & firms struggle to replicate due to compliance and ethical reasons.
+            I specialize in deep data-driven personalization that companies & firms struggle to replicate due to technical and ethical reasons.
           </p>
         </motion.div>
       </div>
