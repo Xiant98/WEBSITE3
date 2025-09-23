@@ -3,6 +3,7 @@
 import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Loader2 } from 'lucide-react';
+import Image from 'next/image';
 
 interface LoomSectionProps {
   loomUrl: string;
@@ -29,7 +30,7 @@ const LoomSection = ({
     
     for (const pattern of patterns) {
       const match = url.match(pattern);
-      if (match && match[1]) return match[1];
+      if (match?.[1]) return match[1];
     }
     return null;
   };
@@ -100,10 +101,12 @@ const LoomSection = ({
                   transition={{ duration: 0.3 }}
                 >
                   {/* Loom Thumbnail */}
-                  <img
+                  <Image
                     src={getThumbnailUrl()}
                     alt="Loom video thumbnail"
                     className="absolute inset-0 w-full h-full object-cover"
+                    fill
+                    priority
                   />
                   
                   {/* Dark overlay */}
