@@ -18,7 +18,7 @@ const LoomSection = ({
   className = ""
 }: LoomSectionProps) => {
   
-  // Extract Loom video ID from URL
+  // Extract Loom video ID and preserve full URL with parameters
   const extractLoomId = (url: string): string | null => {
     if (!url || typeof url !== 'string') return null;
     
@@ -140,7 +140,7 @@ const LoomSection = ({
                   {loomId ? (
                     <iframe
                       ref={iframeRef}
-                      src={`https://www.loom.com/embed/${loomId}?autoplay=1&hide_owner=true`}
+                      src={`${loomUrl}${loomUrl.includes('?') ? '&' : '?'}autoplay=1`}
                       title="Loom video player"
                       className="absolute inset-0 w-full h-full"
                       frameBorder="0"

@@ -228,7 +228,7 @@ export default function Home() {
 
         {/* Loom Video Section */}
         <LoomSection 
-          loomUrl="https://www.loom.com/embed/42dd4e8ce40c40129fdf851bb2ac710e?sid=19b7c37e-283c-4657-a251-ffc67bcae31c"
+          loomUrl="https://www.loom.com/embed/fa4d040018274089ba384fd77bcab9d5?sid=d24456e9-79e6-423a-bae8-7d50b8280690"
           title="Winning with AI When Everyone’s Doing It"
           className="relative z-10"
         />
