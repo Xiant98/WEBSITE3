@@ -247,8 +247,6 @@ export default function Home() {
             </div>
           </div>
         </section> 
-          title="Winning with AI When Everyone’s Doing It"
-        />
 
         {/* Projects */}
         <section id="projects" data-scroll-section className="relative z-10 bg-background">
