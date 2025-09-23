@@ -174,7 +174,7 @@ export default function Home() {
         <MediaModal 
           isOpen={!!selectedMedia}
           onClose={() => setSelectedMedia(null)}
-          mediaUrl={selectedMedia || ""}
+          mediaUrl={selectedMedia ?? ""}
           title="Project Media"
         />
 
