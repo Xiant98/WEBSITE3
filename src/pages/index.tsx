@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import MediaModal from "@/components/ui/media-modal";
 import ScrollExpandMedia from "@/components/ui/scroll-expansion-hero";
-import LoomSection from "@/components/ui/loom-section";
 import {
   Code2,
   Frame,
@@ -227,10 +226,27 @@ export default function Home() {
         </section>
 
         {/* Loom Video Section */}
-        <LoomSection 
-          loomUrl="https://www.loom.com/embed/fa4d040018274089ba384fd77bcab9d5?sid=d24456e9-79e6-423a-bae8-7d50b8280690"
+        <section className="py-16 md:py-24 bg-background relative z-10" data-scroll-section>
+          <div className="container mx-auto px-4 max-w-4xl">
+            {/* Section Header */}
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
+                Winning with AI When Everyone&apos;s Doing It
+              </h2>
+            </div>
+            
+            {/* Simple Loom Embed */}
+            <div style={{ position: 'relative', paddingBottom: '62.7177700348432%', height: 0 }}>
+              <iframe 
+                src="https://www.loom.com/embed/fa4d040018274089ba384fd77bcab9d5?sid=d24456e9-79e6-423a-bae8-7d50b8280690" 
+                frameBorder="0" 
+                allowFullScreen 
+                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+                    />
+            </div>
+          </div>
+        </section> 
           title="Winning with AI When Everyone’s Doing It"
-          className="relative z-10"
         />
 
         {/* Projects */}
