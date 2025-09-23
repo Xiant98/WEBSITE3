@@ -21,7 +21,7 @@ interface ScrollExpandMediaProps {
 const ScrollExpandMedia = ({
   title: _title,
   date,
-  scrollToExpand,
+  scrollToExpand: _scrollToExpand,
   textBlend: _textBlend,
   children,
   onExpansionChange,
@@ -273,7 +273,7 @@ const ScrollExpandMedia = ({
                     opacity: Math.max(0, 1 - scrollProgress * 1.2)
                   }}
                 >
-                  <span className="text-foreground">Prospect's Activity,</span>
+                  <span className="text-foreground">Prospect&apos;s Activity,</span>
                 </motion.h2>
                 <motion.h2
                   className='text-4xl md:text-5xl lg:text-6xl font-bold text-center transition-none'
