@@ -258,6 +258,12 @@ export default function Home() {
         {/* Powerslides Section */}
         <section className="py-16 md:py-24 bg-background relative z-10" data-scroll-section>
           <div className="container mx-auto px-4 max-w-4xl">
+            {/* Section Header */}
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
+                Prospect&apos;s Online Activity AI Outreach Automation
+              </h2>
+            </div>
             
             {/* Interactive Presentation Container */}
             <motion.div 
@@ -267,22 +273,6 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              {/* Tap to Explore Prompt */}
-              <motion.div
-                className="absolute top-4 left-1/2 transform -translate-x-1/2 z-20 bg-primary/90 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg"
-                initial={{ opacity: 1, y: 0 }}
-                animate={{ 
-                  opacity: [1, 0.7, 1],
-                  y: [0, -5, 0]
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: 3,
-                  repeatType: "loop"
-                }}
-              >
-                👆 Tap to explore slides
-              </motion.div>
               
               {/* Left Navigation Arrow */}
               <motion.div
@@ -385,17 +375,6 @@ export default function Home() {
               </div>
             </motion.div>
             
-            {/* Attribution */}
-            <div className="text-center mt-4">
-              <a 
-                href="https://www.canva.com/design/DAGqrJoM_EU/51Oy8SKOIakbiVsM95QzJw/view?utm_content=DAGqrJoM_EU&utm_campaign=designshare&utm_medium=embeds&utm_source=link" 
-                target="_blank" 
-                rel="noopener"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors underline"
-              >
-                Prospect&apos;s Online Activity AI Outreach Automation Deck by Mukesh Kalungan
-              </a>
-            </div>
           </div>
         </section>
 
