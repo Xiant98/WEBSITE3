@@ -249,7 +249,7 @@ export default function Home() {
             {/* Bottom descriptive text */}
             <div className="text-center mt-8">
               <p className="text-muted-foreground">
-                I specialize in deep data-driven personalization that companies & firms struggle to replicate due to B2B Technical reasons.
+                Showcasing deep data-driven personalization that your competitors cannot replicate.
               </p>
             </div>
           </div>
@@ -261,7 +261,7 @@ export default function Home() {
             {/* Section Header */}
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
-                Prospect&apos;s Online Activity AI Outreach Automation
+                Short on time? here are the slides
               </h2>
             </div>
             
