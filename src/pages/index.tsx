@@ -258,27 +258,132 @@ export default function Home() {
         {/* Powerslides Section */}
         <section className="py-16 md:py-24 bg-background relative z-10" data-scroll-section>
           <div className="container mx-auto px-4 max-w-4xl">
-            {/* Section Header */}
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
-                Prospect&apos;s Online Activity AI Outreach Automation
-              </h2>
-              <p className="text-muted-foreground">
-                Discover how AI can transform your outreach strategy with personalized, data-driven automation
-              </p>
-            </div>
             
-            {/* Canva Powerslides Embed */}
-            <div style={{ position: 'relative', width: '100%', height: 0, paddingTop: '56.2500%', paddingBottom: 0, boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)', marginTop: '1.6em', marginBottom: '0.9em', overflow: 'hidden', borderRadius: '8px', willChange: 'transform' }}>
-              <iframe 
-                loading="lazy" 
-                style={{ position: 'absolute', width: '100%', height: '100%', top: 0, left: 0, border: 'none', padding: 0, margin: 0 }}
-                src="https://www.canva.com/design/DAGqrJoM_EU/51Oy8SKOIakbiVsM95QzJw/view?embed" 
-                allowFullScreen 
-                allow="fullscreen"
-                title="Prospect's Online Activity AI Outreach Automation Deck"
-              />
-            </div>
+            {/* Interactive Presentation Container */}
+            <motion.div 
+              className="relative group"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              {/* Tap to Explore Prompt */}
+              <motion.div
+                className="absolute top-4 left-1/2 transform -translate-x-1/2 z-20 bg-primary/90 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg"
+                initial={{ opacity: 1, y: 0 }}
+                animate={{ 
+                  opacity: [1, 0.7, 1],
+                  y: [0, -5, 0]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: 3,
+                  repeatType: "loop"
+                }}
+              >
+                👆 Tap to explore slides
+              </motion.div>
+              
+              {/* Left Navigation Arrow */}
+              <motion.div
+                className="absolute left-2 top-1/2 transform -translate-y-1/2 z-20 bg-white/10 backdrop-blur-sm rounded-full p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                animate={{ 
+                  x: [-5, 5, -5],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  repeatType: "loop"
+                }}
+              >
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </motion.div>
+              
+              {/* Right Navigation Arrow */}
+              <motion.div
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 z-20 bg-white/10 backdrop-blur-sm rounded-full p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                animate={{ 
+                  x: [5, -5, 5],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  repeatType: "loop"
+                }}
+              >
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </motion.div>
+              
+              {/* Progress Indicators */}
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20 flex space-x-2">
+                {[...Array(5)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="w-2 h-2 bg-white/50 rounded-full"
+                    animate={{
+                      backgroundColor: i === 0 ? "#ffffff" : "#ffffff80",
+                      scale: i === 0 ? 1.2 : 1
+                    }}
+                    transition={{
+                      duration: 0.3,
+                      delay: i * 0.1
+                    }}
+                  />
+                ))}
+              </div>
+              
+              {/* Canva Powerslides Embed with Hover Effect */}
+              <motion.div 
+                className="relative cursor-pointer"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+                style={{ 
+                  position: 'relative', 
+                  width: '100%', 
+                  height: 0, 
+                  paddingTop: '56.2500%', 
+                  paddingBottom: 0, 
+                  boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)', 
+                  marginTop: '1.6em', 
+                  marginBottom: '0.9em', 
+                  overflow: 'hidden', 
+                  borderRadius: '8px', 
+                  willChange: 'transform' 
+                }}
+              >
+                <iframe 
+                  loading="lazy" 
+                  style={{ position: 'absolute', width: '100%', height: '100%', top: 0, left: 0, border: 'none', padding: 0, margin: 0 }}
+                  src="https://www.canva.com/design/DAGqrJoM_EU/51Oy8SKOIakbiVsM95QzJw/view?embed" 
+                  allowFullScreen 
+                  allow="fullscreen"
+                  title="Prospect's Online Activity AI Outreach Automation Deck"
+                />
+                
+                {/* Interactive Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+              </motion.div>
+            </motion.div>
+            
+            {/* Enhanced Instructions */}
+            <motion.div 
+              className="text-center mt-6 space-y-2"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                <span>Use</span>
+                <kbd className="px-2 py-1 bg-muted rounded text-xs">←</kbd>
+                <kbd className="px-2 py-1 bg-muted rounded text-xs">→</kbd>
+                <span>or click to navigate</span>
+              </div>
+            </motion.div>
             
             {/* Attribution */}
             <div className="text-center mt-4">
