@@ -249,11 +249,50 @@ export default function Home() {
             {/* Bottom descriptive text */}
             <div className="text-center mt-8">
               <p className="text-muted-foreground">
-                I specialize in deep data-driven personalization that companies & firms struggle to replicate due to technical and ethical reasons.
+                I specialize in deep data-driven personalization that companies & firms struggle to replicate due to B2B Technical reasons.
               </p>
             </div>
           </div>
-        </section> 
+        </section>
+
+        {/* Powerslides Section */}
+        <section className="py-16 md:py-24 bg-background relative z-10" data-scroll-section>
+          <div className="container mx-auto px-4 max-w-4xl">
+            {/* Section Header */}
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
+                Prospect&apos;s Online Activity AI Outreach Automation
+              </h2>
+              <p className="text-muted-foreground">
+                Discover how AI can transform your outreach strategy with personalized, data-driven automation
+              </p>
+            </div>
+            
+            {/* Canva Powerslides Embed */}
+            <div style={{ position: 'relative', width: '100%', height: 0, paddingTop: '56.2500%', paddingBottom: 0, boxShadow: '0 2px 8px 0 rgba(63,69,81,0.16)', marginTop: '1.6em', marginBottom: '0.9em', overflow: 'hidden', borderRadius: '8px', willChange: 'transform' }}>
+              <iframe 
+                loading="lazy" 
+                style={{ position: 'absolute', width: '100%', height: '100%', top: 0, left: 0, border: 'none', padding: 0, margin: 0 }}
+                src="https://www.canva.com/design/DAGqrJoM_EU/51Oy8SKOIakbiVsM95QzJw/view?embed" 
+                allowFullScreen 
+                allow="fullscreen"
+                title="Prospect's Online Activity AI Outreach Automation Deck"
+              />
+            </div>
+            
+            {/* Attribution */}
+            <div className="text-center mt-4">
+              <a 
+                href="https://www.canva.com/design/DAGqrJoM_EU/51Oy8SKOIakbiVsM95QzJw/view?utm_content=DAGqrJoM_EU&utm_campaign=designshare&utm_medium=embeds&utm_source=link" 
+                target="_blank" 
+                rel="noopener"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors underline"
+              >
+                Prospect&apos;s Online Activity AI Outreach Automation Deck by Mukesh Kalungan
+              </a>
+            </div>
+          </div>
+        </section>
 
         {/* Projects */}
         <section id="projects" data-scroll-section className="relative z-10 bg-background">
@@ -277,11 +316,10 @@ export default function Home() {
               ✨ Projects
             </span>
             <h2 className="mt-3 text-4xl font-semibold tracking-tight tracking-tighter xl:text-6xl">
-              Portfolio of Solutions.
+              Not sure how sales can be technical?
             </h2>
             <p className="mt-1.5 text-base tracking-tight text-muted-foreground xl:text-lg">
-              I&apos;ve worked on a variety of projects, from small AI automations to
-              large-scale AI automations. Here are some of my favorites:
+              Here are some of my passion projects that I worked on during my weekends to maximise my sales productivity during selling hours.
             </p>
 
             {/* Carousel */}
@@ -373,14 +411,13 @@ export default function Home() {
             >
               <div className="flex flex-col py-6 xl:p-6">
                 <h2 className="text-4xl font-medium tracking-tight">
-                  Not sure what you need?
+                  AI Autopilot for outreach,
                   <br />
                   <span className="text-gradient clash-grotesk tracking-normal">
-                    I got you.
+                    Personal touch after every response.
                   </span>
                 </h2>
                 <p className="mt-2 tracking-tighter text-secondary-foreground">
-                  Here are some projects I&apos;ve finished. let&apos;s have a chat and I can help plan your next winning strategy.
                 </p>
               </div>
               {services.map((service) => (
@@ -410,11 +447,11 @@ export default function Home() {
             className="flex flex-col items-center justify-center rounded-lg bg-gradient-to-br from-primary/[6.5%] to-white/5 px-8 py-16 text-center xl:py-24"
           >
             <h2 className="text-4xl font-medium tracking-tighter xl:text-6xl">
-              Let&apos;s work{" "}
-              <span className="text-gradient clash-grotesk">together.</span>
+              Any{" "}
+              <span className="text-gradient clash-grotesk">Questions?.</span>
             </h2>
             <p className="mt-1.5 text-base tracking-tight text-muted-foreground xl:text-lg">
-              Let me know what your goals are and leave the planning to me.
+              Ready to chat and exchange insights & ideas!
             </p>
             <Link href="mailto:Mukesh.Kalungan@gmail.com" passHref>
               <Button className="mt-6">Get in touch</Button>
