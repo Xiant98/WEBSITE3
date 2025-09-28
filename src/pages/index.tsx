@@ -310,7 +310,7 @@ export default function Home() {
               
               {/* Progress Indicators */}
               <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20 flex space-x-2">
-                {[...Array(5)].map((_, i) => (
+                {Array.from({length: 5}).map((_, i) => (
                   <motion.div
                     key={i}
                     className="w-2 h-2 bg-white/50 rounded-full"
