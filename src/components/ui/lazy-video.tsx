@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from 'react'
+import { Play } from 'lucide-react'
 
 interface LazyVideoProps {
   src: string
@@ -8,11 +9,13 @@ interface LazyVideoProps {
   alt?: string
   poster?: string
   onClick?: () => void
+  showPlayButton?: boolean
 }
 
-export default function LazyVideo({ src, className, alt, poster, onClick }: LazyVideoProps) {
+export default function LazyVideo({ src, className, alt, poster, onClick, showPlayButton = true }: LazyVideoProps) {
   const [isVisible, setIsVisible] = useState(false)
   const [shouldLoad, setShouldLoad] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
 
@@ -41,7 +44,9 @@ export default function LazyVideo({ src, className, alt, poster, onClick }: Lazy
 
   const handleCanPlay = () => {
     if (videoRef.current && shouldLoad) {
-      void videoRef.current.play().catch(() => {
+      void videoRef.current.play().then(() => {
+        setIsPlaying(true)
+      }).catch(() => {
         // Silently handle autoplay failures
       })
     }
@@ -50,20 +55,33 @@ export default function LazyVideo({ src, className, alt, poster, onClick }: Lazy
   return (
     <div 
       ref={containerRef}
-      className={className}
+      className={`${className} relative group`}
       onClick={onClick}
       style={{ cursor: onClick ? 'pointer' : 'default' }}
     >
       {shouldLoad ? (
-        <video
-          src={src}
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          className="aspect-video h-full w-full rounded-t-md bg-primary object-cover"
-          onCanPlay={handleCanPlay}
-        />
+        <>
+          <video
+            ref={videoRef}
+            src={src}
+            muted
+            loop
+            playsInline
+            autoPlay
+            preload="metadata"
+            className="aspect-video h-full w-full rounded-t-md bg-primary object-cover"
+            onCanPlay={handleCanPlay}
+            onPlay={() => setIsPlaying(true)}
+            onPause={() => setIsPlaying(false)}
+          />
+          {showPlayButton && (
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="w-16 h-16 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg transform transition-all duration-300 group-hover:scale-110 group-hover:bg-white">
+                <Play className="w-8 h-8 text-black fill-black ml-1" />
+              </div>
+            </div>
+          )}
+        </>
       ) : (
         <div 
           className="aspect-video h-full w-full rounded-t-md bg-primary object-cover flex items-center justify-center"
@@ -75,6 +93,11 @@ export default function LazyVideo({ src, className, alt, poster, onClick }: Lazy
         >
           {!poster && (
             <div className="w-12 h-12 border-2 border-white/20 border-t-white/60 rounded-full animate-spin" />
+          )}
+          {showPlayButton && poster && (
+            <div className="w-16 h-16 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg">
+              <Play className="w-8 h-8 text-black fill-black ml-1" />
+            </div>
           )}
         </div>
       )}
