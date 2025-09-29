@@ -165,7 +165,6 @@ export default function Home() {
       perspective: 500, // Reduced from 900
       scale: 0.95, // Reduced effect
       easing: "cubic-bezier(.03,.98,.52,.99)",
-      "transition-timing": "0.1s", // Faster transitions
     });
   }, []);
 
@@ -192,13 +191,8 @@ export default function Home() {
         </ScrollExpandMedia>
 
         {/* About */}
-        <section id="about" data-scroll-section className="relative z-10 bg-background">
-          <div
-            data-scroll
-            data-scroll-speed=".4"
-            data-scroll-position="top"
-            className="pt-8 mb-8 flex max-w-6xl flex-col justify-start space-y-10 bg-background"
-          >
+        <section id="about" className="relative z-10 bg-background">
+          <div className="pt-8 mb-8 flex max-w-6xl flex-col justify-start space-y-10 bg-background">
             <h2 className="py-16  pb-2 text-3xl font-light leading-normal tracking-tighter text-foreground xl:text-[40px]">
               I&apos;m Mukesh, an experienced Sales Hunter with a strong foundation in {" "}
               <Link
@@ -231,7 +225,7 @@ export default function Home() {
         </section>
 
         {/* Loom Video Section */}
-        <section className="py-16 md:py-24 bg-background relative z-10" data-scroll-section>
+        <section className="py-16 md:py-24 bg-background relative z-10">
           <div className="container mx-auto px-4 max-w-4xl">
             {/* Section Header */}
             <div className="text-center mb-12">
@@ -258,7 +252,7 @@ export default function Home() {
         </section>
 
         {/* Powerslides Section */}
-        <section className="py-16 md:py-24 bg-background relative z-10" data-scroll-section>
+        <section className="py-16 md:py-24 bg-background relative z-10">
           <div className="container mx-auto px-4 max-w-4xl">
             {/* Section Header */}
             <div className="text-center mb-12">
@@ -381,7 +375,7 @@ export default function Home() {
         </section>
 
         {/* Projects */}
-        <section id="projects" data-scroll-section className="relative z-10 bg-background">
+        <section id="projects" className="relative z-10 bg-background">
           {/* Gradient */}
           <div className="relative isolate -z-10">
             <div
@@ -397,7 +391,7 @@ export default function Home() {
               />
             </div>
           </div>
-          <div data-scroll data-scroll-speed=".4" className="pt-8 mb-12">
+          <div className="pt-8 mb-12">
             <span className="text-gradient clash-grotesk text-sm font-semibold tracking-tighter">
               ✨ Projects
             </span>
@@ -477,13 +471,8 @@ export default function Home() {
         </section>
 
         {/* Services */}
-        <section id="services" data-scroll-section className="relative z-10 bg-background">
-          <div
-            data-scroll
-            data-scroll-speed=".4"
-            data-scroll-position="top"
-            className="pt-8 mb-12 flex flex-col justify-start space-y-10"
-          >
+        <section id="services" className="relative z-10 bg-background">
+          <div className="pt-8 mb-12 flex flex-col justify-start space-y-10">
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -508,7 +497,7 @@ export default function Home() {
               {services.map((service) => (
                 <div
                   key={service.service}
-                  className="flex flex-col items-start justify-between h-full rounded-md bg-white/5 p-14 shadow-md backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:bg-white/10 hover:shadow-md"
+                  className="flex flex-col items-start justify-between h-full rounded-md bg-white/5 p-14 shadow-md transition duration-300 hover:-translate-y-0.5 hover:bg-white/10 hover:shadow-md"
                 >
                   <service.icon className="my-6 text-primary" size={20} />
                   <span className="text-lg tracking-tight text-foreground">
@@ -524,13 +513,8 @@ export default function Home() {
         </section>
 
         {/* Contact */}
-<section id="contact" data-scroll-section className="relative z-10 bg-background pt-8 mb-24">
-          <div
-            data-scroll
-            data-scroll-speed=".4"
-            data-scroll-position="top"
-            className="flex flex-col items-center justify-center rounded-lg bg-gradient-to-br from-primary/[6.5%] to-white/5 px-8 py-16 text-center xl:py-24"
-          >
+<section id="contact" className="relative z-10 bg-background pt-8 mb-24">
+          <div className="flex flex-col items-center justify-center rounded-lg bg-gradient-to-br from-primary/[6.5%] to-white/5 px-8 py-16 text-center xl:py-24">
             <h2 className="text-4xl font-medium tracking-tighter xl:text-6xl">
               Any{" "}
               <span className="text-gradient clash-grotesk">Questions?.</span>
