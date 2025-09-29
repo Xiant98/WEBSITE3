@@ -217,6 +217,29 @@ const VideoPlayer = ({ src, subtitles, title: _title, poster }: VideoPlayerProps
         )}
       </video>
 
+      {/* Play Button Overlay */}
+      <AnimatePresence>
+        {!isPlaying && (
+          <motion.div
+            className="absolute inset-0 flex items-center justify-center cursor-pointer"
+            onClick={togglePlay}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <motion.div
+              className="w-20 h-20 rounded-full bg-[#11111198] backdrop-blur-md flex items-center justify-center shadow-lg"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            >
+              <Play className="w-10 h-10 text-white fill-white ml-1" />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <AnimatePresence>
         {showControls && (
           <motion.div
