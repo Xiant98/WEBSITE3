@@ -58,7 +58,7 @@ const VideoPlayer = ({ src, subtitles, title }: VideoPlayerProps) => {
   const [progress, setProgress] = useState(0);
   const [isMuted, setIsMuted] = useState(false);
   const [playbackSpeed, setPlaybackSpeed] = useState(1.3);
-  const [showControls, setShowControls] = useState(true);
+  const [showControls, setShowControls] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [showCaptions, setShowCaptions] = useState(false);
@@ -192,7 +192,7 @@ const VideoPlayer = ({ src, subtitles, title }: VideoPlayerProps) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       onMouseEnter={() => setShowControls(true)}
-      onMouseLeave={() => setShowControls(true)}
+      onMouseLeave={() => setShowControls(false)}
       onTouchStart={() => setShowControls(true)}
     >
       <video
