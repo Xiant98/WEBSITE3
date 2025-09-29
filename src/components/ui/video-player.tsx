@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Play, Pause, Volume2, Volume1, VolumeX } from "lucide-react";
+import { Play, Pause, Volume2, Volume1, VolumeX, Maximize, Minimize, Subtitles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -57,10 +57,12 @@ const VideoPlayer = ({ src, subtitles, title }: VideoPlayerProps) => {
   const [volume, setVolume] = useState(1);
   const [progress, setProgress] = useState(0);
   const [isMuted, setIsMuted] = useState(false);
-  const [playbackSpeed, setPlaybackSpeed] = useState(1);
+  const [playbackSpeed, setPlaybackSpeed] = useState(1.3);
   const [showControls, setShowControls] = useState(true);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [showCaptions, setShowCaptions] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -123,6 +125,62 @@ const VideoPlayer = ({ src, subtitles, title }: VideoPlayerProps) => {
     }
   };
 
+  const toggleCaptions = () => {
+    if (videoRef.current) {
+      const tracks = videoRef.current.textTracks;
+      if (tracks.length > 0) {
+        const track = tracks[0];
+        if (track) {
+          if (showCaptions) {
+            track.mode = 'hidden';
+          } else {
+            track.mode = 'showing';
+          }
+          setShowCaptions(!showCaptions);
+        }
+      }
+    }
+  };
+
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      videoRef.current?.requestFullscreen?.();
+      setIsFullscreen(true);
+    } else {
+      document.exitFullscreen?.();
+      setIsFullscreen(false);
+    }
+  };
+
+  // Set default speed when video loads and check captions state
+  const handleLoadedMetadata = () => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 1.3;
+      setDuration(videoRef.current.duration);
+      
+      // Check if captions are showing by default
+      const tracks = videoRef.current.textTracks;
+      if (tracks.length > 0) {
+        const track = tracks[0];
+        if (track && track.mode === 'showing') {
+          setShowCaptions(true);
+        }
+      }
+    }
+  };
+
+  // Listen for fullscreen changes
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+    };
+  }, []);
+
   return (
     <motion.div
       className="relative w-full max-w-4xl mx-auto rounded-xl overflow-hidden bg-[#11111198] shadow-[0_0_20px_rgba(0,0,0,0.2)] backdrop-blur-sm"
@@ -137,6 +195,7 @@ const VideoPlayer = ({ src, subtitles, title }: VideoPlayerProps) => {
         ref={videoRef}
         className="w-full"
         onTimeUpdate={handleTimeUpdate}
+        onLoadedMetadata={handleLoadedMetadata}
         src={src}
         onClick={togglePlay}
         crossOrigin="anonymous"
@@ -185,6 +244,7 @@ const VideoPlayer = ({ src, subtitles, title }: VideoPlayerProps) => {
                     variant="ghost"
                     size="icon"
                     className="text-white hover:bg-[#111111d1] hover:text-white"
+                    aria-label={isPlaying ? "Pause video" : "Play video"}
                   >
                     {isPlaying ? (
                       <Pause className="h-5 w-5" />
@@ -203,6 +263,8 @@ const VideoPlayer = ({ src, subtitles, title }: VideoPlayerProps) => {
                       variant="ghost"
                       size="icon"
                       className="text-white hover:bg-[#111111d1] hover:text-white"
+                      aria-label={isMuted ? "Unmute video" : "Mute video"}
+                      aria-pressed={isMuted}
                     >
                       {isMuted ? (
                         <VolumeX className="h-5 w-5" />
@@ -221,10 +283,30 @@ const VideoPlayer = ({ src, subtitles, title }: VideoPlayerProps) => {
                     />
                   </div>
                 </div>
+
+                {/* Captions Toggle */}
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <Button
+                    onClick={toggleCaptions}
+                    variant="ghost"
+                    size="icon"
+                    className={cn(
+                      "text-white hover:bg-[#111111d1] hover:text-white",
+                      showCaptions && "bg-[#111111d1]"
+                    )}
+                    aria-label="Toggle captions"
+                    aria-pressed={showCaptions}
+                  >
+                    <Subtitles className="h-5 w-5" />
+                  </Button>
+                </motion.div>
               </div>
 
               <div className="flex items-center gap-2">
-                {[0.5, 1, 1.5, 2].map((speed) => (
+                {[0.5, 1, 1.3, 2].map((speed) => (
                   <motion.div
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
@@ -238,11 +320,33 @@ const VideoPlayer = ({ src, subtitles, title }: VideoPlayerProps) => {
                         "text-white hover:bg-[#111111d1] hover:text-white",
                         playbackSpeed === speed && "bg-[#111111d1]"
                       )}
+                      aria-label={`Set playback speed to ${speed}x`}
+                      aria-pressed={playbackSpeed === speed}
                     >
                       {speed}x
                     </Button>
                   </motion.div>
                 ))}
+
+                {/* Fullscreen Toggle */}
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <Button
+                    onClick={toggleFullscreen}
+                    variant="ghost"
+                    size="icon"
+                    className="text-white hover:bg-[#111111d1] hover:text-white"
+                    aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
+                  >
+                    {isFullscreen ? (
+                      <Minimize className="h-5 w-5" />
+                    ) : (
+                      <Maximize className="h-5 w-5" />
+                    )}
+                  </Button>
+                </motion.div>
               </div>
             </div>
           </motion.div>
