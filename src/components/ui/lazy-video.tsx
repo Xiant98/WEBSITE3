@@ -76,7 +76,7 @@ export default function LazyVideo({ src, className, alt, poster, onClick, showPl
           />
           {showPlayButton && (
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-[0_0_0_3px_hsl(var(--primary)/0.3)] group-hover:shadow-[0_0_0_3px_hsl(var(--primary)/0.5)] transform transition-all duration-300 group-hover:scale-110">
+              <div className="w-16 h-16 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg transform transition-all duration-300 group-hover:scale-110 group-hover:bg-white">
                 <Play className="w-8 h-8 text-black fill-black ml-1" />
               </div>
             </div>
@@ -95,7 +95,7 @@ export default function LazyVideo({ src, className, alt, poster, onClick, showPl
             <div className="w-12 h-12 border-2 border-white/20 border-t-white/60 rounded-full animate-spin" />
           )}
           {showPlayButton && poster && (
-            <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-[0_0_0_3px_hsl(var(--primary)/0.3)]">
+            <div className="w-16 h-16 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg">
               <Play className="w-8 h-8 text-black fill-black ml-1" />
             </div>
           )}

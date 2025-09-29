@@ -229,12 +229,12 @@ const VideoPlayer = ({ src, subtitles, title: _title, poster }: VideoPlayerProps
             transition={{ duration: 0.3 }}
           >
             <motion.div
-              className="w-20 h-20 rounded-full bg-white flex items-center justify-center shadow-[0_0_0_4px_hsl(var(--primary)/0.3)] hover:shadow-[0_0_0_4px_hsl(var(--primary)/0.5)]"
+              className="w-20 h-20 rounded-full bg-[#11111198] backdrop-blur-md flex items-center justify-center shadow-lg"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              <Play className="w-10 h-10 text-black fill-black ml-1" />
+              <Play className="w-10 h-10 text-white fill-white ml-1" />
             </motion.div>
           </motion.div>
         )}
