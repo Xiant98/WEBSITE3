@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { motion, useScroll, useTransform, useMotionValue, useVelocity, useAnimationFrame, wrap } from "framer-motion"
+import { motion, useScroll, useTransform, useMotionValue, useVelocity, useAnimationFrame, useSpring, wrap } from "framer-motion"
 import { cn } from "@/lib/utils"
 
 interface ScrollVelocityProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -16,15 +16,15 @@ const ScrollVelocity = React.forwardRef<HTMLDivElement, ScrollVelocityProps>(
     const baseX = useMotionValue(0)
     const { scrollY } = useScroll()
     const scrollVelocity = useVelocity(scrollY)
-    // const smoothVelocity = useSpring(scrollVelocity, {
-    //   damping: 50,
-    //   stiffness: 100,
-    // })
+    const smoothVelocity = useSpring(scrollVelocity, {
+      damping: 50,
+      stiffness: 400,
+    })
     const velocityFactor = useTransform(
-      scrollVelocity,
-      [0, 10000], 
-      [0, 5], 
-      { clamp: clamp }
+      smoothVelocity,
+      [0, 1000], 
+      [0, 3], 
+      { clamp: true }
     )
 
     const x = useTransform(baseX, (v) => `${wrap(-50, 0, v)}%`)
@@ -36,7 +36,7 @@ const ScrollVelocity = React.forwardRef<HTMLDivElement, ScrollVelocityProps>(
       if (movable) {
         move(delta)
       } else {
-        if (Math.abs(scrollVelocity.get()) >= scrollThreshold.current) {
+        if (Math.abs(smoothVelocity.get()) >= scrollThreshold.current) {
           move(delta)
         }
       }
@@ -62,7 +62,11 @@ const ScrollVelocity = React.forwardRef<HTMLDivElement, ScrollVelocityProps>(
       >
         <motion.div
           className="flex flex-row flex-nowrap gap-6 md:gap-12 text-sm md:text-lg font-normal normal-case md:text-xl xl:text-xl"
-          style={{ x }}
+          style={{ 
+            x,
+            willChange: 'transform',
+            transform: 'translateZ(0)'
+          }}
         >
           {Array.isArray(children) ? (
             <>
