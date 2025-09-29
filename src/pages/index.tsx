@@ -23,6 +23,7 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import VanillaTilt from "vanilla-tilt";
+import LazyVideo from "@/components/ui/lazy-video";
 import { motion } from "framer-motion";
 import VideoPlayer from "@/components/ui/video-player";
 
@@ -108,36 +109,36 @@ export default function Home() {
 
 
 
-  // handle scroll with throttling for better performance
+  // Optimized scroll handling with heavy throttling
   useEffect(() => {
     const sections = document.querySelectorAll("section");
     const navLinks = document.querySelectorAll(".nav-link");
-    let ticking = false;
+    let timeoutId: NodeJS.Timeout | null = null;
 
     function handleScroll() {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          let current = "";
+      // Heavy throttle to 100ms for better performance
+      if (timeoutId) return;
+      
+      timeoutId = setTimeout(() => {
+        let current = "";
 
-          sections.forEach((section) => {
-            const sectionTop = section.offsetTop;
-            if (window.scrollY >= sectionTop - 250) {
-              current = section.getAttribute("id") ?? "";
-            }
-          });
-
-          navLinks.forEach((li) => {
-            li.classList.remove("nav-active");
-
-            if (li.getAttribute("href") === `#${current}`) {
-              li.classList.add("nav-active");
-            }
-          });
-          
-          ticking = false;
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          if (window.scrollY >= sectionTop - 250) {
+            current = section.getAttribute("id") ?? "";
+          }
         });
-        ticking = true;
-      }
+
+        navLinks.forEach((li) => {
+          li.classList.remove("nav-active");
+
+          if (li.getAttribute("href") === `#${current}`) {
+            li.classList.add("nav-active");
+          }
+        });
+        
+        timeoutId = null;
+      }, 100); // 100ms throttle instead of every frame
     }
 
     // Enable smooth scrolling via CSS instead of Locomotive
@@ -146,22 +147,25 @@ export default function Home() {
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
+      if (timeoutId) clearTimeout(timeoutId);
       window.removeEventListener("scroll", handleScroll);
       document.documentElement.style.scrollBehavior = '';
     };
   }, []);
 
 
-  // card hover effect
+  // Optimized card hover effect
   useEffect(() => {
     const tilt: HTMLElement[] = Array.from(document.querySelectorAll("#tilt"));
     VanillaTilt.init(tilt, {
-      speed: 300,
-      glare: true,
-      "max-glare": 0.1,
-      gyroscope: true,
-      perspective: 900,
-      scale: 0.9,
+      speed: 150, // Reduced from 300
+      glare: false, // Disabled for performance
+      "max-glare": 0,
+      gyroscope: false, // Disabled for performance
+      perspective: 500, // Reduced from 900
+      scale: 0.95, // Reduced effect
+      easing: "cubic-bezier(.03,.98,.52,.99)",
+      "transition-timing": "0.1s", // Faster transitions
     });
   }, []);
 
@@ -430,12 +434,10 @@ export default function Home() {
                             }}
                           >
                             {project.image.endsWith(".webm") ? (
-                              <video
+                              <LazyVideo
                                 src={project.image}
-                                autoPlay
-                                loop
-                                muted
                                 className="aspect-video h-full w-full rounded-t-md bg-primary object-cover"
+                                onClick={() => setSelectedMedia(project.image)}
                               />
                             ) : (
                               <Image
@@ -445,11 +447,12 @@ export default function Home() {
                                 height={300}
                                 quality={100}
                                 className="aspect-video h-full w-full rounded-t-md bg-primary object-cover"
+                                loading="lazy"
                               />
                             )}
                           </div>
                         </CardHeader>
-                        <CardContent className="absolute bottom-0 w-full bg-background/50 backdrop-blur">
+                        <CardContent className="absolute bottom-0 w-full bg-background/90">
                           <CardTitle className="border-t border-white/5 p-4 text-base font-normal tracking-tighter">
                             {project.description}
                           </CardTitle>
