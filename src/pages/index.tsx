@@ -225,50 +225,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Company Logos Scrolling Section */}
-        <section className="py-8 md:py-12 bg-background relative z-10 overflow-hidden" data-scroll-section>
-          <div className="w-full">
-            {/* Optional subtle header */}
-            <div className="text-center mb-8 opacity-60">
-              <p className="text-sm text-muted-foreground tracking-wide">
-                TRUSTED BY INDUSTRY LEADERS
-              </p>
-            </div>
-            
-            {/* Scrolling Container */}
-            <div className="relative w-full overflow-hidden">
-              {/* Gradient overlays for smooth fade effect */}
-              <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-background to-transparent z-10"></div>
-              <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-background to-transparent z-10"></div>
-              
-              {/* Scrolling animation container */}
-              <div className="flex space-x-12 animate-scroll">
-                {/* First set of companies */}
-                <div className="flex space-x-12 items-center justify-center min-w-fit">
-                  <span className="text-2xl md:text-3xl font-light text-muted-foreground/60 hover:text-muted-foreground transition-colors duration-300 whitespace-nowrap">BNP Paribas</span>
-                  <span className="text-2xl md:text-3xl font-light text-muted-foreground/60 hover:text-muted-foreground transition-colors duration-300 whitespace-nowrap">SAP</span>
-                  <span className="text-2xl md:text-3xl font-light text-muted-foreground/60 hover:text-muted-foreground transition-colors duration-300 whitespace-nowrap">Star Alliance</span>
-                  <span className="text-2xl md:text-3xl font-light text-muted-foreground/60 hover:text-muted-foreground transition-colors duration-300 whitespace-nowrap">Luther Law</span>
-                  <span className="text-2xl md:text-3xl font-light text-muted-foreground/60 hover:text-muted-foreground transition-colors duration-300 whitespace-nowrap">Vallourec</span>
-                  <span className="text-2xl md:text-3xl font-light text-muted-foreground/60 hover:text-muted-foreground transition-colors duration-300 whitespace-nowrap">Scoot</span>
-                  <span className="text-2xl md:text-3xl font-light text-muted-foreground/60 hover:text-muted-foreground transition-colors duration-300 whitespace-nowrap">Infineon Technologies</span>
-                </div>
-                
-                {/* Duplicate set for seamless loop */}
-                <div className="flex space-x-12 items-center justify-center min-w-fit">
-                  <span className="text-2xl md:text-3xl font-light text-muted-foreground/60 hover:text-muted-foreground transition-colors duration-300 whitespace-nowrap">BNP Paribas</span>
-                  <span className="text-2xl md:text-3xl font-light text-muted-foreground/60 hover:text-muted-foreground transition-colors duration-300 whitespace-nowrap">SAP</span>
-                  <span className="text-2xl md:text-3xl font-light text-muted-foreground/60 hover:text-muted-foreground transition-colors duration-300 whitespace-nowrap">Star Alliance</span>
-                  <span className="text-2xl md:text-3xl font-light text-muted-foreground/60 hover:text-muted-foreground transition-colors duration-300 whitespace-nowrap">Luther Law</span>
-                  <span className="text-2xl md:text-3xl font-light text-muted-foreground/60 hover:text-muted-foreground transition-colors duration-300 whitespace-nowrap">Vallourec</span>
-                  <span className="text-2xl md:text-3xl font-light text-muted-foreground/60 hover:text-muted-foreground transition-colors duration-300 whitespace-nowrap">Scoot</span>
-                  <span className="text-2xl md:text-3xl font-light text-muted-foreground/60 hover:text-muted-foreground transition-colors duration-300 whitespace-nowrap">Infineon Technologies</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Loom Video Section */}
         <section className="py-16 md:py-24 bg-background relative z-10" data-scroll-section>
           <div className="container mx-auto px-4 max-w-4xl">
