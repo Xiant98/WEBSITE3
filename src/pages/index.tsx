@@ -108,46 +108,46 @@ export default function Home() {
 
 
 
-  // handle scroll
+  // handle scroll with throttling for better performance
   useEffect(() => {
     const sections = document.querySelectorAll("section");
     const navLinks = document.querySelectorAll(".nav-link");
-
-    async function getLocomotive() {
-      if (!refScrollContainer.current) return;
-      
-      const Locomotive = (await import("locomotive-scroll")).default;
-      new Locomotive({
-        el: refScrollContainer.current,
-        smooth: true,
-      });
-    }
+    let ticking = false;
 
     function handleScroll() {
-      let current = "";
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          let current = "";
 
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
-        if (window.scrollY >= sectionTop - 250) {
-          current = section.getAttribute("id") ?? "";
-        }
-      });
+          sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            if (window.scrollY >= sectionTop - 250) {
+              current = section.getAttribute("id") ?? "";
+            }
+          });
 
-      navLinks.forEach((li) => {
-        li.classList.remove("nav-active");
+          navLinks.forEach((li) => {
+            li.classList.remove("nav-active");
 
-        if (li.getAttribute("href") === `#${current}`) {
-          li.classList.add("nav-active");
-          console.log(li.getAttribute("href"));
-        }
-      });
+            if (li.getAttribute("href") === `#${current}`) {
+              li.classList.add("nav-active");
+            }
+          });
+          
+          ticking = false;
+        });
+        ticking = true;
+      }
     }
 
-    void getLocomotive();
-    window.addEventListener("scroll", handleScroll);
+    // Enable smooth scrolling via CSS instead of Locomotive
+    document.documentElement.style.scrollBehavior = 'smooth';
+    
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      document.documentElement.style.scrollBehavior = '';
     };
   }, []);
 

@@ -42,17 +42,17 @@ const ScrollVelocity = React.forwardRef<HTMLDivElement, ScrollVelocityProps>(
       }
     })
 
-    function move(delta: number) {
+    const move = React.useCallback((delta: number) => {
       const baseDirection = Math.sign(velocity) || 1
       const speed = Math.abs(velocity)
-      let moveBy = baseDirection * speed * (delta / 1000)
+      const baseMove = baseDirection * speed * (delta / 1000)
       
-      // Add scroll-based velocity adjustment while maintaining base direction
-      const scrollAdjustment = baseDirection * speed * velocityFactor.get() * (delta / 1000)
-      moveBy += scrollAdjustment
+      // Optimize: reduce complexity of scroll-based adjustment
+      const scrollFactor = velocityFactor.get()
+      const scrollAdjustment = baseDirection * speed * scrollFactor * (delta / 1000) * 0.5
       
-      baseX.set(baseX.get() + moveBy)
-    }
+      baseX.set(baseX.get() + baseMove + scrollAdjustment)
+    }, [velocity, velocityFactor, baseX])
 
     return (
       <div
