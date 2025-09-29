@@ -152,17 +152,19 @@ const VideoPlayer = ({ src, subtitles, title }: VideoPlayerProps) => {
     }
   };
 
-  // Set default speed when video loads and check captions state
+  // Set default speed when video loads and setup captions
   const handleLoadedMetadata = () => {
     if (videoRef.current) {
       videoRef.current.playbackRate = 1.3;
       setDuration(videoRef.current.duration);
       
-      // Check if captions are showing by default
+      // Setup captions track
       const tracks = videoRef.current.textTracks;
       if (tracks.length > 0) {
         const track = tracks[0];
-        if (track && track.mode === 'showing') {
+        if (track) {
+          // Enable captions by default
+          track.mode = 'showing';
           setShowCaptions(true);
         }
       }

@@ -38,6 +38,22 @@
   }
 }
 
+/* Video captions styling */
+video::cue {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-size: 18px;
+  font-family: Arial, sans-serif;
+  padding: 4px 12px;
+  border-radius: 4px;
+  line-height: 1.4;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+video::cue(.speaker) {
+  color: #ffeb3b;
+}
+
 /* global elements */
 @layer base {
   html[data-scroll-orientation="horizontal"] {
