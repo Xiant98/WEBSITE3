@@ -64,8 +64,6 @@ const VideoPlayer = ({ src, subtitles, title }: VideoPlayerProps) => {
   const [showCaptions, setShowCaptions] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
-  // Debug component mounting
-  console.log('VideoPlayer component mounted with:', { src, subtitles, title });
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -157,56 +155,23 @@ const VideoPlayer = ({ src, subtitles, title }: VideoPlayerProps) => {
 
   // Set default speed when video loads and setup captions
   const handleLoadedMetadata = () => {
-    console.log('handleLoadedMetadata called!');
     if (videoRef.current) {
-      console.log('Video element found, setting up...');
       videoRef.current.playbackRate = 1.3;
       setDuration(videoRef.current.duration);
       
-      // Setup captions track with debugging
+      // Setup captions track
       const tracks = videoRef.current.textTracks;
-      console.log('Text tracks found:', tracks.length);
-      
       if (tracks.length > 0) {
         const track = tracks[0];
         if (track) {
-          console.log('Track details:', {
-            kind: track.kind,
-            language: track.language,
-            label: track.label,
-            mode: track.mode
-          });
-          
           // Enable captions by default
           track.mode = 'showing';
           setShowCaptions(true);
-          console.log('Captions enabled, mode set to:', track.mode);
-          
-          // Add event listeners for track loading
-          track.addEventListener('load', () => {
-            console.log('Track loaded successfully');
-          });
-          
-          track.addEventListener('error', (e) => {
-            console.error('Track loading error:', e);
-          });
         }
-      } else {
-        console.log('No text tracks found');
       }
-    } else {
-      console.log('No video element found');
     }
   };
 
-  // Add more debugging for video events
-  const handleVideoLoad = () => {
-    console.log('Video load event fired');
-  };
-
-  const handleCanPlay = () => {
-    console.log('Video canplay event fired');
-  };
 
   // Listen for fullscreen changes
   useEffect(() => {
@@ -235,17 +200,14 @@ const VideoPlayer = ({ src, subtitles, title }: VideoPlayerProps) => {
         className="w-full"
         onTimeUpdate={handleTimeUpdate}
         onLoadedMetadata={handleLoadedMetadata}
-        onLoad={handleVideoLoad}
-        onCanPlay={handleCanPlay}
         src={src}
         onClick={togglePlay}
-        crossOrigin="anonymous"
         preload="metadata"
       >
         {subtitles && (
           <track
             kind="subtitles"
-            src="/assets/outbound-sales-video.vtt"
+            src={subtitles}
             srcLang="en"
             label="English"
             default
