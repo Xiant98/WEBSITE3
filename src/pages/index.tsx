@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/carousel";
 import VanillaTilt from "vanilla-tilt";
 import { motion } from "framer-motion";
+import VideoPlayer from "@/components/ui/video-player";
 
 const aboutStats = [
   { label: "Years of experience", value: "5+" },
@@ -235,16 +236,12 @@ export default function Home() {
               </h2>
             </div>
             
-            {/* Simple Loom Embed */}
-            <div style={{ position: 'relative', paddingBottom: '62.7177700348432%', height: 0 }}>
-              <iframe 
-                src="https://www.loom.com/embed/fa4d040018274089ba384fd77bcab9d5?sid=d24456e9-79e6-423a-bae8-7d50b8280690" 
-                frameBorder="0" 
-                allowFullScreen 
-                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-                title="Winning with AI When Everyone's Doing It"
-              />
-            </div>
+            {/* Custom Video Player */}
+            <VideoPlayer 
+              src="/assets/outbound-sales-video.mp4"
+              subtitles="/assets/outbound-sales-video.srt"
+              title="Winning with AI When Everyone's Doing It"
+            />
             
             {/* Bottom descriptive text */}
             <div className="text-center mt-8">
