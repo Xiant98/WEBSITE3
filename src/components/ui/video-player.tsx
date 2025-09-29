@@ -49,9 +49,10 @@ interface VideoPlayerProps {
   src: string;
   subtitles?: string;
   title?: string;
+  poster?: string;
 }
 
-const VideoPlayer = ({ src, subtitles, title: _title }: VideoPlayerProps) => {
+const VideoPlayer = ({ src, subtitles, title: _title, poster }: VideoPlayerProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(1);
@@ -201,6 +202,7 @@ const VideoPlayer = ({ src, subtitles, title: _title }: VideoPlayerProps) => {
         onTimeUpdate={handleTimeUpdate}
         onLoadedMetadata={handleLoadedMetadata}
         src={src}
+        poster={poster}
         onClick={togglePlay}
         preload="metadata"
       >

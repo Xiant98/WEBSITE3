@@ -81,7 +81,7 @@ function NavItem(props: NavProps) {
 export default function Container(props: ContainerProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const { children, ...customMeta } = props;
   const router = useRouter();
@@ -112,7 +112,7 @@ export default function Container(props: ContainerProps) {
       setIsLoading(false);
       document.body.style.cursor = "default";
       window.scrollTo(0, 0);
-    }, 2000);
+    }, 500);
   }, []);
 
   return (

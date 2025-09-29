@@ -241,6 +241,7 @@ export default function Home() {
               src="/assets/outbound-sales-video.mp4"
               subtitles="/assets/outbound-sales-video.vtt"
               title="Winning with AI When Everyone's Doing It"
+              poster="/assets/video-thumbnail.png"
             />
             
             {/* Bottom descriptive text */}
