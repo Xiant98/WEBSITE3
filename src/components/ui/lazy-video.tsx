@@ -6,13 +6,13 @@ import { Play } from 'lucide-react'
 interface LazyVideoProps {
   src: string
   className?: string
-  _alt?: string
+  alt?: string
   poster?: string
   onClick?: () => void
   showPlayButton?: boolean
 }
 
-export default function LazyVideo({ src, className, _alt, poster, onClick, showPlayButton = true }: LazyVideoProps) {
+export default function LazyVideo({ src, className, alt: _alt, poster, onClick, showPlayButton = true }: LazyVideoProps) {
   const [shouldLoad, setShouldLoad] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)

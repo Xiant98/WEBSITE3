@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { motion, useScroll, useTransform, useMotionValue, useVelocity, useAnimationFrame, useSpring, wrap } from "framer-motion"
+import { motion, useScroll, useTransform, useMotionValue, useVelocity, useAnimationFrame, useSpring, wrap, type MotionValue } from "framer-motion"
 import { cn } from "@/lib/utils"
 
 interface ScrollVelocityProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -21,7 +21,7 @@ const ScrollVelocity = React.forwardRef<HTMLDivElement, ScrollVelocityProps>(
       stiffness: 400,
     })
     const velocityFactor = useTransform(
-      smoothVelocity as any,
+      smoothVelocity as unknown as MotionValue<number>,
       [0, 1000], 
       [0, 3], 
       { clamp: true }
