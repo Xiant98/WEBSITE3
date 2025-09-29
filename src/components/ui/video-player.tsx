@@ -51,7 +51,7 @@ interface VideoPlayerProps {
   title?: string;
 }
 
-const VideoPlayer = ({ src, subtitles, title }: VideoPlayerProps) => {
+const VideoPlayer = ({ src, subtitles, title: _title }: VideoPlayerProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(1);
@@ -70,7 +70,7 @@ const VideoPlayer = ({ src, subtitles, title }: VideoPlayerProps) => {
       if (isPlaying) {
         videoRef.current.pause();
       } else {
-        videoRef.current.play();
+        void videoRef.current.play();
       }
       setIsPlaying(!isPlaying);
     }
@@ -97,7 +97,7 @@ const VideoPlayer = ({ src, subtitles, title }: VideoPlayerProps) => {
   };
 
   const handleSeek = (value: number) => {
-    if (videoRef.current && videoRef.current.duration) {
+    if (videoRef.current?.duration) {
       const time = (value / 100) * videoRef.current.duration;
       if (isFinite(time)) {
         videoRef.current.currentTime = time;
@@ -145,10 +145,10 @@ const VideoPlayer = ({ src, subtitles, title }: VideoPlayerProps) => {
 
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
-      videoRef.current?.requestFullscreen?.();
+      void videoRef.current?.requestFullscreen?.();
       setIsFullscreen(true);
     } else {
-      document.exitFullscreen?.();
+      void document.exitFullscreen?.();
       setIsFullscreen(false);
     }
   };
