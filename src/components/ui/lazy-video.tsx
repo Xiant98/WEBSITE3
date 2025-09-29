@@ -6,16 +6,14 @@ import { Play } from 'lucide-react'
 interface LazyVideoProps {
   src: string
   className?: string
-  alt?: string
+  _alt?: string
   poster?: string
   onClick?: () => void
   showPlayButton?: boolean
 }
 
-export default function LazyVideo({ src, className, alt, poster, onClick, showPlayButton = true }: LazyVideoProps) {
-  const [isVisible, setIsVisible] = useState(false)
+export default function LazyVideo({ src, className, _alt, poster, onClick, showPlayButton = true }: LazyVideoProps) {
   const [shouldLoad, setShouldLoad] = useState(false)
-  const [isPlaying, setIsPlaying] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
 
@@ -24,7 +22,6 @@ export default function LazyVideo({ src, className, alt, poster, onClick, showPl
       (entries) => {
         const entry = entries[0]
         if (entry && entry.isIntersecting) {
-          setIsVisible(true)
           // Delay loading slightly to avoid loading all videos at once
           setTimeout(() => setShouldLoad(true), 100)
         }
@@ -44,9 +41,7 @@ export default function LazyVideo({ src, className, alt, poster, onClick, showPl
 
   const handleCanPlay = () => {
     if (videoRef.current && shouldLoad) {
-      void videoRef.current.play().then(() => {
-        setIsPlaying(true)
-      }).catch(() => {
+      void videoRef.current.play().catch(() => {
         // Silently handle autoplay failures
       })
     }
@@ -71,8 +66,6 @@ export default function LazyVideo({ src, className, alt, poster, onClick, showPl
             preload="metadata"
             className="aspect-video h-full w-full rounded-t-md bg-primary object-cover"
             onCanPlay={handleCanPlay}
-            onPlay={() => setIsPlaying(true)}
-            onPause={() => setIsPlaying(false)}
           />
           {showPlayButton && (
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
