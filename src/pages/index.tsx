@@ -239,7 +239,7 @@ export default function Home() {
             {/* Custom Video Player */}
             <VideoPlayer 
               src="/assets/outbound-sales-video.mp4"
-              subtitles="/assets/outbound-sales-video.srt"
+              subtitles="/assets/outbound-sales-video.vtt"
               title="Winning with AI When Everyone's Doing It"
             />
             

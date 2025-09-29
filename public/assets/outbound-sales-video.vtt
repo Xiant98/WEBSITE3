@@ -1,0 +1,335 @@
+WEBVTT
+
+00:00:00.359 --> 00:00:03.109
+Hi, hello, my name is Mukesh and I've been successful in outbound sales for
+
+00:00:03.110 --> 00:00:05.139
+over four years. I started in a startup,
+
+00:00:05.290 --> 00:00:08.114
+moved my way up to enterprise sales, and now I'm looking to get back.
+
+00:00:08.446 --> 00:00:10.572
+Okay? I'm passionate, curious,
+
+00:00:10.573 --> 00:00:13.978
+and driven, and I'd like to show you a different way to prospect.
+
+00:00:13.991 --> 00:00:18.047
+Okay, one that's scalable, and, and beats the typical sales team.
+
+00:00:18.632 --> 00:00:20.776
+So let's begin. AI is everywhere.
+
+00:00:21.106 --> 00:00:25.905
+Everybody's inbox is full of personalized messages that are really just generic templates
+
+00:00:26.000 --> 00:00:30.404
+matched with basic data, either from Excel sheets or from a provider.
+
+00:00:30.872 --> 00:00:34.168
+After they get the basic data, they map them to a chat GPT bot,
+
+00:00:34.326 --> 00:00:36.801
+and then they get an example of a message over here.
+
+00:00:37.578 --> 00:00:39.909
+So, yeah, they'll typically get,
+
+00:00:39.910 --> 00:00:42.052
+Excel sheet, the names,
+
+00:00:42.053 --> 00:00:45.781
+headline, industry, and then they map it to a outreach message over here.
+
+00:00:45.782 --> 00:00:50.662
+You can see something similar to this also.
+
+00:00:52.494 --> 00:00:57.176
+So these are really great, up until this year, because now every big sales
+
+00:00:57.177 --> 00:00:59.927
+platform like SalesLoft and Apollo are using the same methods to do mass emailing.
+
+00:00:59.928 --> 00:01:03.637
+And so are your competitors. And  mass outreach,
+
+00:01:03.638 --> 00:01:06.713
+sorry. So when everybody uses the same data and AI tech,
+
+00:01:06.714 --> 00:01:09.870
+the real standard for meaningful connection gets a lot higher.
+
+00:01:10.582 --> 00:01:14.753
+People can spot AI messages easily and start to ignore them a lot quicker.
+
+00:01:15.263 --> 00:01:18.197
+So how do you really stand out when AI is everywhere and expected?
+
+00:01:18.198 --> 00:01:22.771
+I just want you to take a look over here.
+
+00:01:23.515 --> 00:01:25.926
+Look at all these messages. Unlike generic AI,
+
+00:01:25.927 --> 00:01:28.778
+they mention things like the   prospects' recent activities,
+
+00:01:28.863 --> 00:01:32.648
+their posts, or comments. Details only a real follower would notice.
+
+00:01:32.851 --> 00:01:38.011
+And that is real personalization at scale. Most tools just scrape old
+
+00:01:38.012 --> 00:01:41.903
+profiles, company information, missing the important real-time signals,
+
+00:01:42.031 --> 00:01:46.679
+like recent posts or updates. And basically what the prospect
+
+00:01:46.680 --> 00:01:49.302
+is interested in and what they're passionate about online gets missed.
+
+00:01:49.569 --> 00:01:53.247
+This type of outreach is harder to do. And big companies avoid it because
+
+00:01:53.248 --> 00:01:57.928
+it's unethical to manipulate data so deeply as a corporation and technically
+
+00:01:57.929 --> 00:02:01.864
+difficult because scrapers break when LinkedIn changes their site.
+
+00:02:02.734 --> 00:02:04.703
+You have to be logged in, so you have to have multiple accounts, which
+
+00:02:04.704 --> 00:02:07.092
+in turn contributes to a lot of downtime. They can't sell a product that
+
+00:02:07.093 --> 00:02:10.557
+has a lot of downtime. So that's why this approach has a higher barrier
+
+00:02:10.558 --> 00:02:13.702
+to entry. So enough talking,
+
+00:02:13.703 --> 00:02:18.335
+let's get into a quick demonstration. I built a quick POC over here
+
+00:02:18.336 --> 00:02:21.242
+for you to have a better look at it.
+
+00:02:22.080 --> 00:02:24.663
+Alright, so as you can see, I have,
+
+00:02:24.673 --> 00:02:27.819
+added some additional columns over here.
+
+00:02:27.820 --> 00:02:30.724
+5, last 5 posts of the company's LinkedIn,
+
+00:02:30.725 --> 00:02:33.358
+last 5 posts of the person, and card,
+
+00:02:33.359 --> 00:02:35.517
+I would say, last comments made by the person.
+
+00:02:35.518 --> 00:02:39.547
+Okay, I'll go into a quick So this is,
+
+00:02:39.558 --> 00:02:43.335
+just a quick automation, and what it does is, there are 3 scrapers,
+
+00:02:43.404 --> 00:02:45.540
+basically 3 robots with different, scripts, scripts,
+
+00:02:45.550 --> 00:02:49.293
+like, codes, that takes information off of these people.
+
+00:02:49.294 --> 00:02:52.684
+So we have posts of the company scraping board,
+
+00:02:52.695 --> 00:02:55.064
+LinkedIn posts of the person, and companies made by the person.
+
+00:02:55.410 --> 00:02:59.881
+So you'll populate the list over here, with more information.
+
+00:02:59.882 --> 00:03:02.296
+So yeah, you can see over here.
+
+00:03:04.684 --> 00:03:07.275
+So this is what the company has posted,
+
+00:03:07.584 --> 00:03:12.308
+the last 5 posts of the company. It's basically taking information from their
+
+00:03:12.733 --> 00:03:15.628
+LinkedIn accounts. So whenever they post something,
+
+00:03:15.629 --> 00:03:18.257
+so this company's name is Luxoff. Okay,
+
+00:03:18.258 --> 00:03:22.116
+the last 5 posts of the person. And the scenario over here,
+
+00:03:22.308 --> 00:03:26.632
+to give you a bit of context is, we are an ATS SaaS company,
+
+00:03:26.791 --> 00:03:31.211
+Applicant Tracking System. So we're selling this software as a service to HR decision
+
+00:03:31.212 --> 00:03:33.776
+makers. So these are the comments made.
+
+00:03:34.649 --> 00:03:37.848
+And then you're going to run it through a completion. So basically,
+
+00:03:37.849 --> 00:03:42.273
+we get all the information we have. All the information from here,
+
+00:03:42.274 --> 00:03:45.972
+the generic information, as well as the new information,
+
+00:03:45.973 --> 00:03:49.976
+their posts, their comments. and then we put them together and we use AI
+
+00:03:49.977 --> 00:03:53.958
+to come up with the most, I would say,
+
+00:03:53.959 --> 00:03:56.705
+the best way to outreach. Might not be perfect,
+
+00:03:56.904 --> 00:03:59.843
+but it's a lot better than, you know, just blindly going in and saying,
+
+00:03:59.844 --> 00:04:02.644
+hello, we sell this. Hi, I know your company does this.
+
+00:04:02.832 --> 00:04:07.051
+I want to sell you this. It's, it's not as great as something like
+
+00:04:07.052 --> 00:04:10.043
+this. So let's see our first person, what we have over here first.
+
+00:04:10.402 --> 00:04:14.618
+His name is Lama Hakeem. And he is in the banking.
+
+00:04:15.658 --> 00:04:20.314
+So he's in banking. Okay. Here are some of the personalized messages based on
+
+00:04:20.315 --> 00:04:22.644
+what he has posted. Hi Lama,
+
+00:04:22.645 --> 00:04:23.241
+I saw that
+
+00:04:27.653 --> 00:04:26.312
+Annexion is hiring for some exceptional roles across Asia. This made me wonder how
+
+00:04:26.313 --> 00:04:29.457
+you managed to do that. So yeah, this, this is how typically outreach.
+
+00:04:29.458 --> 00:04:33.159
+It's questions to the decision maker on what they have done online,
+
+00:04:33.272 --> 00:04:36.137
+on what they posted and stuff.
+
+00:04:36.138 --> 00:04:38.621
+So again, a bit of context,
+
+00:04:38.622 --> 00:04:40.887
+we are, ATS in this scenario,
+
+00:04:40.888 --> 00:04:46.398
+we are an ATS SaaS company. So
+
+00:04:46.399 --> 00:04:47.846
+if we go into this, we can see.
+
+00:04:54.440 --> 00:04:56.610
+I had some, there's a reaction over here.
+
+00:04:58.480 --> 00:05:01.927
+So this can be two things. We don't have to do reactions,
+
+00:05:01.928 --> 00:05:04.144
+we can just do whatever he posts or whatever he comments. If he doesn't
+
+00:05:04.145 --> 00:05:07.272
+have a post or a comment, we can do a bit of reactions also.
+
+00:05:07.423 --> 00:05:10.331
+So this is very flexible, it's very creative. So yeah,
+
+00:05:11.005 --> 00:05:11.930
+here's more.
+
+00:05:17.371 --> 00:05:20.012
+Yeah, it's quite interesting what you can come up with.
+
+00:05:20.569 --> 00:05:24.880
+So, yeah, in essence, I've developed these AI tools over a year ago that
+
+00:05:24.881 --> 00:05:28.311
+sales, that top sales platforms are now only starting to adopt.
+
+00:05:28.721 --> 00:05:31.883
+And as a solo operator, I'm able to move quickly and creatively.
+
+00:05:32.271 --> 00:05:36.086
+There's actually a ton of, campaigns we could run. A good example would be,
+
+00:05:36.097 --> 00:05:40.292
+using data found in job postings of a company to uncover the solutions that
+
+00:05:40.293 --> 00:05:43.686
+the company uses by just looking at the required skills of those job postings.
+
+00:05:44.330 --> 00:05:46.503
+Okay. And that's actually a good way also. And there's,
+
+00:05:46.504 --> 00:05:48.566
+there's a lot, as long as there's data, there's a lot of ways to
+
+00:05:48.567 --> 00:05:50.869
+manipulate it. There's a lot of ways to come up with creative ways of
+
+00:05:50.870 --> 00:05:53.029
+outreach. So, what I'm trying to say,
+
+00:05:53.219 --> 00:05:56.429
+anyways, is outreach isn't about sending a lot of,
+
+00:05:56.439 --> 00:05:59.479
+messages. It's about being relevant and timely.
+
+00:05:59.669 --> 00:06:01.804
+While others use generic, automated outreach,
+
+00:06:02.047 --> 00:06:06.755
+I create personalized conversations that prospects actually notice and actually want to reply
+
+00:06:06.756 --> 00:06:10.273
+to. So this, of course, doesn't replace, relationship building,
+
+00:06:10.424 --> 00:06:13.494
+or real relationship building, because that's essential in sales.
+
+00:06:13.495 --> 00:06:15.699
+That's the number one key. But it keeps,
+
+00:06:16.448 --> 00:06:19.207
+but it helps to keep a strong pipeline of prospects to qualify,
+
+00:06:19.306 --> 00:06:23.820
+and quickly, and efficient, ah, keeps a strong pipeline of prospects to qualify quickly
+
+00:06:23.821 --> 00:06:26.624
+and efficiently, which is key in our bound lead generation.
+
+00:06:26.635 --> 00:06:28.741
+I think that's it. Thank you so much for your time,
+
+00:06:28.742 --> 00:06:29.970
+and I'll see you next Have a good day.
+
